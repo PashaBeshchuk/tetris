@@ -247,11 +247,8 @@ module.exports = {
 		return newArr;
 	},
 	
-	buildTetromino: function(stringOfCoordinates){
-		let math = stringOfCoordinates.split("\n")
+	getCoordinates: function(math){
 		let arrayOfCoordinates = []
-		let quantityElem = 0;
-		
 		for(let i = 0, elem_Y = 0; i < math.length; i++){
 			if(math[i]!= false){
 				
@@ -259,7 +256,6 @@ module.exports = {
 					let obj = {}
 					if(math[i][j]!= false){
 						if(math[i][j] == "X"){
-							console.log(math[i][j])
 							obj.x = elem_X
 							obj.y = elem_Y
 							quantityElem++;
@@ -275,6 +271,43 @@ module.exports = {
 			}
 			
 		}
+		return arrayOfCoordinates
+	},
+	
+	buildTetromino: function(stringOfCoordinates){
+		let math = stringOfCoordinates.split("\n")
+		let arrayOfCoordinates = []
+		let quantityElem = 0;
+		getCoordinates(math)
+		/* function getCoordinates(math){
+			let arrayOfCoordinates = []
+			for(let i = 0, elem_Y = 0; i < math.length; i++){
+				if(math[i]!= false){
+					
+					for(let j = 0, elem_X = 0; j < math[i].length; j++){
+						let obj = {}
+						if(math[i][j]!= false){
+							if(math[i][j] == "X"){
+								obj.x = elem_X
+								obj.y = elem_Y
+								quantityElem++;
+								
+								arrayOfCoordinates.push(obj)
+								
+							}
+							elem_X++
+						}
+						
+					}
+					elem_Y++
+				}
+				
+			}
+			return arrayOfCoordinates
+		} */
+		getCoordinates(math).forEach(function(elem){
+			arrayOfCoordinates.push(Object.assign({},elem));
+		})
 		let repeatCycle = true;
 		while (repeatCycle) {
 			for(let i = 0, j = 1; j < arrayOfCoordinates.length; i++, j++){
