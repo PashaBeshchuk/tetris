@@ -247,8 +247,16 @@ module.exports = {
 		return newArr;
 	},
 	
-	getCoordinates: function(math){
+	getCoordinates: function(stringOfCoordinates){
+		let math
+		let quantityElem = 0;
 		let arrayOfCoordinates = []
+		if(typeof(stringOfCoordinates) == "string"){
+			math = stringOfCoordinates.split("\n")
+		}else{
+			math = stringOfCoordinates
+		}
+		
 		for(let i = 0, elem_Y = 0; i < math.length; i++){
 			if(math[i]!= false){
 				
@@ -260,52 +268,25 @@ module.exports = {
 							obj.y = elem_Y
 							quantityElem++;
 							
-							arrayOfCoordinates.push(obj)
+							arrayOfCoordinates.push(obj);
 							
 						}
-						elem_X++
+						elem_X++;
 					}
 					
 				}
-				elem_Y++
+				elem_Y++;
 			}
 			
 		}
-		return arrayOfCoordinates
+		return arrayOfCoordinates;
 	},
 	
 	buildTetromino: function(stringOfCoordinates){
-		let math = stringOfCoordinates.split("\n")
-		let arrayOfCoordinates = []
-		let quantityElem = 0;
-		getCoordinates(math)
-		/* function getCoordinates(math){
-			let arrayOfCoordinates = []
-			for(let i = 0, elem_Y = 0; i < math.length; i++){
-				if(math[i]!= false){
-					
-					for(let j = 0, elem_X = 0; j < math[i].length; j++){
-						let obj = {}
-						if(math[i][j]!= false){
-							if(math[i][j] == "X"){
-								obj.x = elem_X
-								obj.y = elem_Y
-								quantityElem++;
-								
-								arrayOfCoordinates.push(obj)
-								
-							}
-							elem_X++
-						}
-						
-					}
-					elem_Y++
-				}
-				
-			}
-			return arrayOfCoordinates
-		} */
-		getCoordinates(math).forEach(function(elem){
+		let math = stringOfCoordinates.split("\n");
+		let arrayOfCoordinates = [];
+		module.exports.getCoordinates(math);
+		module.exports.getCoordinates(math).forEach(function(elem){
 			arrayOfCoordinates.push(Object.assign({},elem));
 		})
 		let repeatCycle = true;
@@ -314,7 +295,7 @@ module.exports = {
 				if(arrayOfCoordinates[i].x > arrayOfCoordinates[j].x){
 					let b  = arrayOfCoordinates[j];
 					arrayOfCoordinates[j] = arrayOfCoordinates[i];
-					arrayOfCoordinates[i] = b
+					arrayOfCoordinates[i] = b;
 				} 
 				
 			}
@@ -322,7 +303,7 @@ module.exports = {
 				repeatCycle = false
 			}					
 		}
-		if(quantityElem != 4){
+		if(arrayOfCoordinates.length != 4){
 			throw new Error("tetromino size is not correct");
 		} 
 		return arrayOfCoordinates;
