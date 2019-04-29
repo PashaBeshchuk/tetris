@@ -10,6 +10,17 @@ module.exports = {
 		let a = -1;
 		let localTetromino = []
 		
+		//check that the field is free to rotate	
+		function checkThatTheFieldIsFree(elem){
+			for(let i of elem){
+				//undefined - if this part of the field is missing
+				if(field[i.x] == undefined || field[i.y] == undefined || field[i.y][i.x] == true){
+					return true
+				}
+			}
+			return false
+		}
+		
 		tetromino.forEach(function(elem){
 			localTetromino.push(Object.assign({},elem));
 		})
@@ -64,27 +75,11 @@ module.exports = {
 			}
 			return elem;
 		}
-			
-		function checkThatTheFieldIsFree(elem){
-			let coordinates_X =[]
-			let coordinates_Y =[]
-			for(let i of elem){
-				coordinates_X.push(i.x)
-				coordinates_Y.push(i.y)
-			}
-			
-			for(let i = 0; i < arrCoordinates_X.length; i++){
-				if(field[coordinates_X[i]] == undefined || field[coordinates_Y[i]] == undefined){
-					return true
-				}else if(field[coordinates_Y[i]][coordinates_X[i]] == true){
-					return true
-				}
-			}
-		}
+		
 		
 		if(arrCoordinates_X[0] < arrCoordinates_X[1] && arrCoordinates_X[1] < arrCoordinates_X[2] && arrCoordinates_X[2] == arrCoordinates_X[3] && arrCoordinates_Y[0] == arrCoordinates_Y[1]&& arrCoordinates_Y[1] > arrCoordinates_Y[2] && arrCoordinates_Y[2] < arrCoordinates_Y[3]){
 			function first_rotation_L(tetromino){
-				let newCoordenats = []
+				let newCoordinates = []
 				for(let i = 0, j = 0; i < tetromino.length; i++, j++){
 					let obj = {}
 					if(j == 0){
@@ -100,12 +95,12 @@ module.exports = {
 						obj.x = tetromino[i].x-1;
 						obj.y = tetromino[i].y+1;
 					}
-					newCoordenats.push(obj)
+					newCoordinates.push(obj)
 				}
-				if(checkThatTheFieldIsFree(newCoordenats)){
+				if(checkThatTheFieldIsFree(newCoordinates)){
 					return localTetromino
 				}else{
-					return newCoordenats
+					return newCoordinates
 				}
 			}
 			return first_rotation_L(localTetromino)
@@ -113,7 +108,7 @@ module.exports = {
 		
 		if(arrCoordinates_X[0] < arrCoordinates_X[1] && arrCoordinates_X[1] == arrCoordinates_X[2] && arrCoordinates_X[2] == arrCoordinates_X[3] && arrCoordinates_Y[0] == arrCoordinates_Y[1] && arrCoordinates_Y[1] < arrCoordinates_Y[2] && arrCoordinates_Y[2] < arrCoordinates_Y[3]){
 			function second_rotation_L(tetromino){
-				let newCoordenats = []
+				let newCoordinates = []
 				for(let i = 0, j = 0; i < tetromino.length; i++, j++){
 					let obj = {}
 					if(j == 0){
@@ -129,12 +124,12 @@ module.exports = {
 						obj.x = tetromino[i].x+1;
 						obj.y = tetromino[i].y-2;
 					}
-					newCoordenats.push(obj)
+					newCoordinates.push(obj)
 				}
-				if(checkThatTheFieldIsFree(newCoordenats)){
+				if(checkThatTheFieldIsFree(newCoordinates)){
 					return localTetromino
 				}else{
-					return newCoordenats
+					return newCoordinates
 				}
 			}
 			return second_rotation_L(localTetromino)
@@ -142,7 +137,7 @@ module.exports = {
 		
 		if(arrCoordinates_X[0] == arrCoordinates_X[1] && arrCoordinates_X[1] < arrCoordinates_X[2] && arrCoordinates_X[2] < arrCoordinates_X[3] && arrCoordinates_Y[0] < arrCoordinates_Y[1] && arrCoordinates_Y[1] > arrCoordinates_Y[2] && arrCoordinates_Y[2] == arrCoordinates_Y[3]){
 			function third_rotation_L(tetromino){
-				let newCoordenats = []
+				let newCoordinates = []
 				for(let i = 0, j = 0; i < tetromino.length; i++, j++){
 					let obj = {}
 					if(j == 0){
@@ -158,12 +153,12 @@ module.exports = {
 						obj.x = tetromino[i].x-1;
 						obj.y = tetromino[i].y+2;
 					}
-					newCoordenats.push(obj)
+					newCoordinates.push(obj)
 				}
-				if(checkThatTheFieldIsFree(newCoordenats)){
+				if(checkThatTheFieldIsFree(newCoordinates)){
 					return localTetromino
 				}else{
-					return newCoordenats
+					return newCoordinates
 				}
 			}
 			return third_rotation_L(localTetromino)
@@ -171,7 +166,7 @@ module.exports = {
 		
 		if(arrCoordinates_X[0] == arrCoordinates_X[1] && arrCoordinates_X[1] == arrCoordinates_X[2] && arrCoordinates_X[2] < arrCoordinates_X[3] && arrCoordinates_Y[0] < arrCoordinates_Y[1] && arrCoordinates_Y[1] < arrCoordinates_Y[2] && arrCoordinates_Y[2] == arrCoordinates_Y[3]){
 			function fourth_rotation_L(tetromino){
-				let newCoordenats = []
+				let newCoordinates = []
 				for(let i = 0, j = 0; i < tetromino.length; i++, j++){
 					let obj = {}
 					if(j == 0){
@@ -187,12 +182,12 @@ module.exports = {
 						obj.x = tetromino[i].x+1;
 						obj.y = tetromino[i].y-1;
 					}
-					newCoordenats.push(obj)
+					newCoordinates.push(obj)
 				}
-				if(checkThatTheFieldIsFree(newCoordenats)){
+				if(checkThatTheFieldIsFree(newCoordinates)){
 					return localTetromino
 				}else{
-					return newCoordenats
+					return newCoordinates
 				}
 			}
 			return fourth_rotation_L(localTetromino)
@@ -248,34 +243,34 @@ module.exports = {
 	},
 	
 	getCoordinates: function(stringOfCoordinates){
-		let math
+		let fieldArray
 		let quantityElem = 0;
 		let arrayOfCoordinates = []
 		if(typeof(stringOfCoordinates) == "string"){
-			math = stringOfCoordinates.split("\n")
+			fieldArray = stringOfCoordinates.split("\n")
 		}else{
-			math = stringOfCoordinates
+			fieldArray = stringOfCoordinates
 		}
 		
-		for(let i = 0, elem_Y = 0; i < math.length; i++){
-			if(math[i]!= false){
+		for(let i = 0, axisElement_Y = 0; i < fieldArray.length; i++){
+			if(fieldArray[i]!= false){
 				
-				for(let j = 0, elem_X = 0; j < math[i].length; j++){
+				for(let j = 0, axisElement_X = 0; j < fieldArray[i].length; j++){
 					let obj = {}
-					if(math[i][j]!= false){
-						if(math[i][j] == "X"){
-							obj.x = elem_X
-							obj.y = elem_Y
+					if(fieldArray[i][j]!= false){
+						if(fieldArray[i][j] == "X"){
+							obj.x = axisElement_X
+							obj.y = axisElement_Y
 							quantityElem++;
 							
 							arrayOfCoordinates.push(obj);
 							
 						}
-						elem_X++;
+						axisElement_X++;
 					}
 					
 				}
-				elem_Y++;
+				axisElement_Y++;
 			}
 			
 		}
@@ -283,10 +278,10 @@ module.exports = {
 	},
 	
 	buildTetromino: function(stringOfCoordinates){
-		let math = stringOfCoordinates.split("\n");
+		let fieldArray = stringOfCoordinates.split("\n");
 		let arrayOfCoordinates = [];
-		module.exports.getCoordinates(math);
-		module.exports.getCoordinates(math).forEach(function(elem){
+		module.exports.getCoordinates(fieldArray);
+		module.exports.getCoordinates(fieldArray).forEach(function(elem){
 			arrayOfCoordinates.push(Object.assign({},elem));
 		})
 		let repeatCycle = true;
