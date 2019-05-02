@@ -9,8 +9,7 @@ module.exports = {
 		let arrCoordinates_Y  = [];
 		let a = -1;
 		let localTetromino = []
-		
-		//check that the field is free to rotate	
+			
 		function checkThatTheFieldIsFree(elem){
 			for(let i of elem){
 				//undefined - if this part of the field is missing
@@ -243,34 +242,29 @@ module.exports = {
 	},
 	
 	getCoordinates: function(stringOfCoordinates){
-		let fieldArray
+		let fieldArray = stringOfCoordinates.split("\n")
 		let quantityElem = 0;
 		let arrayOfCoordinates = []
-		if(typeof(stringOfCoordinates) == "string"){
-			fieldArray = stringOfCoordinates.split("\n")
-		}else{
-			fieldArray = stringOfCoordinates
-		}
 		
-		for(let i = 0, axisElement_Y = 0; i < fieldArray.length; i++){
+		for(let i = 0, axisIndex_Y = 0; i < fieldArray.length; i++){
 			if(fieldArray[i]!= false){
 				
-				for(let j = 0, axisElement_X = 0; j < fieldArray[i].length; j++){
+				for(let j = 0, axisIndex_X = 0; j < fieldArray[i].length; j++){
 					let obj = {}
 					if(fieldArray[i][j]!= false){
 						if(fieldArray[i][j] == "X"){
-							obj.x = axisElement_X
-							obj.y = axisElement_Y
+							obj.x = axisIndex_X
+							obj.y = axisIndex_Y
 							quantityElem++;
 							
 							arrayOfCoordinates.push(obj);
 							
 						}
-						axisElement_X++;
+						axisIndex_X++;
 					}
 					
 				}
-				axisElement_Y++;
+				axisIndex_Y++;
 			}
 			
 		}
@@ -278,10 +272,9 @@ module.exports = {
 	},
 	
 	buildTetromino: function(stringOfCoordinates){
-		let fieldArray = stringOfCoordinates.split("\n");
 		let arrayOfCoordinates = [];
-		module.exports.getCoordinates(fieldArray);
-		module.exports.getCoordinates(fieldArray).forEach(function(elem){
+		module.exports.getCoordinates(stringOfCoordinates);
+		module.exports.getCoordinates(stringOfCoordinates).forEach(function(elem){
 			arrayOfCoordinates.push(Object.assign({},elem));
 		})
 		let repeatCycle = true;
