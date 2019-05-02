@@ -247,11 +247,11 @@ module.exports = {
 		let arrayOfCoordinates = []
 		
 		for(let i = 0, axisIndex_Y = 0; i < fieldArray.length; i++){
-			if(fieldArray[i]!= false){
+			if(fieldArray[i]!= 0){
 				
 				for(let j = 0, axisIndex_X = 0; j < fieldArray[i].length; j++){
 					let obj = {}
-					if(fieldArray[i][j]!= false){
+					if(fieldArray[i][j]!= 0){
 						if(fieldArray[i][j] == "X"){
 							obj.x = axisIndex_X
 							obj.y = axisIndex_Y
