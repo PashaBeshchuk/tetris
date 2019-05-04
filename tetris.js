@@ -10,15 +10,6 @@ module.exports = {
 		let a = -1;
 		let localTetromino = []
 			
-		function checkThatTheFieldIsFree(elem){
-			for(let i of elem){
-				//undefined - if this part of the field is missing
-				if(field[i.x] == undefined || field[i.y] == undefined || field[i.y][i.x] == true){
-					return true
-				}
-			}
-			return false
-		}
 		
 		tetromino.forEach(function(elem){
 			localTetromino.push(Object.assign({},elem));
@@ -32,6 +23,27 @@ module.exports = {
 			arrCoordinates_Y.push(elem.y);
 		}
 		
+		function checkThatTheFieldIsFree(elem){
+			if(allItemsOnTheField(elem) === false){
+				return localTetromino
+			}
+			for(let i of elem){
+				if(field[i.y][i.x] == true){
+					return localTetromino
+				}
+			}
+			return elem;
+		}
+		
+		function allItemsOnTheField(elem){
+			for(let i of elem){
+				if((i.x < 0 || i.y < 0)  || (i.x > (lengthField_X-1)) || (i.y > (lengthField_Y-1))){
+					return false;
+				}
+			}
+			return true
+		}
+		
 		if((arrCoordinates_Y[0] == arrCoordinates_Y[1]) && (arrCoordinates_Y[2] == arrCoordinates_Y[3]) && (arrCoordinates_Y[1] == arrCoordinates_Y[2])){
 			
 			for(let i of turningPoint){
@@ -39,12 +51,9 @@ module.exports = {
 				i.y = arrCoordinates_Y[0] + a;
 				a++;
 			}
-			let newPosition = allItemsOnTheField(turningPoint)
-			if(checkThatTheFieldIsFree(newPosition)){
-				return localTetromino
-			}else{
-				return newPosition
-			}
+			
+			let newPosition = checkThatTheFieldIsFree(turningPoint)
+			return newPosition
 		}
 		
 		if((arrCoordinates_X[0] == arrCoordinates_X[1]) && (arrCoordinates_X[2] == arrCoordinates_X[3]) && (arrCoordinates_X[1] == arrCoordinates_X[2])){
@@ -58,21 +67,8 @@ module.exports = {
 				a++;
 			}
 			
-			let newPosition = allItemsOnTheField(cloneTetromino)
-			if(checkThatTheFieldIsFree(newPosition)){
-				return localTetromino
-			}else{
-				return newPosition
-			}
-		}
-		
-		function allItemsOnTheField(elem){
-			for(let i of elem){
-				if((i.x < 0 || i.y < 0)  || (i.x >= lengthField_X) || (i.y >= lengthField_Y)){
-					return localTetromino;
-				}
-			}
-			return elem;
+			let newPosition = checkThatTheFieldIsFree(cloneTetromino)
+			return newPosition
 		}
 		
 		
@@ -96,11 +92,7 @@ module.exports = {
 					}
 					newCoordinates.push(obj)
 				}
-				if(checkThatTheFieldIsFree(newCoordinates)){
-					return localTetromino
-				}else{
-					return newCoordinates
-				}
+				return checkThatTheFieldIsFree(newCoordinates)
 			}
 			return first_rotation_L(localTetromino)
 		}
@@ -125,11 +117,7 @@ module.exports = {
 					}
 					newCoordinates.push(obj)
 				}
-				if(checkThatTheFieldIsFree(newCoordinates)){
-					return localTetromino
-				}else{
-					return newCoordinates
-				}
+				return checkThatTheFieldIsFree(newCoordinates)
 			}
 			return second_rotation_L(localTetromino)
 		}
@@ -154,11 +142,8 @@ module.exports = {
 					}
 					newCoordinates.push(obj)
 				}
-				if(checkThatTheFieldIsFree(newCoordinates)){
-					return localTetromino
-				}else{
-					return newCoordinates
-				}
+				
+				return checkThatTheFieldIsFree(newCoordinates)
 			}
 			return third_rotation_L(localTetromino)
 		}
@@ -183,11 +168,8 @@ module.exports = {
 					}
 					newCoordinates.push(obj)
 				}
-				if(checkThatTheFieldIsFree(newCoordinates)){
-					return localTetromino
-				}else{
-					return newCoordinates
-				}
+				
+				return checkThatTheFieldIsFree(newCoordinates)
 			}
 			return fourth_rotation_L(localTetromino)
 		}
