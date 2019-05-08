@@ -56,12 +56,12 @@ module.exports = {
 				a++;
 			}
 
-			 if(checkThatTheFieldIsFree(turningPoint)){
+			if (checkThatTheFieldIsFree(turningPoint)) {
 				return turningPoint
-			}else{
+			} else {
 				return localTetromino
 			}
-			
+
 		}
 
 		if ((arrCoordinates_X[0] === arrCoordinates_X[1]) && (arrCoordinates_X[2] === arrCoordinates_X[3]) && (arrCoordinates_X[1] === arrCoordinates_X[2])) {
@@ -75,12 +75,12 @@ module.exports = {
 				a++;
 			}
 
-			if(checkThatTheFieldIsFree(cloneTetromino)){
+			if (checkThatTheFieldIsFree(cloneTetromino)) {
 				return cloneTetromino
-			}else{
+			} else {
 				return localTetromino
 			}
-			
+
 		}
 
 
@@ -104,9 +104,9 @@ module.exports = {
 					}
 					newCoordinates.push(obj)
 				}
-				if(checkThatTheFieldIsFree(newCoordinates)){
+				if (checkThatTheFieldIsFree(newCoordinates)) {
 					return newCoordinates
-				}else{
+				} else {
 					return localTetromino
 				}
 			}
@@ -133,9 +133,9 @@ module.exports = {
 					}
 					newCoordinates.push(obj)
 				}
-				if(checkThatTheFieldIsFree(newCoordinates)){
+				if (checkThatTheFieldIsFree(newCoordinates)) {
 					return newCoordinates
-				}else{
+				} else {
 					return localTetromino
 				}
 			}
@@ -163,9 +163,9 @@ module.exports = {
 					newCoordinates.push(obj)
 				}
 
-				if(checkThatTheFieldIsFree(newCoordinates)){
+				if (checkThatTheFieldIsFree(newCoordinates)) {
 					return newCoordinates
-				}else{
+				} else {
 					return localTetromino
 				}
 			}
@@ -193,9 +193,9 @@ module.exports = {
 					newCoordinates.push(obj)
 				}
 
-				if(checkThatTheFieldIsFree(newCoordinates)){
+				if (checkThatTheFieldIsFree(newCoordinates)) {
 					return newCoordinates
-				}else{
+				} else {
 					return localTetromino
 				}
 			}
@@ -261,7 +261,7 @@ module.exports = {
 
 				for (let j = 0, axisIndex_X = 0; j < fieldArray[i].length; j++) {
 					let obj = {}
-					if (fieldArray[i][j]=== "-" || fieldArray[i][j]=== "X") {
+					if (fieldArray[i][j] === "-" || fieldArray[i][j] === "X") {
 						if (fieldArray[i][j] === "X") {
 							obj.x = axisIndex_X
 							obj.y = axisIndex_Y
