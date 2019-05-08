@@ -261,18 +261,17 @@ module.exports = {
 
 				for (let j = 0, axisIndex_X = 0; j < fieldArray[i].length; j++) {
 					let obj = {}
-					if (fieldArray[i][j] === "-" || fieldArray[i][j] === "X") {
-						if (fieldArray[i][j] === "X") {
-							obj.x = axisIndex_X
-							obj.y = axisIndex_Y
-							quantityElem++;
 
-							arrayOfCoordinates.push(obj);
+					if (fieldArray[i][j] === "-") {
+						axisIndex_X++
+					} if (fieldArray[i][j] === "X") {
+						obj.x = axisIndex_X
+						obj.y = axisIndex_Y
+						quantityElem++;
 
-						}
-						axisIndex_X++;
+						arrayOfCoordinates.push(obj)
+						axisIndex_X++
 					}
-
 				}
 				axisIndex_Y++;
 			}
