@@ -25,8 +25,8 @@ describe("element rotation around the axis 3x3", function () {
 
     it("element move the left", function () {
         let elementTetromino = tetris.getCoordinates(`
+            -X-
             ---
-            --X
             ---
         `)
 
@@ -47,7 +47,7 @@ describe("element rotation around the axis 3x3", function () {
     it("element move the right", function () {
         let elementTetromino = tetris.getCoordinates(`
             ---
-            --X
+            X--
             ---
         `)
 
@@ -68,8 +68,8 @@ describe("element rotation around the axis 3x3", function () {
     it("the item returns to its original position", function(){
         let elementTetromino = tetris.getCoordinates(`
             ---
-            --X
             ---
+            -X-
         `)
 
         let fulcrum = tetris.getCoordinates(`
@@ -121,9 +121,9 @@ describe("element rotation around the axis 5x5", function () {
 
     it("element move the left", function () {
         let elementTetromino = tetris.getCoordinates(`
+            --X--
             -----
             -----
-            ----X
             -----
             -----
             
@@ -151,7 +151,7 @@ describe("element rotation around the axis 5x5", function () {
         let elementTetromino = tetris.getCoordinates(`
             -----
             -----
-            ----X
+            X----
             -----
             -----
         `)
@@ -178,9 +178,9 @@ describe("element rotation around the axis 5x5", function () {
         let elementTetromino = tetris.getCoordinates(`
             -----
             -----
-            ----X
             -----
             -----
+            --X--
         `)
 
         let fulcrum = tetris.getCoordinates(`
