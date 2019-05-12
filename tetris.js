@@ -304,37 +304,6 @@ module.exports = {
 		}
 		return arrayOfCoordinates;
 
-	},
-
-	rotate: function (elementCoordinates){
-		let i = 0;
-		let that = elementCoordinates
-		return function(){
-			if( i == 0 ){
-				that.y--
-			}
-			if( i == 1 ){
-				that.x--
-			}
-			if( i == 2 ){
-				that.x--
-				that.y++
-			}
-			if( i == 3 ){
-				that.y++
-			}
-			if( i == 4 ){
-				that.x++
-			}
-			if( i == 5 ){
-				that.x++
-			}
-			if( i == 6 ){
-				that.y--
-			}
-			i++
-			return that
-		}
-	}	
+	}
 
 }
