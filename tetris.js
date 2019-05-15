@@ -304,6 +304,66 @@ module.exports = {
 		}
 		return arrayOfCoordinates;
 
+	},
+
+	rotateElement: function (coordinatesElement, coordinatesFulcrum){
+		let internalVariable = Object.assign({}, coordinatesElement)
+		let number
+		//если Х больше Y
+		if(internalVariable.x > internalVariable.y){
+			// тут элемент смотрить вврех или вниз 
+			number = internalVariable.x - coordinatesFulcrum.y
+			if(number <= 0){
+				number = internalVariable.x
+				internalVariable.x = internalVariable.y
+				internalVariable.y = number
+				return internalVariable
+			}
+			//переделать, если результат равен Х элементу, движение по диагонали перенести в строку if(number <= 0)
+			//{x: 6, y: 0} || {x: 2, y: 0} || {x: 4, y: 0} || {x: 5, y: 1} || {x: 6, y: 2}
+			if((coordinatesFulcrum.x - internalVariable.y + coordinatesFulcrum.y) === internalVariable.x){
+				number = internalVariable.x
+				// internalVariable.x = internalVariable.y
+				// internalVariable.y = number
+				internalVariable.x = internalVariable.y
+				return internalVariable
+			}
+			internalVariable.x = internalVariable.x - number
+			internalVariable.y = internalVariable.y - number
+		}
+		//если X и Y равны и меньше находять вверху
+		if(internalVariable.x === internalVariable.y && internalVariable.x < coordinatesFulcrum.x){
+			internalVariable.y = coordinatesFulcrum.x - internalVariable.y + coordinatesFulcrum.y
+			return internalVariable
+		}
+		
+		//если X и Y равны и больше находять вверху
+		if(internalVariable.x === internalVariable.y && internalVariable.x > coordinatesFulcrum.x){
+			internalVariable.y = coordinatesFulcrum.x + coordinatesFulcrum.y - internalVariable.y
+			return internalVariable
+		}
+		
+		if(internalVariable.x < internalVariable.y){
+			number = coordinatesFulcrum.x - internalVariable.x
+			if(number <= 0){
+				number = internalVariable.x
+				internalVariable.x = internalVariable.y
+				internalVariable.y = number
+				return internalVariable
+			}
+			//если результат равен Y элементу, движение по диагонали
+			//{x: 0, y: 6} || {x: 0, y: 2} || {x: 0, y: 4} || {x: 1, y: 5} || {x: 2, y: 6}
+			if((coordinatesFulcrum.x - internalVariable.x + coordinatesFulcrum.y) === internalVariable.y){
+				internalVariable.x = internalVariable.y
+				return internalVariable
+			}
+			internalVariable.x = internalVariable.x + number
+			internalVariable.y = internalVariable.y + number
+			
+		}
+		
+		return internalVariable
+					
 	}
 
 }
