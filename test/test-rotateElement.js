@@ -1,257 +1,49 @@
 var assert = require('chai').assert;
 var tetris = require('../tetris')
-describe("element rotation around the axis 3x3", function () {
-
-    it("element move the top", function () {
-        let elementTetromino = tetris.getCoordinates(`
-            ---
-            --X
-            ---
-        `)
-		
-        let fulcrum = tetris.getCoordinates(`
-            ---
-            -X-
-            ---
-        `)
-		
-        let stepElementTetromino = tetris.rotateElement( elementTetromino[0], fulcrum[0])
-        let expectedResult = tetris.getCoordinates(`
-			-X-
-			---
-			---
-        `)
-        assert.deepEqual(expectedResult[0], stepElementTetromino)
-    })
-
-    it("element move the left", function () {
-        let elementTetromino = tetris.getCoordinates(`
-            -X-
-            ---
-            ---
-        `)
-
-        let fulcrum = tetris.getCoordinates(`
-            ---
-            -X-
-            ---
-        `)
-        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], fulcrum[0])
-        let expectedResult = tetris.getCoordinates(`
-			---
-			X--
-			---
-        `)
-        assert.deepEqual(expectedResult[0], stepElementTetromino)
-    })
-
-    it("element move the right", function () {
-        let elementTetromino = tetris.getCoordinates(`
-            ---
-            X--
-            ---
-        `)
-
-        let fulcrum = tetris.getCoordinates(`
-            ---
-            -X-
-            ---
-        `)
-        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], fulcrum[0])
-        let expectedResult = tetris.getCoordinates(`
-			---
-			---
-			-X-
-        `)
-        assert.deepEqual(expectedResult[0], stepElementTetromino)
-    })
-
-    it("the item returns to its original position", function(){
-        let elementTetromino = tetris.getCoordinates(`
-            ---
-            ---
-            -X-
-        `)
-
-        let fulcrum = tetris.getCoordinates(`
-            ---
-            -X-
-            ---
-        `)
-        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], fulcrum[0])
-		let expectedResult = tetris.getCoordinates(`
-			---
-			--X
-			---
-        `)
-        assert.deepEqual(expectedResult[0], stepElementTetromino)
-    })
-
-
-})
-
-describe("element rotation around the axis 5x5", function () {
-
-    it("element move the top", function () {
-        let elementTetromino = tetris.getCoordinates(`
-            -----
-            -----
-            ----X
-            -----
-            -----
-            
-        `)
-
-        let fulcrum = tetris.getCoordinates(`
-            -----
-            -----
-            --X--
-            -----
-            -----
-        `)
-        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], fulcrum[0])
-        let expectedResult = tetris.getCoordinates(`
-            --X--
-            -----
-            -----
-            -----
-            -----
-        `)
-        assert.deepEqual(expectedResult[0], stepElementTetromino)
-    })
-
-    it("element move the left", function () {
+describe("Rotation where afte element has positive,negative, top, off the diagonal", function () {
+    it("element move the left field 4x7", function () {
         let elementTetromino = tetris.getCoordinates(`
             --X--
             -----
             -----
             -----
             -----
-            
+            -----
+            -----
         `)
 
-        let fulcrum = tetris.getCoordinates(`
+        let pivot = tetris.getCoordinates(`
             -----
             -----
-            --X--
+            -----
+            -X---
+            -----
             -----
             -----
         `)
-        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], fulcrum[0])
+
+        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], pivot[0])
+        let expectedResult = [{ x: -2, y: 2 }]
+        assert.deepEqual(expectedResult[0], stepElementTetromino)
+    })
+
+    it("element move the bottom field 4x7", function () {
+        let elementTetromino = [{ x: -2, y: 2 }]
+
+        let pivot = tetris.getCoordinates(`
+            -----
+            -----
+            -----
+            -X---
+            -----
+            -----
+            -----
+        `)
+
+        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], pivot[0])
         let expectedResult = tetris.getCoordinates(`
             -----
             -----
-            X----
-            -----
-            -----
-        `)
-        assert.deepEqual(expectedResult[0], stepElementTetromino)
-    })
-
-    it("element move the right", function () {
-        let elementTetromino = tetris.getCoordinates(`
-            -----
-            -----
-            X----
-            -----
-            -----
-        `)
-
-        let fulcrum = tetris.getCoordinates(`
-            -----
-            -----
-            --X--
-            -----
-            -----
-        `)
-        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], fulcrum[0])
-        let expectedResult = tetris.getCoordinates(`
-            -----
-            -----
-            -----
-            -----
-            --X--
-        `)
-        assert.deepEqual(expectedResult[0], stepElementTetromino)
-    })
-
-    it("the item returns to its original position", function(){
-        let elementTetromino = tetris.getCoordinates(`
-            -----
-            -----
-            -----
-            -----
-            --X--
-        `)
-
-        let fulcrum = tetris.getCoordinates(`
-            -----
-            -----
-            --X--
-            -----
-            -----
-        `)
-        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], fulcrum[0])
-		let expectedResult = tetris.getCoordinates(`
-            -----
-            -----
-            ----X
-            -----
-            -----
-        `)
-        assert.deepEqual(expectedResult[0], stepElementTetromino)
-    })
-})
-
-describe("element rotation around the axis 5x5 on diagonal", function () {
-
-    it("element move the top", function () {
-        let elementTetromino = tetris.getCoordinates(`
-            ----X
-            -----
-            -----
-            -----
-            -----
-            
-        `)
-
-        let fulcrum = tetris.getCoordinates(`
-            -----
-            -----
-            --X--
-            -----
-            -----
-        `)
-        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], fulcrum[0])
-        let expectedResult = tetris.getCoordinates(`
-            X----
-            -----
-            -----
-            -----
-            -----
-        `)
-        assert.deepEqual(expectedResult[0], stepElementTetromino)
-    })
-
-    it("element move the left", function () {
-        let elementTetromino = tetris.getCoordinates(`
-            X----
-            -----
-            -----
-            -----
-            -----
-            
-        `)
-
-        let fulcrum = tetris.getCoordinates(`
-            -----
-            -----
-            --X--
-            -----
-            -----
-        `)
-        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], fulcrum[0])
-        let expectedResult = tetris.getCoordinates(`
             -----
             -----
             -----
@@ -261,8 +53,10 @@ describe("element rotation around the axis 5x5 on diagonal", function () {
         assert.deepEqual(expectedResult[0], stepElementTetromino)
     })
 
-    it("element move the right", function () {
+    it("element move the right field 4x7", function () {
         let elementTetromino = tetris.getCoordinates(`
+            -----
+            -----
             -----
             -----
             -----
@@ -270,43 +64,55 @@ describe("element rotation around the axis 5x5 on diagonal", function () {
             X----
         `)
 
-        let fulcrum = tetris.getCoordinates(`
+        let pivot = tetris.getCoordinates(`
             -----
             -----
-            --X--
+            -----
+            -X---
+            -----
             -----
             -----
         `)
-        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], fulcrum[0])
+
+        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], pivot[0])
         let expectedResult = tetris.getCoordinates(`
             -----
             -----
             -----
             -----
             ----X
+            -----
+            -----
         `)
         assert.deepEqual(expectedResult[0], stepElementTetromino)
     })
 
-    it("the item returns to its original position", function(){
+    it("element move the top field 4x7", function () {
         let elementTetromino = tetris.getCoordinates(`
             -----
             -----
             -----
             -----
             ----X
+            -----
+            -----
         `)
 
-        let fulcrum = tetris.getCoordinates(`
+        let pivot = tetris.getCoordinates(`
             -----
             -----
+            -----
+            -X---
+            -----
+            -----
+            -----
+        `)
+
+        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], pivot[0])
+        let expectedResult = tetris.getCoordinates(`
             --X--
             -----
             -----
-        `)
-        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], fulcrum[0])
-		let expectedResult = tetris.getCoordinates(`
-            ----X
             -----
             -----
             -----
@@ -316,26 +122,148 @@ describe("element rotation around the axis 5x5 on diagonal", function () {
     })
 })
 
-describe("element rotation around the axis 5x5 not on diagonal", function () {
+describe("Rotation where starts to the left,on the diagonal, has negative coordinates", function () {
+    it("element move the right on the diagonal field 3x5 ", function () {
+        let elementTetromino = tetris.getCoordinates(`
+            -----
+            -----
+            X----
+        `)
+        let pivot = tetris.getCoordinates(`
+            --X--
+            -----
+            -----
+        `)
+        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], pivot[0])
+        let expectedResult = tetris.getCoordinates(`
+            -----
+            -----
+            ----X
+        `)
+    })
 
-    it("element move the top", function () {
+    it("element move the top on the diagonal field 3x5 ", function () {
+        let elementTetromino = tetris.getCoordinates(`
+            -----
+            -----
+            ----X
+        `)
+        let pivot = tetris.getCoordinates(`
+            --X--
+            -----
+            -----
+        `)
+        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], pivot[0])
+        let expectedResult = [{ x: 4, y: -2 }]
+    })
+
+    it("element move the left on the diagonal field 3x5 ", function () {
+        let elementTetromino = [{ x: 4, y: -2 }]
+        let pivot = tetris.getCoordinates(`
+            --X--
+            -----
+            -----
+        `)
+        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], pivot[0])
+        let expectedResult = [{ x: 0, y: -2 }]
+    })
+
+    it("element move the bottom on the diagonal field 3x5 ", function () {
+        let elementTetromino = [{ x: 0, y: -2 }]
+        let pivot = tetris.getCoordinates(`
+            --X--
+            -----
+            -----
+        `)
+        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], pivot[0])
+        let expectedResult = tetris.getCoordinates(`
+            -----
+            -----
+            X----
+        `)
+    })
+})
+
+describe("Rotation where starts to the left,on the diagonal, has negative coordinates", function () {
+    it("element move the right on the diagonal field 3x5 ", function () {
+        let elementTetromino = tetris.getCoordinates(`
+            -----
+            -----
+            X----
+        `)
+        let pivot = tetris.getCoordinates(`
+            --X--
+            -----
+            -----
+        `)
+        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], pivot[0])
+        let expectedResult = tetris.getCoordinates(`
+            -----
+            -----
+            ----X
+        `)
+    })
+
+    it("element move the top on the diagonal field 3x5 ", function () {
+        let elementTetromino = tetris.getCoordinates(`
+            -----
+            -----
+            ----X
+        `)
+        let pivot = tetris.getCoordinates(`
+            --X--
+            -----
+            -----
+        `)
+        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], pivot[0])
+        let expectedResult = [{ x: 4, y: -2 }]
+    })
+
+    it("element move the left on the diagonal field 3x5 ", function () {
+        let elementTetromino = [{ x: 4, y: -2 }]
+        let pivot = tetris.getCoordinates(`
+            --X--
+            -----
+            -----
+        `)
+        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], pivot[0])
+        let expectedResult = [{ x: 0, y: -2 }]
+    })
+
+    it("element move the bottom on the diagonal field 3x5 ", function () {
+        let elementTetromino = [{ x: 0, y: -2 }]
+        let pivot = tetris.getCoordinates(`
+            --X--
+            -----
+            -----
+        `)
+        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], pivot[0])
+        let expectedResult = tetris.getCoordinates(`
+            -----
+            -----
+            X----
+        `)
+    })
+})
+
+describe("Rotation where starts to the right, pivot has same x and y coordinates", function () {
+    it("element move the top field 5x5 ", function () {
         let elementTetromino = tetris.getCoordinates(`
             -----
             ----X
             -----
             -----
             -----
-            
         `)
-
-        let fulcrum = tetris.getCoordinates(`
+        let pivot = tetris.getCoordinates(`
             -----
             -----
             --X--
             -----
             -----
         `)
-        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], fulcrum[0])
+
+        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], pivot[0])
         let expectedResult = tetris.getCoordinates(`
             -X---
             -----
@@ -343,27 +271,25 @@ describe("element rotation around the axis 5x5 not on diagonal", function () {
             -----
             -----
         `)
-        assert.deepEqual(expectedResult[0], stepElementTetromino)
     })
 
-    it("element move the left", function () {
+    it("element move the left field 5x5 ", function () {
         let elementTetromino = tetris.getCoordinates(`
             -X---
             -----
             -----
             -----
             -----
-            
         `)
-
-        let fulcrum = tetris.getCoordinates(`
+        let pivot = tetris.getCoordinates(`
             -----
             -----
             --X--
             -----
             -----
         `)
-        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], fulcrum[0])
+
+        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], pivot[0])
         let expectedResult = tetris.getCoordinates(`
             -----
             -----
@@ -371,10 +297,9 @@ describe("element rotation around the axis 5x5 not on diagonal", function () {
             X----
             -----
         `)
-        assert.deepEqual(expectedResult[0], stepElementTetromino)
     })
 
-    it("element move the right", function () {
+    it("element move the bottom field 5x5 ", function () {
         let elementTetromino = tetris.getCoordinates(`
             -----
             -----
@@ -382,15 +307,15 @@ describe("element rotation around the axis 5x5 not on diagonal", function () {
             X----
             -----
         `)
-
-        let fulcrum = tetris.getCoordinates(`
+        let pivot = tetris.getCoordinates(`
             -----
             -----
             --X--
             -----
             -----
         `)
-        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], fulcrum[0])
+
+        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], pivot[0])
         let expectedResult = tetris.getCoordinates(`
             -----
             -----
@@ -398,10 +323,9 @@ describe("element rotation around the axis 5x5 not on diagonal", function () {
             -----
             ---X-
         `)
-        assert.deepEqual(expectedResult[0], stepElementTetromino)
     })
 
-    it("the item returns to its original position", function(){
+    it("element move the right field 5x5 ", function () {
         let elementTetromino = tetris.getCoordinates(`
             -----
             -----
@@ -409,834 +333,122 @@ describe("element rotation around the axis 5x5 not on diagonal", function () {
             -----
             ---X-
         `)
-
-        let fulcrum = tetris.getCoordinates(`
+        let pivot = tetris.getCoordinates(`
             -----
             -----
             --X--
             -----
             -----
         `)
-        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], fulcrum[0])
-		let expectedResult = tetris.getCoordinates(`
+
+        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], pivot[0])
+        let expectedResult = tetris.getCoordinates(`
             -----
             ----X
             -----
             -----
             -----
         `)
-        assert.deepEqual(expectedResult[0], stepElementTetromino)
     })
 })
-
-describe("element rotation around the axis 5x5 not on diagonal", function () {
-
-    it("element move the top", function () {
+describe("Rotation where starts to the bottom, pivot has different x and y coordinates", function () {
+    it("element move the left field 6x5 ", function () {
         let elementTetromino = tetris.getCoordinates(`
             -----
-            ----X
             -----
             -----
             -----
-            
+            -----
+            -X---
         `)
-
-        let fulcrum = tetris.getCoordinates(`
+        let pivot = tetris.getCoordinates(`
             -----
             -----
-            --X--
-            -----
-            -----
-        `)
-        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], fulcrum[0])
-        let expectedResult = tetris.getCoordinates(`
             -X---
             -----
             -----
             -----
-            -----
         `)
-        assert.deepEqual(expectedResult[0], stepElementTetromino)
-    })
-
-    it("element move the left", function () {
-        let elementTetromino = tetris.getCoordinates(`
-            -X---
-            -----
-            -----
-            -----
-            -----
-            
-        `)
-
-        let fulcrum = tetris.getCoordinates(`
-            -----
-            -----
-            --X--
-            -----
-            -----
-        `)
-        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], fulcrum[0])
+        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], pivot[0])
         let expectedResult = tetris.getCoordinates(`
             -----
-            -----
-            -----
-            X----
-            -----
-        `)
-        assert.deepEqual(expectedResult[0], stepElementTetromino)
-    })
-
-    it("element move the right", function () {
-        let elementTetromino = tetris.getCoordinates(`
-            -----
-            -----
-            -----
-            X----
-            -----
-        `)
-
-        let fulcrum = tetris.getCoordinates(`
-            -----
-            -----
-            --X--
-            -----
-            -----
-        `)
-        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], fulcrum[0])
-        let expectedResult = tetris.getCoordinates(`
-            -----
-            -----
-            -----
-            -----
-            ---X-
-        `)
-        assert.deepEqual(expectedResult[0], stepElementTetromino)
-    })
-
-    it("the item returns to its original position", function(){
-        let elementTetromino = tetris.getCoordinates(`
-            -----
-            -----
-            -----
-            -----
-            ---X-
-        `)
-
-        let fulcrum = tetris.getCoordinates(`
-            -----
-            -----
-            --X--
-            -----
-            -----
-        `)
-        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], fulcrum[0])
-		let expectedResult = tetris.getCoordinates(`
             -----
             ----X
             -----
             -----
             -----
         `)
-        assert.deepEqual(expectedResult[0], stepElementTetromino)
-    })
-})
-
-    describe("element rotation around the axis 5x5 not on diagonal", function () {
-
-    it("element move the top", function () {
-        let elementTetromino = tetris.getCoordinates(`
-            -----
-            ----X
-            -----
-            -----
-            -----
-            
-        `)
-
-        let fulcrum = tetris.getCoordinates(`
-            -----
-            -----
-            --X--
-            -----
-            -----
-        `)
-        let stepElementTetromino = tetris.rotateElement(fulcrum[0], elementTetromino[0])
-        let expectedResult = tetris.getCoordinates(`
-            -X---
-            -----
-            -----
-            -----
-            -----
-        `)
-        assert.deepEqual(expectedResult[0], stepElementTetromino)
     })
 
-    it("element move the left", function () {
-        let elementTetromino = tetris.getCoordinates(`
-            -X---
-            -----
-            -----
-            -----
-            -----
-            
-        `)
-
-        let fulcrum = tetris.getCoordinates(`
-            -----
-            -----
-            --X--
-            -----
-            -----
-        `)
-        let stepElementTetromino = tetris.rotateElement(fulcrum[0], elementTetromino[0])
-        let expectedResult = tetris.getCoordinates(`
-            -----
-            -----
-            -----
-            X----
-            -----
-        `)
-        assert.deepEqual(expectedResult[0], stepElementTetromino)
-    })
-
-    it("element move the right", function () {
+    it("element move the top field 6x5 ", function () {
         let elementTetromino = tetris.getCoordinates(`
             -----
-            -----
-            -----
-            X----
-            -----
-        `)
-
-        let fulcrum = tetris.getCoordinates(`
-            -----
-            -----
-            --X--
-            -----
-            -----
-        `)
-        let stepElementTetromino = tetris.rotateElement(fulcrum[0], elementTetromino[0])
-        let expectedResult = tetris.getCoordinates(`
-            -----
-            -----
-            -----
-            -----
-            ---X-
-        `)
-        assert.deepEqual(expectedResult[0], stepElementTetromino)
-    })
-
-    it("the item returns to its original position", function(){
-        let elementTetromino = tetris.getCoordinates(`
-            -----
-            -----
-            -----
-            -----
-            ---X-
-        `)
-
-        let fulcrum = tetris.getCoordinates(`
-            -----
-            -----
-            --X--
-            -----
-            -----
-        `)
-        let stepElementTetromino = tetris.rotateElement(fulcrum[0], elementTetromino[0])
-		let expectedResult = tetris.getCoordinates(`
             -----
             ----X
             -----
             -----
             -----
         `)
-        assert.deepEqual(expectedResult[0], stepElementTetromino)
-    })
-})
-
-describe("element rotation around the axis 5x5 not on diagonal", function () {
-
-    it("element move the top", function () {
-        let elementTetromino = tetris.getCoordinates(`
-            -----
-            ----X
+        let pivot = tetris.getCoordinates(`
             -----
             -----
-            -----
-            
-        `)
-
-        let fulcrum = tetris.getCoordinates(`
-            -----
-            -----
-            --X--
-            -----
-            -----
-        `)
-        let stepElementTetromino = tetris.rotateElement(fulcrum[0], elementTetromino[0])
-        let expectedResult = tetris.getCoordinates(`
             -X---
             -----
             -----
             -----
-            -----
         `)
-        assert.deepEqual(expectedResult[0], stepElementTetromino)
+        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], pivot[0])
+        let expectedResult = [{ x: 1, y: -1 }]
     })
 
-    it("element move the left", function () {
-        let elementTetromino = tetris.getCoordinates(`
+    it("element move the top field 6x5 ", function () {
+        let elementTetromino = [{ x: 1, y: -1 }]
+        let pivot = tetris.getCoordinates(`
+            -----
+            -----
             -X---
             -----
             -----
             -----
-            -----
-            
         `)
-
-        let fulcrum = tetris.getCoordinates(`
-            -----
-            -----
-            --X--
-            -----
-            -----
-        `)
-        let stepElementTetromino = tetris.rotateElement(fulcrum[0], elementTetromino[0])
-        let expectedResult = tetris.getCoordinates(`
-            -----
-            -----
-            -----
-            X----
-            -----
-        `)
-        assert.deepEqual(expectedResult[0], stepElementTetromino)
+        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], pivot[0])
+        let expectedResult = [{ x: 1, y: -1 }]
     })
 
-    it("element move the right", function () {
-        let elementTetromino = tetris.getCoordinates(`
+    it("element move the top field 6x5 ", function () {
+        let elementTetromino = [{ x: 1, y: -1 }]
+        let pivot = tetris.getCoordinates(`
             -----
             -----
-            -----
-            X----
-            -----
-        `)
-
-        let fulcrum = tetris.getCoordinates(`
-            -----
-            -----
-            --X--
-            -----
-            -----
-        `)
-        let stepElementTetromino = tetris.rotateElement(fulcrum[0], elementTetromino[0])
-        let expectedResult = tetris.getCoordinates(`
-            -----
-            -----
-            -----
-            -----
-            ---X-
-        `)
-        assert.deepEqual(expectedResult[0], stepElementTetromino)
-    })
-
-    it("the item returns to its original position", function(){
-        let elementTetromino = tetris.getCoordinates(`
-            -----
-            -----
-            -----
-            -----
-            ---X-
-        `)
-
-        let fulcrum = tetris.getCoordinates(`
-            -----
-            -----
-            --X--
-            -----
-            -----
-        `)
-        let stepElementTetromino = tetris.rotateElement(fulcrum[0], elementTetromino[0])
-		let expectedResult = tetris.getCoordinates(`
-            -----
-            ----X
+            -X---
             -----
             -----
             -----
         `)
-        assert.deepEqual(expectedResult[0], stepElementTetromino)
+        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], pivot[0])
+        let expectedResult = [{ x: -2, y: 2 }]
     })
 })
-
-describe("element rotation around the axis 7x7 not on diagonal", function () {
-
-    it("element move the top", function () {
+describe("Rotation where pivot coordinates coincides with element coordinates", function () {
+    it("element not move field 4x4 ", function () {
         let elementTetromino = tetris.getCoordinates(`
-            -------
-            -----X-
-            -------
-            -------
-            -------
-            -------
-            -------
-            
+           ----
+           ----
+           -X--
+           ----
         `)
-
-        let fulcrum = tetris.getCoordinates(`
-            -------
-            -------
-            -------
-            ---X---
-            -------
-            -------
-            -------
-        `)
-        let stepElementTetromino = tetris.rotateElement(fulcrum[0], elementTetromino[0])
-        let expectedResult = tetris.getCoordinates(`
-            -------
-            -X-----
-            -------
-            -------
-            -------
-            -------
-            -------
-        `)
-        assert.deepEqual(expectedResult[0], stepElementTetromino)
-    })
-
-    it("element move the left", function () {
-        let elementTetromino = tetris.getCoordinates(`
-            -------
-            -X-----
-            -------
-            -------
-            -------
-            -------
-            -------
- 
-        `)
-
-        let fulcrum = tetris.getCoordinates(`
-            -------
-            -------
-            -------
-            ---X---
-            -------
-            -------
-            -------
-        `)
-        let stepElementTetromino = tetris.rotateElement(fulcrum[0], elementTetromino[0])
-        let expectedResult = tetris.getCoordinates(`
-            -------
-            -------
-            -------
-            -------
-            -------
-            -X-----
-            -------
-        `)
-        assert.deepEqual(expectedResult[0], stepElementTetromino)
-    })
-
-    it("element move the right", function () {
-        let elementTetromino = tetris.getCoordinates(`
-            -------
-            -------
-            -------
-            -------
-            -------
-            -X-----
-            -------
-        `)
-
-        let fulcrum = tetris.getCoordinates(`
-            -------
-            -------
-            -------
-            ---X---
-            -------
-            -------
-            -------
-        `)
-        let stepElementTetromino = tetris.rotateElement(fulcrum[0], elementTetromino[0])
-        let expectedResult = tetris.getCoordinates(`
-            -------
-            -------
-            -------
-            -------
-            -------
-            -----X-
-            -------
-        `)
-        assert.deepEqual(expectedResult[0], stepElementTetromino)
-    })
-
-    it("the item returns to its original position", function(){
-        let elementTetromino = tetris.getCoordinates(`
-            -------
-            -------
-            -------
-            -------
-            -------
-            -----X-
-            -------
-        `)
-
-        let fulcrum = tetris.getCoordinates(`
-            -------
-            -------
-            -------
-            ---X---
-            -------
-            -------
-            -------
-        `)
-        let stepElementTetromino = tetris.rotateElement(fulcrum[0], elementTetromino[0])
-		let expectedResult = tetris.getCoordinates(`
-            -------
-            -----X-
-            -------
-            -------
-            -------
-            -------
-            -------
-        `)
-        assert.deepEqual(expectedResult[0], stepElementTetromino)
-    })
-})
-
-describe("element rotation around the axis 5x7 not on diagonal", function () {
-
-    it("element move the top", function () {
-        let elementTetromino = tetris.getCoordinates(`
-            -------
-            ------X
-            -------
-            -------
-            -------
-        `)
-
-        let fulcrum = tetris.getCoordinates(`
-            -------
-            -------
-            ---X---
-            -------
-            -------
-        `)
-        let stepElementTetromino = tetris.rotateElement(fulcrum[0], elementTetromino[0])
-        let expectedResult = tetris.getCoordinates(`
-            -------
-            X------
-            -------
-            -------
-            -------
-        `)
-        assert.deepEqual(expectedResult[0], stepElementTetromino)
-    })
-
-    it("element move the left", function () {
-        let elementTetromino = tetris.getCoordinates(`
-            -------
-            X------
-            -------
-            -------
-            -------
- 
-        `)
-
-        let fulcrum = tetris.getCoordinates(`
-            -------
-            -------
-            ---X---
-            -------
-            -------
-        `)
-        let stepElementTetromino = tetris.rotateElement(fulcrum[0], elementTetromino[0])
-        let expectedResult = tetris.getCoordinates(`
-            -------
-            -------
-            -------
-            X------
-            -------
-        `)
-        assert.deepEqual(expectedResult[0], stepElementTetromino)
-    })
-
-    it("element move the right", function () {
-        let elementTetromino = tetris.getCoordinates(`
-            -------
-            -------
-            -------
-            X------
-            -------
-        `)
-
-        let fulcrum = tetris.getCoordinates(`
-            -------
-            -------
-            ---X---
-            -------
-            -------
-        `)
-        let stepElementTetromino = tetris.rotateElement(fulcrum[0], elementTetromino[0])
-        let expectedResult = tetris.getCoordinates(`
-            -------
-            -------
-            -------
-            ------X
-            -------
-        `)
-        assert.deepEqual(expectedResult[0], stepElementTetromino)
-    })
-
-    it("the item returns to its original position", function(){
-        let elementTetromino = tetris.getCoordinates(`
-            
-            -------
-            -------
-            ------X
-            -------
-        `)
-
-        let fulcrum = tetris.getCoordinates(`
-            -------
-            -------
-            ---X---
-            -------
-            -------
-        `)
-        let stepElementTetromino = tetris.rotateElement(fulcrum[0], elementTetromino[0])
-		let expectedResult = tetris.getCoordinates(`
-            -------
-            ------X
-            -------
-            -------
-            -------
-        `)
-        assert.deepEqual(expectedResult[0], stepElementTetromino)
-    })
-})
-
-describe("element rotation around the axis 5x7 on diagonal", function () {
-
-    it("element move the top", function () {
-        let elementTetromino = tetris.getCoordinates(`
-            -----X-
-            -------
-            -------
-            -------
-            -------
-        `)
-
-        let fulcrum = tetris.getCoordinates(`
-            -------
-            -------
-            ---X---
-            -------
-            -------
-        `)
-        let stepElementTetromino = tetris.rotateElement(fulcrum[0], elementTetromino[0])
-        let expectedResult = tetris.getCoordinates(`
-            -X-----
-            -------
-            -------
-            -------
-            -------
-        `)
-        assert.deepEqual(expectedResult[0], stepElementTetromino)
-    })
-
-    it("element move the left", function () {
-        let elementTetromino = tetris.getCoordinates(`
-            -X-----
-            -------
-            -------
-            -------
-            -------
- 
-        `)
-
-        let fulcrum = tetris.getCoordinates(`
-            -------
-            -------
-            ---X---
-            -------
-            -------
-        `)
-        let stepElementTetromino = tetris.rotateElement(fulcrum[0], elementTetromino[0])
-        let expectedResult = tetris.getCoordinates(`
-            -------
-            -------
-            -------
-            -------
-            -X-----
-        `)
-        assert.deepEqual(expectedResult[0], stepElementTetromino)
-    })
-
-    it("element move the right", function () {
-        let elementTetromino = tetris.getCoordinates(`
-            -------
-            -------
-            -------
-            -------
-            -X-----
-        `)
-
-        let fulcrum = tetris.getCoordinates(`
-            -------
-            -------
-            ---X---
-            -------
-            -------
-        `)
-        let stepElementTetromino = tetris.rotateElement(fulcrum[0], elementTetromino[0])
-        let expectedResult = tetris.getCoordinates(`
-            -------
-            -------
-            -------
-            -------
-            -----X-
-        `)
-        assert.deepEqual(expectedResult[0], stepElementTetromino)
-    })
-
-    it("the item returns to its original position", function(){
-        let elementTetromino = tetris.getCoordinates(`
-            -------
-            -------
-            -------
-            -------
-            -----X-
-        `)
-
-        let fulcrum = tetris.getCoordinates(`
-            -------
-            -------
-            ---X---
-            -------
-            -------
-        `)
-        let stepElementTetromino = tetris.rotateElement(fulcrum[0], elementTetromino[0])
-		let expectedResult = tetris.getCoordinates(`
-            -----X-
-            -------
-            -------
-            -------
-            -------
-        `)
-        assert.deepEqual(expectedResult[0], stepElementTetromino)
-    })
-})
-
-describe("element rotation around the axis 5x4", function () {
-
-    it("element move the top", function () {
-        let elementTetromino = tetris.getCoordinates(`
-            ---X
-            ----
-            ----
-            ----
-            ----
-        `)
-
-        let fulcrum = tetris.getCoordinates(`
+        let pivot = tetris.getCoordinates(`
             ----
             ----
             -X--
             ----
-            ----
         `)
-        let stepElementTetromino = tetris.rotateElement(fulcrum[0], elementTetromino[0])
+        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], pivot[0])
         let expectedResult = tetris.getCoordinates(`
-            X---
-            ----
-            ----
-            ----
-            ----
-        `)
-        assert.deepEqual(expectedResult[0], stepElementTetromino)
-    })
-
-    it("element move the left", function () {
-        let elementTetromino = tetris.getCoordinates(`
-            X---
-            ----
-            ----
-            ----
-            ----
- 
-        `)
-
-        let fulcrum = tetris.getCoordinates(`
             ----
             ----
             -X--
             ----
-            ----
-        `)
-        let stepElementTetromino = tetris.rotateElement(fulcrum[0], elementTetromino[0])
-        let expectedResult = tetris.getCoordinates(`
-            ----
-            ----
-            ----
-            X---
-            ----
-        `)
-        assert.deepEqual(expectedResult[0], stepElementTetromino)
-    })
-
-    it("element move the right", function () {
-        let elementTetromino = tetris.getCoordinates(`
-            ----
-            ----
-            ----
-            X---
-            ----
-        `)
-
-        let fulcrum = tetris.getCoordinates(`
-            ----
-            ----
-            -X--
-            ----
-            ----
-        `)
-        let stepElementTetromino = tetris.rotateElement(fulcrum[0], elementTetromino[0])
-        let expectedResult = tetris.getCoordinates(`
-            ----
-            ----
-            ----
-            ---X
-            ----
-        `)
-        assert.deepEqual(expectedResult[0], stepElementTetromino)
-    })
-
-    it("the item returns to its original position", function(){
-        let elementTetromino = tetris.getCoordinates(`
-            ----
-            ----
-            ----
-            ---X
-            ----
-        `)
-
-        let fulcrum = tetris.getCoordinates(`
-            ----
-            ----
-            -X--
-            ----
-            ----
-        `)
-        let stepElementTetromino = tetris.rotateElement(fulcrum[0], elementTetromino[0])
-		let expectedResult = tetris.getCoordinates(`
-            ---X
-            ----
-            ----
-            ----
-            ----
-        `)
-        assert.deepEqual(expectedResult[0], stepElementTetromino)
+        `)      
     })
 })
