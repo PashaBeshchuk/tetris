@@ -121,7 +121,6 @@ describe("Rotation where afte element has positive,negative, top, off the diagon
         assert.deepEqual(expectedResult[0], stepElementTetromino)
     })
 })
-
 describe("Rotation where starts to the left,on the diagonal, has negative coordinates", function () {
     it("element move the right on the diagonal field 3x5 ", function () {
         let elementTetromino = tetris.getCoordinates(`
@@ -183,69 +182,6 @@ describe("Rotation where starts to the left,on the diagonal, has negative coordi
         `)
     })
 })
-
-describe("Rotation where starts to the left,on the diagonal, has negative coordinates", function () {
-    it("element move the right on the diagonal field 3x5 ", function () {
-        let elementTetromino = tetris.getCoordinates(`
-            -----
-            -----
-            X----
-        `)
-        let pivot = tetris.getCoordinates(`
-            --X--
-            -----
-            -----
-        `)
-        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], pivot[0])
-        let expectedResult = tetris.getCoordinates(`
-            -----
-            -----
-            ----X
-        `)
-    })
-
-    it("element move the top on the diagonal field 3x5 ", function () {
-        let elementTetromino = tetris.getCoordinates(`
-            -----
-            -----
-            ----X
-        `)
-        let pivot = tetris.getCoordinates(`
-            --X--
-            -----
-            -----
-        `)
-        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], pivot[0])
-        let expectedResult = [{ x: 4, y: -2 }]
-    })
-
-    it("element move the left on the diagonal field 3x5 ", function () {
-        let elementTetromino = [{ x: 4, y: -2 }]
-        let pivot = tetris.getCoordinates(`
-            --X--
-            -----
-            -----
-        `)
-        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], pivot[0])
-        let expectedResult = [{ x: 0, y: -2 }]
-    })
-
-    it("element move the bottom on the diagonal field 3x5 ", function () {
-        let elementTetromino = [{ x: 0, y: -2 }]
-        let pivot = tetris.getCoordinates(`
-            --X--
-            -----
-            -----
-        `)
-        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], pivot[0])
-        let expectedResult = tetris.getCoordinates(`
-            -----
-            -----
-            X----
-        `)
-    })
-})
-
 describe("Rotation where starts to the right, pivot has same x and y coordinates", function () {
     it("element move the top field 5x5 ", function () {
         let elementTetromino = tetris.getCoordinates(`
@@ -348,6 +284,107 @@ describe("Rotation where starts to the right, pivot has same x and y coordinates
             -----
             -----
             -----
+        `)
+    })
+})
+describe("Rotation where starts to the bottom, pivot has different x and y coordinates", function () {
+    it("element move the left field 6x5 ", function () {
+        let elementTetromino = tetris.getCoordinates(`
+            -----
+            -----
+            -----
+            -----
+            -----
+            -X---
+        `)
+        let pivot = tetris.getCoordinates(`
+            -----
+            -----
+            -X---
+            -----
+            -----
+            -----
+        `)
+        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], pivot[0])
+        let expectedResult = tetris.getCoordinates(`
+            -----
+            -----
+            ----X
+            -----
+            -----
+            -----
+        `)
+    })
+
+    it("element move the top field 6x5 ", function () {
+        let elementTetromino = tetris.getCoordinates(`
+            -----
+            -----
+            ----X
+            -----
+            -----
+            -----
+        `)
+        let pivot = tetris.getCoordinates(`
+            -----
+            -----
+            -X---
+            -----
+            -----
+            -----
+        `)
+        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], pivot[0])
+        let expectedResult = [{ x: 1, y: -1 }]
+    })
+
+    it("element move the top field 6x5 ", function () {
+        let elementTetromino = [{ x: 1, y: -1 }]
+        let pivot = tetris.getCoordinates(`
+            -----
+            -----
+            -X---
+            -----
+            -----
+            -----
+        `)
+        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], pivot[0])
+        let expectedResult = [{ x: 1, y: -1 }]
+    })
+
+    it("element move the top field 6x5 ", function () {
+        let elementTetromino = [{ x: 1, y: -1 }]
+        let pivot = tetris.getCoordinates(`
+            -----
+            -----
+            -X---
+            -----
+            -----
+            -----
+        `)
+        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], pivot[0])
+        let expectedResult = [{ x: -2, y: 2 }]
+    })
+})
+describe("Rotation where pivot coordinates coincides with element coordinates", function () {
+    it("element not move field 4x4 ", function () {
+        let elementTetromino = tetris.getCoordinates(`
+           ----
+           ----
+           -X--
+           ----
+        `)
+        let pivot = tetris.getCoordinates(`
+            ----
+            ----
+            -X--
+            ----
+        `)
+        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], pivot[0])
+        let expectedResult = tetris.getCoordinates(`
+            ----
+            ----
+            -X--
+            ----
         `)
     })
 })
