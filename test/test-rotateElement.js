@@ -307,7 +307,7 @@ describe("Rotation where starts to the bottom, pivot has different x and y coord
             ------
             ------
             ------
-            --X---
+            ---X--
         `)
         let pivot = tetris.getCoordinates(`
             ------
@@ -382,7 +382,7 @@ describe("Rotation where starts to the bottom, pivot has different x and y coord
             ------
             ------
             ------
-            --X---
+            ---X--
         `)
         assert.deepEqual(expectedResult, stepElementTetromino)
     })
