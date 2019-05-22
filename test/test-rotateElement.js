@@ -391,10 +391,10 @@ describe("Rotation where starts to the bottom, pivot has different x and y coord
 describe("Rotation where pivot coordinates coincides with element coordinates", function () {
     it("element not move field 4x4", function () {
         let elementTetromino = tetris.getCoordinates(`
-           ----
-           ----
-           -X--
-           ----
+            ----
+            ----
+            -X--
+            ----
         `)
         let pivot = tetris.getCoordinates(`
             ----

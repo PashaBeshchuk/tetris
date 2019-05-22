@@ -666,5 +666,4 @@ describe("L-tetromino rotation 3x3", function () {
 			tetris.buildField(stringField)
 		})
 	})
-
 })
