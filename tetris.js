@@ -304,5 +304,12 @@ module.exports = {
 		}
 		return arrayOfCoordinates;
 	},
-	rotateElement: function(){}
+	rotateElement: function(coordinatesElement, coordinatesPivot){
+		let internalVariable = {};
+		let numb  = coordinatesPivot.y - coordinatesElement.y
+		let numbr = coordinatesPivot.x - coordinatesElement.x
+		internalVariable.x = coordinatesPivot.x - numb  
+		internalVariable.y = coordinatesPivot.y + numbr
+		return internalVariable
+	}
 }

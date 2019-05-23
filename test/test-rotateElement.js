@@ -28,7 +28,7 @@ describe("Rotation where afte element has positive,negative, top, off the diagon
     })
 
     it("element move the bottom field 4x7", function () {
-        let elementTetromino = [{ x: -2, y: 2 }]
+        let elementTetromino = { x: -2, y: 2 }
 
         let pivot = tetris.getCoordinates(`
             -----
@@ -40,7 +40,7 @@ describe("Rotation where afte element has positive,negative, top, off the diagon
             -----
         `)
 
-        let stepElementTetromino = tetris.rotateElement(elementTetromino[0], pivot[0])
+        let stepElementTetromino = tetris.rotateElement(elementTetromino, pivot[0])
         let expectedResult = tetris.getCoordinates(`
             -----
             -----
@@ -384,7 +384,7 @@ describe("Rotation where starts to the bottom, pivot has different x and y coord
             ------
             ---X--
         `)
-        assert.deepEqual(expectedResult, stepElementTetromino)
+        assert.deepEqual(expectedResult[0], stepElementTetromino)
     })
 })
 
