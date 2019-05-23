@@ -303,5 +303,6 @@ module.exports = {
 			throw new Error("tetromino size is not correct");
 		}
 		return arrayOfCoordinates;
-	}
+	},
+	rotateElement: function(){}
 }
