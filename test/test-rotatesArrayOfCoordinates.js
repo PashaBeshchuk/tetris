@@ -1,17 +1,9 @@
 var assert = require('chai').assert;
 var tetris = require('../tetris')
 describe("Incoming array is empty", function () {
-    if ("Array is empty", function () {
+    it("Array is empty", function () {
         let arrayOfCoordinates = [];
-        let pivot = tetris.getCoordinates(`
-            -----
-            -----
-            -----
-            -X---
-            -----
-            -----
-            -----
-        `);
+        let pivot = { x: 1, y: 1 }
         let stepArrayCoordinates = tetris.rotatesArrayOfCoordinates(arrayOfCoordinates, pivot);
         let expectedResult = [];
         assert.deepEqual(stepElementTetromino, expectedResult);
