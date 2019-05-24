@@ -303,5 +303,10 @@ module.exports = {
 			throw new Error("tetromino size is not correct");
 		}
 		return arrayOfCoordinates;
+	},
+	rotateElement: function (coordinatesElement, coordinatesPivot) {
+		let coordinateDifference_X = coordinatesPivot.y - coordinatesElement.y
+		let coordinateDifference_Y = coordinatesPivot.x - coordinatesElement.x
+		return { x: coordinatesPivot.x - coordinateDifference_X, y: coordinatesPivot.y + coordinateDifference_Y }
 	}
 }
