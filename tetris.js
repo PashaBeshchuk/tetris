@@ -309,5 +309,14 @@ module.exports = {
 		let coordinateDifference_Y = coordinatesPivot.x - coordinatesElement.x
 		return { x: coordinatesPivot.x - coordinateDifference_X, y: coordinatesPivot.y + coordinateDifference_Y }
 	},
-	rotatesArrayOfCoordinates: function(){}
+	rotatesArrayOfCoordinates: function(arrayCoordinates, coordinatePivot){
+		let localArrayCoordinates = []
+		if(arrayCoordinates.length === 0){
+			return arrayCoordinates
+		}	
+		for(let arrayElement of arrayCoordinates){
+			localArrayCoordinates.push(this.rotateElement(arrayElement,coordinatePivot[0]))	
+		}
+		return localArrayCoordinates
+	}
 }
