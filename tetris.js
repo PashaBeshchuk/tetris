@@ -277,7 +277,7 @@ module.exports = {
 			}
 
 		}
-		return arrayOfCoordinates;
+		return this.sort(arrayOfCoordinates);
 	},
 
 	buildTetromino: function (stringOfCoordinates) {
@@ -285,20 +285,6 @@ module.exports = {
 		this.getCoordinates(stringOfCoordinates).forEach(function (coordinates) {
 			arrayOfCoordinates.push(Object.assign({}, coordinates));
 		})
-		let repeatCycle = true;
-		while (repeatCycle) {
-			for (let i = 0, j = 1; j < arrayOfCoordinates.length; i++ , j++) {
-				if (arrayOfCoordinates[i].x > arrayOfCoordinates[j].x) {
-					let b = arrayOfCoordinates[j];
-					arrayOfCoordinates[j] = arrayOfCoordinates[i];
-					arrayOfCoordinates[i] = b;
-				}
-
-			}
-			if (arrayOfCoordinates[0].x <= arrayOfCoordinates[1].x && arrayOfCoordinates[1].x <= arrayOfCoordinates[2].x && arrayOfCoordinates[2].x <= arrayOfCoordinates[3].x) {
-				repeatCycle = false
-			}
-		}
 		if (arrayOfCoordinates.length != 4) {
 			throw new Error("tetromino size is not correct");
 		}
@@ -317,6 +303,44 @@ module.exports = {
 		for(let arrayElement of arrayCoordinates){
 			localArrayCoordinates.push(this.rotateElement(arrayElement,coordinatePivot[0]))	
 		}
-		return localArrayCoordinates
+		return this.sort(localArrayCoordinates)
+	},
+	sort: function(arrayOfCoordinates){
+		let repeatCycle = true;
+		while (repeatCycle) {
+			let counter = 0
+			for (let i = 0, j = 1; j < arrayOfCoordinates.length; i++ , j++) {
+				if (arrayOfCoordinates[i].x > arrayOfCoordinates[j].x) {
+					let b = arrayOfCoordinates[j];
+					arrayOfCoordinates[j] = arrayOfCoordinates[i];
+					arrayOfCoordinates[i] = b;
+					i = 0;
+					j = 1;
+				}
+			}
+			for (let i = 0, j = 1; j < arrayOfCoordinates.length; i++ , j++) {
+				if (arrayOfCoordinates[i].x === arrayOfCoordinates[j].x){
+					if (arrayOfCoordinates[i].y > arrayOfCoordinates[j].y) {
+						let b = arrayOfCoordinates[j];
+						arrayOfCoordinates[j] = arrayOfCoordinates[i];
+						arrayOfCoordinates[i] = b;
+					}
+				}
+			}
+			for(let i = 0, j = 1; i < arrayOfCoordinates.length; i++, j++){
+				if(j === arrayOfCoordinates.length){
+					j = arrayOfCoordinates.length-1
+				}
+				if(arrayOfCoordinates[i].x <= arrayOfCoordinates[j].x){
+					++counter;
+				}
+			}
+			if(counter === (arrayOfCoordinates.length)){
+				repeatCycle = false;
+			}else{
+				repeatCycle = true;
+			}
+		}
+		return arrayOfCoordinates	
 	}
 }
