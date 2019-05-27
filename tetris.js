@@ -279,8 +279,7 @@ module.exports = {
 		}
 		return arrayOfCoordinates.sort(function(firstCoordinate,secondCoordinate){
 			let coordinates_X = firstCoordinate.x - secondCoordinate.x;
-			let coordinates_Y = firstCoordinate.y - secondCoordinate.y;
-			return coordinates_X,coordinates_Y;
+			return coordinates_X;
 		});
 		
 		
@@ -303,16 +302,17 @@ module.exports = {
 	},
 	rotatesArrayOfCoordinates: function(arrayCoordinates, coordinatePivot){
 		let localArrayCoordinates = []
-		if(arrayCoordinates.length === 0){
-			return arrayCoordinates
-		}	
+		let localCoordinatePivot = coordinatePivot[0]
 		for(let arrayElement of arrayCoordinates){
-			localArrayCoordinates.push(this.rotateElement(arrayElement,coordinatePivot[0]))	
+			localArrayCoordinates.push(this.rotateElement(arrayElement,localCoordinatePivot))	
 		}
 		return localArrayCoordinates.sort(function(firstCoordinate,secondCoordinate){
 			let coordinates_X = firstCoordinate.x - secondCoordinate.x;
-			let coordinates_Y = firstCoordinate.y - secondCoordinate.y;
-			return coordinates_X,coordinates_Y;
+			if(firstCoordinate.x === secondCoordinate.x){
+				let coordinates_Y = firstCoordinate.y - secondCoordinate.y;
+				return coordinates_X, coordinates_Y;
+			}
+			return coordinates_X;
 		});
 		
 	}
