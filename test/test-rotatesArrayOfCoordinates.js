@@ -4,7 +4,7 @@ describe("Incoming array is empty", function () {
     it("Array is empty", function () {
         let arrayOfCoordinates = [];
         let pivot = { x: 1, y: 1 }
-        let stepArrayCoordinates = tetris.rotatesArrayOfCoordinates(arrayOfCoordinates, pivot);
+        let stepArrayCoordinates = tetris.rotatesArrayOfCoordinates(arrayOfCoordinates, pivot[0]);
         let expectedResult = [];
         assert.deepEqual(stepArrayCoordinates, expectedResult);
     });
@@ -27,7 +27,7 @@ describe("Incoming array has 1 element", function () {
             ----
         `);
 
-        let stepArrayCoordinates = tetris.rotatesArrayOfCoordinates(arrayOfCoordinates, pivot);
+        let stepArrayCoordinates = tetris.rotatesArrayOfCoordinates(arrayOfCoordinates, pivot[0]);
         let expectedResult = [{ x: -1, y: 2 }];
         assert.deepEqual(stepArrayCoordinates, expectedResult);
     });
@@ -41,7 +41,7 @@ describe("Incoming array has 1 element", function () {
             ----
             ----
         `);
-        let stepArrayCoordinates = tetris.rotatesArrayOfCoordinates(arrayOfCoordinates, pivot);
+        let stepArrayCoordinates = tetris.rotatesArrayOfCoordinates(arrayOfCoordinates, pivot[0]);
         let expectedResult = tetris.getCoordinates(`
             ----
             ----
@@ -68,7 +68,7 @@ describe("Incoming array has 1 element", function () {
             ----
             ----
         `);
-        let stepArrayCoordinates = tetris.rotatesArrayOfCoordinates(arrayOfCoordinates, pivot);
+        let stepArrayCoordinates = tetris.rotatesArrayOfCoordinates(arrayOfCoordinates, pivot[0]);
         let expectedResult = tetris.getCoordinates(`
             ----
             ----
@@ -95,7 +95,7 @@ describe("Incoming array has 1 element", function () {
             ----
             ----
         `);
-        let stepArrayCoordinates = tetris.rotatesArrayOfCoordinates(arrayOfCoordinates, pivot);
+        let stepArrayCoordinates = tetris.rotatesArrayOfCoordinates(arrayOfCoordinates, pivot[0]);
         let expectedResult = tetris.getCoordinates(`
             -X--
             ----
@@ -124,7 +124,7 @@ describe("Incoming array has more than 1 element and that are next to each other
             ----
             ----
         `);
-        let stepArrayCoordinates = tetris.rotatesArrayOfCoordinates(arrayOfCoordinates, pivot);
+        let stepArrayCoordinates = tetris.rotatesArrayOfCoordinates(arrayOfCoordinates, pivot[0]);
         let expectedResult = [{ x: -1, y: 1 }, { x: -1, y: 2 }];
         assert.deepEqual(stepArrayCoordinates, expectedResult);
     });
@@ -138,7 +138,7 @@ describe("Incoming array has more than 1 element and that are next to each other
             ----
             ----
         `);
-        let stepArrayCoordinates = tetris.rotatesArrayOfCoordinates(arrayOfCoordinates, pivot);
+        let stepArrayCoordinates = tetris.rotatesArrayOfCoordinates(arrayOfCoordinates, pivot[0]);
         let expectedResult = tetris.getCoordinates(`
             ----
             ----
@@ -165,7 +165,7 @@ describe("Incoming array has more than 1 element and that are next to each other
             ----
             ----
         `);
-        let stepArrayCoordinates = tetris.rotatesArrayOfCoordinates(arrayOfCoordinates, pivot);
+        let stepArrayCoordinates = tetris.rotatesArrayOfCoordinates(arrayOfCoordinates, pivot[0]);
         let expectedResult = tetris.getCoordinates(`
             ----
             ----
@@ -192,7 +192,7 @@ describe("Incoming array has more than 1 element and that are next to each other
             ----
             ----
         `);
-        let stepArrayCoordinates = tetris.rotatesArrayOfCoordinates(arrayOfCoordinates, pivot);
+        let stepArrayCoordinates = tetris.rotatesArrayOfCoordinates(arrayOfCoordinates, pivot[0]);
         let expectedResult = tetris.getCoordinates(`
             -XX-
             ----
@@ -224,7 +224,7 @@ describe("Incoming array has more than 1 element and that are next to each other
             -------
             
         `);
-        let stepArrayCoordinates = tetris.rotatesArrayOfCoordinates(arrayOfCoordinates, pivot);
+        let stepArrayCoordinates = tetris.rotatesArrayOfCoordinates(arrayOfCoordinates, pivot[0]);
         let expectedResult = tetris.getCoordinates(`
             -------
             ----X--
@@ -255,7 +255,7 @@ describe("Incoming array has more than 1 element and that are next to each other
             -------
             
         `);
-        let stepArrayCoordinates = tetris.rotatesArrayOfCoordinates(arrayOfCoordinates, pivot);
+        let stepArrayCoordinates = tetris.rotatesArrayOfCoordinates(arrayOfCoordinates, pivot[0]);
         let expectedResult = tetris.getCoordinates(`
             -------
             --XX---
@@ -285,7 +285,7 @@ describe("Incoming array has more than 1 element and that are next to each other
             -------
             
         `);
-        let stepArrayCoordinates = tetris.rotatesArrayOfCoordinates(arrayOfCoordinates, pivot);
+        let stepArrayCoordinates = tetris.rotatesArrayOfCoordinates(arrayOfCoordinates, pivot[0]);
         let expectedResult = tetris.getCoordinates(`
             -------
             -------
@@ -315,7 +315,7 @@ describe("Incoming array has more than 1 element and that are next to each other
             -------
             
         `);
-        let stepArrayCoordinates = tetris.rotatesArrayOfCoordinates(arrayOfCoordinates, pivot);
+        let stepArrayCoordinates = tetris.rotatesArrayOfCoordinates(arrayOfCoordinates, pivot[0]);
         let expectedResult = tetris.getCoordinates(`
             -------
             -------

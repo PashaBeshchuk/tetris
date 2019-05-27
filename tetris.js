@@ -279,6 +279,10 @@ module.exports = {
 		}
 		return arrayOfCoordinates.sort(function(firstCoordinate,secondCoordinate){
 			let coordinates_X = firstCoordinate.x - secondCoordinate.x;
+			if(firstCoordinate.x === secondCoordinate.x){
+				let coordinates_Y = firstCoordinate.y - secondCoordinate.y;
+				return coordinates_X, coordinates_Y;
+			}
 			return coordinates_X;
 		});
 		
@@ -302,9 +306,8 @@ module.exports = {
 	},
 	rotatesArrayOfCoordinates: function(arrayCoordinates, coordinatePivot){
 		let localArrayCoordinates = []
-		let localCoordinatePivot = coordinatePivot[0]
 		for(let arrayElement of arrayCoordinates){
-			localArrayCoordinates.push(this.rotateElement(arrayElement,localCoordinatePivot))	
+			localArrayCoordinates.push(this.rotateElement(arrayElement,coordinatePivot))	
 		}
 		return localArrayCoordinates.sort(function(firstCoordinate,secondCoordinate){
 			let coordinates_X = firstCoordinate.x - secondCoordinate.x;
