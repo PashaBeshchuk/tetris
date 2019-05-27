@@ -277,16 +277,7 @@ module.exports = {
 			}
 
 		}
-		return arrayOfCoordinates.sort(function(firstCoordinate,secondCoordinate){
-			let coordinates_X = firstCoordinate.x - secondCoordinate.x;
-			if(firstCoordinate.x === secondCoordinate.x){
-				let coordinates_Y = firstCoordinate.y - secondCoordinate.y;
-				return coordinates_X, coordinates_Y;
-			}
-			return coordinates_X;
-		});
-		
-		
+		return arrayOfCoordinates.sort(this.orderCoordinates);
 	},
 
 	buildTetromino: function (stringOfCoordinates) {
@@ -304,19 +295,19 @@ module.exports = {
 		let coordinateDifference_Y = coordinatesPivot.x - coordinatesElement.x
 		return { x: coordinatesPivot.x - coordinateDifference_X, y: coordinatesPivot.y + coordinateDifference_Y }
 	},
-	rotatesArrayOfCoordinates: function(arrayCoordinates, coordinatePivot){
+	rotatesArrayOfCoordinates: function (arrayCoordinates, coordinatePivot) {
 		let localArrayCoordinates = []
-		for(let arrayElement of arrayCoordinates){
-			localArrayCoordinates.push(this.rotateElement(arrayElement,coordinatePivot))	
+		for (let arrayElement of arrayCoordinates) {
+			localArrayCoordinates.push(this.rotateElement(arrayElement, coordinatePivot))
 		}
-		return localArrayCoordinates.sort(function(firstCoordinate,secondCoordinate){
-			let coordinates_X = firstCoordinate.x - secondCoordinate.x;
-			if(firstCoordinate.x === secondCoordinate.x){
-				let coordinates_Y = firstCoordinate.y - secondCoordinate.y;
-				return coordinates_X, coordinates_Y;
-			}
-			return coordinates_X;
-		});
-		
+		return localArrayCoordinates.sort(this.orderCoordinates);
+	},
+	orderCoordinates: function (firstCoordinate, secondCoordinate) {
+		let xCoordinateDifference = firstCoordinate.x - secondCoordinate.x;
+		if (xCoordinateDifference === 0) {
+			let yCoordinateDifference = firstCoordinate.y - secondCoordinate.y;
+			return yCoordinateDifference;
+		}
+		return xCoordinateDifference;
 	}
 }
