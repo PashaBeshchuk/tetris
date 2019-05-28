@@ -303,11 +303,9 @@ module.exports = {
 		return localArrayCoordinates.sort(this.orderCoordinates);
 	},
 	orderCoordinates: function (firstCoordinate, secondCoordinate) {
-		let xCoordinateDifference = firstCoordinate.x - secondCoordinate.x;
-		if (xCoordinateDifference === 0) {
-			let yCoordinateDifference = firstCoordinate.y - secondCoordinate.y;
-			return yCoordinateDifference;
+		if (firstCoordinate.x === secondCoordinate.x) {
+			return firstCoordinate.y - secondCoordinate.y;
 		}
-		return xCoordinateDifference;
+		return firstCoordinate.x - secondCoordinate.x;
 	}
 }
