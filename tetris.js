@@ -277,7 +277,7 @@ module.exports = {
 			}
 
 		}
-		return arrayOfCoordinates;
+		return arrayOfCoordinates.sort(this.orderCoordinates);
 	},
 
 	buildTetromino: function (stringOfCoordinates) {
@@ -285,20 +285,6 @@ module.exports = {
 		this.getCoordinates(stringOfCoordinates).forEach(function (coordinates) {
 			arrayOfCoordinates.push(Object.assign({}, coordinates));
 		})
-		let repeatCycle = true;
-		while (repeatCycle) {
-			for (let i = 0, j = 1; j < arrayOfCoordinates.length; i++ , j++) {
-				if (arrayOfCoordinates[i].x > arrayOfCoordinates[j].x) {
-					let b = arrayOfCoordinates[j];
-					arrayOfCoordinates[j] = arrayOfCoordinates[i];
-					arrayOfCoordinates[i] = b;
-				}
-
-			}
-			if (arrayOfCoordinates[0].x <= arrayOfCoordinates[1].x && arrayOfCoordinates[1].x <= arrayOfCoordinates[2].x && arrayOfCoordinates[2].x <= arrayOfCoordinates[3].x) {
-				repeatCycle = false
-			}
-		}
 		if (arrayOfCoordinates.length != 4) {
 			throw new Error("tetromino size is not correct");
 		}
@@ -308,5 +294,18 @@ module.exports = {
 		let coordinateDifference_X = coordinatesPivot.y - coordinatesElement.y
 		let coordinateDifference_Y = coordinatesPivot.x - coordinatesElement.x
 		return { x: coordinatesPivot.x - coordinateDifference_X, y: coordinatesPivot.y + coordinateDifference_Y }
+	},
+	rotatesArrayOfCoordinates: function (arrayCoordinates, coordinatePivot) {
+		let localArrayCoordinates = []
+		for (let arrayElement of arrayCoordinates) {
+			localArrayCoordinates.push(this.rotateElement(arrayElement, coordinatePivot))
+		}
+		return localArrayCoordinates.sort(this.orderCoordinates);
+	},
+	orderCoordinates: function (firstCoordinate, secondCoordinate) {
+		if (firstCoordinate.x === secondCoordinate.x) {
+			return firstCoordinate.y - secondCoordinate.y;
+		}
+		return firstCoordinate.x - secondCoordinate.x;
 	}
 }
