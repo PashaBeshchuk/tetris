@@ -5,14 +5,14 @@ describe("Coordinates next to each other and arrays is many elements, matches co
         arrayOfCoordinates = tetris.getCoordinates(`
             -----
             --XX-
-            ---X-
-            ---X-
+            --XX-
+            -----
             -----
         `)
         let topLeftCorner = calculatorCoordinateOfTopLeft(arrayOfCoordinates)
         expectedResult = tetris.getCoordinates(`
             -----
-            -X---
+            --X--
             -----
             -----
             -----
