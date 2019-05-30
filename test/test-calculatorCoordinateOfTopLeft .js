@@ -26,12 +26,12 @@ describe("Coordinates spaced apart, is 2 elements, does not match coordinate of 
             -----
             ----X
             -----
-            ---X-
+            ----X
         `)
         let topLeftCorner = calculatorCoordinateOfTopLeft(arrayOfCoordinates)
         expectedResult = tetris.getCoordinates(`
-            X----
             -----
+            ---X-
             -----
             -----
             -----
@@ -39,26 +39,26 @@ describe("Coordinates spaced apart, is 2 elements, does not match coordinate of 
     })
 
 })
-describe("Coordinates spaced apart, is 2 elements, does not match coordinate of any of the elements", function(){
+describe("Сoordinates next to each other, is 2 elements, does not match coordinate of any of the elements", function(){
     it("Arrays is many elements", function(){
         arrayOfCoordinates = tetris.getCoordinates(`
             -----
             -----
-            ----X
+            ---XX
             -----
-            ---X-
+            -----
         `)
         let topLeftCorner = calculatorCoordinateOfTopLeft(arrayOfCoordinates)
         expectedResult = tetris.getCoordinates(`
-            X----
             -----
+            --X--
             -----
             -----
             -----
         `)
 })
 
-describe("Coordinates spaced apart, is 2 elements, does not match coordinate of any of the elements", function(){
+describe("Array is 1 element,", function(){
     it("Arrays is many elements", function(){
         arrayOfCoordinates = tetris.getCoordinates(`
             -------
@@ -70,9 +70,9 @@ describe("Coordinates spaced apart, is 2 elements, does not match coordinate of 
         `)
         let topLeftCorner = calculatorCoordinateOfTopLeft(arrayOfCoordinates)
         expectedResult = tetris.getCoordinates(`
-            X------
             -------
             -------
+            -----X-
             -------
             -------
         `)
