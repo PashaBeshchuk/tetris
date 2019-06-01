@@ -44,9 +44,9 @@ describe("Coordinates spaced apart, is 2 elements, does not match coordinate of 
     it("Arrays is many elements", function(){
         arrayOfCoordinates = tetris.getCoordinates(`
             -----
-            -X---
-            -----
             ---X-
+            -----
+            -X---
             -----
         `)
         let topLeftCorner = calculatorCoordinateOfTopLeft(arrayOfCoordinates)
