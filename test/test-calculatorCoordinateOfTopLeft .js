@@ -9,7 +9,7 @@ describe("Calculate coordinate of top-left corner ", function(){
             -----
             -----
         `)
-        let topLeftCorner = calculatorCoordinateOfTopLeft(arrayOfCoordinates)
+        let topLeftCorner = tetris.calculatorCoordinateOfTopLeft(arrayOfCoordinates)
         expectedResult = tetris.getCoordinates(`
             -----
             --X--
@@ -17,8 +17,9 @@ describe("Calculate coordinate of top-left corner ", function(){
             -----
             -----
         `)
+        assert.deepEqual(topLeftCorner, expectedResult);
     })
-    it("Arrays is many elements, coordinates spaced apart and mathes coordinate of one of the elements" function(){
+    it("Arrays is many elements, coordinates spaced apart and mathes coordinate of one of the elements", function(){
         arrayOfCoordinates = tetris.getCoordinates(`
             -----
             -X--X
@@ -26,7 +27,7 @@ describe("Calculate coordinate of top-left corner ", function(){
             ---X-
             -----
         `)
-        let topLeftCorner = calculatorCoordinateOfTopLeft(arrayOfCoordinates)
+        let topLeftCorner = tetris.calculatorCoordinateOfTopLeft(arrayOfCoordinates)
         expectedResult = tetris.getCoordinates(`
             -----
             -X---
@@ -34,6 +35,7 @@ describe("Calculate coordinate of top-left corner ", function(){
             -----
             -----
         `)
+        assert.deepEqual(topLeftCorner, expectedResult);
     })
     it("Array is 2 elements, coordinates spaced apart and not match coordinate of any of the elements", function(){
         arrayOfCoordinates = tetris.getCoordinates(`
@@ -43,7 +45,7 @@ describe("Calculate coordinate of top-left corner ", function(){
             -X---
             -----
         `)
-        let topLeftCorner = calculatorCoordinateOfTopLeft(arrayOfCoordinates)
+        let topLeftCorner = tetris.calculatorCoordinateOfTopLeft(arrayOfCoordinates)
         expectedResult = tetris.getCoordinates(`
             -----
             -X---
@@ -51,6 +53,7 @@ describe("Calculate coordinate of top-left corner ", function(){
             -----
             -----
         `)
+        assert.deepEqual(topLeftCorner, expectedResult);
     })
     it("Array is 2 elements, coordinates next to each other and matches coordinate of one of the elements", function(){
         arrayOfCoordinates = tetris.getCoordinates(`
@@ -60,7 +63,7 @@ describe("Calculate coordinate of top-left corner ", function(){
             -----
             -----
         `)
-        let topLeftCorner = calculatorCoordinateOfTopLeft(arrayOfCoordinates)
+        let topLeftCorner = tetris.calculatorCoordinateOfTopLeft(arrayOfCoordinates)
         expectedResult = tetris.getCoordinates(`
             -----
             -X---
@@ -68,6 +71,7 @@ describe("Calculate coordinate of top-left corner ", function(){
             -----
             -----
         `)
+        assert.deepEqual(topLeftCorner, expectedResult);
     })
     it("Array is 1 element", function(){
         arrayOfCoordinates = tetris.getCoordinates(`
@@ -78,7 +82,7 @@ describe("Calculate coordinate of top-left corner ", function(){
             -------
             
         `)
-        let topLeftCorner = calculatorCoordinateOfTopLeft(arrayOfCoordinates)
+        let topLeftCorner = tetris.calculatorCoordinateOfTopLeft(arrayOfCoordinates)
         expectedResult = tetris.getCoordinates(`
             -------
             --X----
@@ -86,5 +90,6 @@ describe("Calculate coordinate of top-left corner ", function(){
             -------
             -------
         `)
+        assert.deepEqual(topLeftCorner, expectedResult);
     })
 })
