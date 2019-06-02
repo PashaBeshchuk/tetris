@@ -307,5 +307,6 @@ module.exports = {
 			return firstCoordinate.y - secondCoordinate.y;
 		}
 		return firstCoordinate.x - secondCoordinate.x;
-	}
+	},
+	calculatorCoordinateOfTopLeft: function (arrayCoordinates)
 }
