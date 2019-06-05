@@ -307,5 +307,17 @@ module.exports = {
 			return firstCoordinate.y - secondCoordinate.y;
 		}
 		return firstCoordinate.x - secondCoordinate.x;
+	},
+	calculatorCoordinateOfTopLeft: function (arrayCoordinates){
+		let coordinateOfTopLeft = {};
+		for(let i = 0; i < arrayCoordinates.length; i++){
+			if(coordinateOfTopLeft.x > arrayCoordinates[i].x || coordinateOfTopLeft.x === undefined){
+				coordinateOfTopLeft.x = arrayCoordinates[i].x;
+			}
+			if(coordinateOfTopLeft.y > arrayCoordinates[i].y || coordinateOfTopLeft.y === undefined){
+				coordinateOfTopLeft.y = arrayCoordinates[i].y;
+			}
+		}
+		return coordinateOfTopLeft
 	}
 }
