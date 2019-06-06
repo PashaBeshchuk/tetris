@@ -1,46 +1,50 @@
 var assert = require('chai').assert;
 var tetris = require('../tetris');
-describe("Shift coordinate", function () {
-    it("Coordinate is in place", function () {
-        let coordinate = tetris.getCoordinates(`
-            ---
-            -X-
-            ---
+describe("Shift coordinates", function () {
+    it("Coordinates is in place", function () {
+        let coordinates = tetris.getCoordinates(`
+            ----
+            -XXX
+            -X--
+            ----
         `)
         let shift = { x: 0, y: 0 }
-        let newPositionCoordinate = tetris.shiftCoordinate(coordinate, shift)
+        let newPositionsCoordinates = tetris.shiftCoordinates(coordinates, shift)
         let expectedResult = tetris.getCoordinates(`
-            ---
-            -X-
-            ---
+            ----
+            -XXX
+            -X--
+            ----
         `)
     })
 
     it("Coordinate is negative", function () {
-        let coordinate = tetris.getCoordinates(`
-            ---
-            -X-
-            ---
-        `)
-        let shift = { x: -1, y: -2 }
-        let newPositionCoordinate = tetris.shiftCoordinate(coordinate, shift)
-        let expectedResult = { x: 0, y: -1 }
-    })
-
-    it("Coordinate shift", function () {
-        let coordinate = tetris.getCoordinates(`
+        let coordinates = tetris.getCoordinates(`
             ----
+            -XXX
             -X--
             ----
+        `)
+        let shift = { x: -1, y: -2 }
+        let newPositionsCoordinates = tetris.shiftCoordinates(coordinates, shift)
+        let expectedResult = [{ x: 0, y: -1 }, { x: 0, y: 0 }, { x: 1, y: -1 }, { x: 2, y: -1 }]
+    })
+    it("Coordinates shift", function () {
+        let coordinate = tetris.getCoordinates(`
+            ----
+            -XX-
+            --X-
+            --X-
             ----
         `)
-        let shift = { x: 1, y: 2 }
-        let newPositionCoordinate = tetris.shiftCoordinate(coordinate, shift)
+        let shift = { x: 1, y: 1 }
+        let newPositionsCoordinates = tetris.shiftCoordinates(coordinates, shift)
         let expectedResult = tetris.getCoordinates(`
             ----
             ----
-            ----
-            --X-
+            --XX
+            ---X
+            ---X
         `)
     })
 })
