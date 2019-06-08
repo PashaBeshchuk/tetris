@@ -8,7 +8,7 @@ describe("Shift coordinate", function () {
             ---
         `)
         let shift = { x: 0, y: 0 }
-        let newPositionCoordinate = tetris.shiftCoordinate(coordinate, shift)
+        let newPositionCoordinate = tetris.shiftCoordinate(coordinate[0], shift)
         let expectedResult = tetris.getCoordinates(`
             ---
             -X-
@@ -23,7 +23,7 @@ describe("Shift coordinate", function () {
             ---
         `)
         let shift = { x: -1, y: -2 }
-        let newPositionCoordinate = tetris.shiftCoordinate(coordinate, shift)
+        let newPositionCoordinate = tetris.shiftCoordinate(coordinate[0], shift)
         let expectedResult = { x: 0, y: -1 }
     })
 
@@ -35,7 +35,7 @@ describe("Shift coordinate", function () {
             ----
         `)
         let shift = { x: 1, y: 2 }
-        let newPositionCoordinate = tetris.shiftCoordinate(coordinate, shift)
+        let newPositionCoordinate = tetris.shiftCoordinate(coordinate[0], shift)
         let expectedResult = tetris.getCoordinates(`
             ----
             ----

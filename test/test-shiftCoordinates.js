@@ -30,7 +30,7 @@ describe("Shift coordinates", function () {
         let expectedResult = [{ x: 0, y: -1 }, { x: 0, y: 0 }, { x: 1, y: -1 }, { x: 2, y: -1 }]
     })
     it("Coordinates shift", function () {
-        let coordinate = tetris.getCoordinates(`
+        let coordinates = tetris.getCoordinates(`
             ----
             -XX-
             --X-
