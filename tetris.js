@@ -319,5 +319,18 @@ module.exports = {
 			}
 		}
 		return coordinateOfTopLeft
+	},
+	shiftCoordinate: function(coordinate, shift){
+		let newCoordinates = {};
+		newCoordinates.x = coordinate.x + shift.x;
+		newCoordinates.y = coordinate.y + shift.y;
+		return newCoordinates;
+	},
+	shiftCoordinates: function(arrayCoordinates, shift){
+		let newCoordinates = []
+		for(let elem of arrayCoordinates){
+			newCoordinates.push(this.shiftCoordinate(elem, shift))
+		}
+		return newCoordinates
 	}
 }
