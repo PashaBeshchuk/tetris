@@ -334,6 +334,10 @@ module.exports = {
 		return newCoordinates
 	},
 	determineShift: function (typeOfTetromino, rotationPhaseOfTetromino) {
-		
-	 }
+		return 2;
+	},
+	rotateTetromino: function (typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates) {
+		let pivot = this.calculatorCoordinateOfTopLeft(tetrominoCoordinates);
+		return this.rotateArrayOfCoordinates(tetrominoCoordinates, pivot)
+	}
 }
