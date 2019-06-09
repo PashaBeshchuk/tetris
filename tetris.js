@@ -308,29 +308,32 @@ module.exports = {
 		}
 		return firstCoordinate.x - secondCoordinate.x;
 	},
-	calculatorCoordinateOfTopLeft: function (arrayCoordinates){
+	calculatorCoordinateOfTopLeft: function (arrayCoordinates) {
 		let coordinateOfTopLeft = {};
-		for(let i = 0; i < arrayCoordinates.length; i++){
-			if(coordinateOfTopLeft.x > arrayCoordinates[i].x || coordinateOfTopLeft.x === undefined){
+		for (let i = 0; i < arrayCoordinates.length; i++) {
+			if (coordinateOfTopLeft.x > arrayCoordinates[i].x || coordinateOfTopLeft.x === undefined) {
 				coordinateOfTopLeft.x = arrayCoordinates[i].x;
 			}
-			if(coordinateOfTopLeft.y > arrayCoordinates[i].y || coordinateOfTopLeft.y === undefined){
+			if (coordinateOfTopLeft.y > arrayCoordinates[i].y || coordinateOfTopLeft.y === undefined) {
 				coordinateOfTopLeft.y = arrayCoordinates[i].y;
 			}
 		}
 		return coordinateOfTopLeft
 	},
-	shiftCoordinate: function(coordinate, shift){
+	shiftCoordinate: function (coordinate, shift) {
 		let newCoordinates = {};
 		newCoordinates.x = coordinate.x + shift.x;
 		newCoordinates.y = coordinate.y + shift.y;
 		return newCoordinates;
 	},
-	shiftCoordinates: function(arrayCoordinates, shift){
+	shiftCoordinates: function (arrayCoordinates, shift) {
 		let newCoordinates = []
-		for(let elem of arrayCoordinates){
+		for (let elem of arrayCoordinates) {
 			newCoordinates.push(this.shiftCoordinate(elem, shift))
 		}
 		return newCoordinates
-	}
+	},
+	determineShift: function (typeOfTetromino, rotationPhaseOfTetromino) {
+		
+	 }
 }
