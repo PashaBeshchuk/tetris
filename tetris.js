@@ -336,7 +336,7 @@ module.exports = {
 	rotationPhaseOfTetromino: function (arrayCoordinatesOfTetromino){
 		let phases = []
 		if(arrayCoordinatesOfTetromino === "L" || arrayCoordinatesOfTetromino === "J" || arrayCoordinatesOfTetromino === "T" || arrayCoordinatesOfTetromino === "S" || arrayCoordinatesOfTetromino === "Z"){
-			return phases = ["left", "bottom", "right", "top"];
+			return phases = ["left", "down", "right", "up"];
 		}else if(arrayCoordinatesOfTetromino === "I"){
 			return phases = ["vertical", "horizontal"];
 		}else if(arrayCoordinatesOfTetromino === "O"){
