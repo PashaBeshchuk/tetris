@@ -347,9 +347,9 @@ module.exports = {
 		return { x: 0, y: 0 };
 	},
 	rotateTetromino: function (typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates) {
-		let phase = determineShift(typeOfTetromino, rotationPhaseOfTetromino)
+		let shift = determineShift(typeOfTetromino, rotationPhaseOfTetromino)
 		let pivot = this.calculatorCoordinateOfTopLeft(tetrominoCoordinates);
 		let newCoordinates = this.rotateArrayOfCoordinates(tetrominoCoordinates, pivot)
-		return this.shiftCoordinates(newCoordinates, phase)
+		return this.shiftCoordinates(newCoordinates, shift)
 	}
 }
