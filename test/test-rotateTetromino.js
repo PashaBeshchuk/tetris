@@ -22,8 +22,8 @@ describe("O-tetromino", function () {
 });
 
 describe("J-tetromino", function () {
-    it("J-tetromino rotation , starts position down", function () {
-        let typeOfTetromino = "Jright";
+    it("J-tetromino rotation right, starts position down", function () {
+        let typeOfTetromino = "J";
         let rotationPhaseOfTetromino = "down";
         let tetrominoCoordinates = tetris.buildTetromino(`
             --X--
