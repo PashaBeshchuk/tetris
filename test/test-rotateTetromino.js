@@ -10,19 +10,19 @@ describe("O-tetromino", function () {
             -XX--
             -----
         `);
-        let resultFunction = tetris.rotateTetromino(typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates);
+        let result = tetris.rotateTetromino(typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates);
         let expectedResult = tetris.buildTetromino(`
             -----
             -XX--
             -XX--
             -----
         `);
-        assert.deepEqual(resultFunction, expectedResult);
+        assert.deepEqual(result, expectedResult);
     });
 });
 
 describe("J-tetromino", function () {
-    it("J-tetromino rotation dow to right", function () {
+    it("J-tetromino rotation down to right", function () {
         let typeOfTetromino = "J";
         let rotationPhaseOfTetromino = "down";
         let tetrominoCoordinates = tetris.buildTetromino(`
@@ -31,14 +31,14 @@ describe("J-tetromino", function () {
             -XX--
             -----
         `);
-        let resultFunction = tetris.rotateTetromino(typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates);
+        let result = tetris.rotateTetromino(typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates);
         let expectedResult = tetris.buildTetromino(`
             -XXX-
             ---X-
             -----
             -----
         `);
-        assert.deepEqual(resultFunction, expectedResult);
+        assert.deepEqual(result, expectedResult);
     });
     it("J-tetromino rotation right to up", function () {
         let typeOfTetromino = "J";
@@ -49,14 +49,14 @@ describe("J-tetromino", function () {
             -----
             -----
         `);
-        let resultFunction = tetris.rotateTetromino(typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates);
+        let result = tetris.rotateTetromino(typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates);
         let expectedResult = tetris.buildTetromino(`
             -XX--
             -X---
             -X---
             -----
         `);
-        assert.deepEqual(resultFunction, expectedResult);
+        assert.deepEqual(result, expectedResult);
     });
 
     it("J-tetromino rotation up to left", function () {
@@ -68,14 +68,14 @@ describe("J-tetromino", function () {
             -X---
             -----
         `);
-        let resultFunction = tetris.rotateTetromino(typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates);
+        let result = tetris.rotateTetromino(typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates);
         let expectedResult = tetris.buildTetromino(`
             -X---
             -XXX-
             -----
             -----
         `);
-        assert.deepEqual(resultFunction, expectedResult);
+        assert.deepEqual(result, expectedResult);
     });
 
     it("J-tetromino rotation left to down", function () {
@@ -87,14 +87,14 @@ describe("J-tetromino", function () {
             -----
             -----
         `);
-        let resultFunction = tetris.rotateTetromino(typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates);
+        let result = tetris.rotateTetromino(typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates);
         let expectedResult = tetris.buildTetromino(`
             --X--
             --X--
             -XX--
             -----
         `);
-        assert.deepEqual(resultFunction, expectedResult);
+        assert.deepEqual(result, expectedResult);
     });
 });
 
@@ -108,14 +108,14 @@ describe("L-tetromino", function () {
             --X--
             --XX-
         `);
-        let resultFunction = tetris.rotateTetromino(typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates);
+        let result = tetris.rotateTetromino(typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates);
         let expectedResult = tetris.buildTetromino(`
             -----
             ----X
             --XXX
             -----
         `);
-        assert.deepEqual(resultFunction, expectedResult);
+        assert.deepEqual(result, expectedResult);
     });
 
     it("L-tetromino rotation right to up", function () {
@@ -127,14 +127,14 @@ describe("L-tetromino", function () {
             --XXX
             -----
         `);
-        let resultFunction = tetris.rotateTetromino(typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates);
+        let result = tetris.rotateTetromino(typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates);
         let expectedResult = tetris.buildTetromino(`
             -----
             --XX-
             ---X-
             ---X-
         `);
-        assert.deepEqual(resultFunction, expectedResult);
+        assert.deepEqual(result, expectedResult);
     });
 
     it("L-tetromino rotation up to left", function () {
@@ -146,14 +146,14 @@ describe("L-tetromino", function () {
             ---X-
             ---X-
         `);
-        let resultFunction = tetris.rotateTetromino(typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates);
+        let result = tetris.rotateTetromino(typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates);
         let expectedResult = tetris.buildTetromino(`
             -----
             --XXX
             --X--
             -----
         `);
-        assert.deepEqual(resultFunction, expectedResult);
+        assert.deepEqual(result, expectedResult);
     });
 
     it("L-tetromino rotation left to down", function () {
@@ -165,14 +165,14 @@ describe("L-tetromino", function () {
             --X--
             -----
         `);
-        let resultFunction = tetris.rotateTetromino(typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates);
+        let result = tetris.rotateTetromino(typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates);
         let expectedResult = tetris.buildTetromino(`
             -----
             --X--
             --X--
             --XX-
         `);
-        assert.deepEqual(resultFunction, expectedResult);
+        assert.deepEqual(result, expectedResult);
     });
 });
 
@@ -186,14 +186,14 @@ describe("T-tetromino", function () {
             -XXX-
             -----
         `);
-        let resultFunction = tetris.rotateTetromino(typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates);
+        let result = tetris.rotateTetromino(typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates);
         let expectedResult = tetris.buildTetromino(`
             -----
             --X--
             -XX--
             --X-- 
         `);
-        assert.deepEqual(resultFunction, expectedResult);
+        assert.deepEqual(result, expectedResult);
     });
 
     it("T-tetromino rotation left to down", function () {
@@ -205,14 +205,14 @@ describe("T-tetromino", function () {
             -XX--
             --X-- 
         `);
-        let resultFunction = tetris.rotateTetromino(typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates);
+        let result = tetris.rotateTetromino(typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates);
         let expectedResult = tetris.buildTetromino(`
             -----
             -----
             -XXX-
             --X-- 
         `);
-        assert.deepEqual(resultFunction, expectedResult);
+        assert.deepEqual(result, expectedResult);
     });
 
     it("T-tetromino rotation down to right", function () {
@@ -224,14 +224,14 @@ describe("T-tetromino", function () {
             -XXX-
             --X-- 
         `);
-        let resultFunction = tetris.rotateTetromino(typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates);
+        let result = tetris.rotateTetromino(typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates);
         let expectedResult = tetris.buildTetromino(`
             -----
             --X--
             --XX-
             --X-- 
         `);
-        assert.deepEqual(resultFunction, expectedResult);
+        assert.deepEqual(result, expectedResult);
     });
 
     it("T-tetromino rotation right to up", function () {
@@ -243,14 +243,14 @@ describe("T-tetromino", function () {
             --XX-
             --X-- 
         `);
-        let resultFunction = tetris.rotateTetromino(typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates);
+        let result = tetris.rotateTetromino(typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates);
         let expectedResult = tetris.buildTetromino(`
             -----
             --X--
             -XXX-
             ----- 
         `);
-        assert.deepEqual(resultFunction, expectedResult);
+        assert.deepEqual(result, expectedResult);
     });
 });
 
@@ -264,14 +264,14 @@ describe("Z-tetromino", function () {
             --XX-
             -----
         `);
-        let resultFunction = tetris.rotateTetromino(typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates);
+        let result = tetris.rotateTetromino(typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates);
         let expectedResult = tetris.buildTetromino(`
             -----
             --X--
             -XX--
             -X---
         `);
-        assert.deepEqual(resultFunction, expectedResult);
+        assert.deepEqual(result, expectedResult);
     });
 
     it("Z-tetromino rotation vertical to horizontal", function () {
@@ -283,14 +283,14 @@ describe("Z-tetromino", function () {
             -XX--
             -X---
         `);
-        let resultFunction = tetris.rotateTetromino(typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates);
+        let result = tetris.rotateTetromino(typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates);
         let expectedResult = tetris.buildTetromino(`
             -----
             -XX--
             --XX-
             -----
         `);
-        assert.deepEqual(resultFunction, expectedResult);
+        assert.deepEqual(result, expectedResult);
     });
 });
 
@@ -304,14 +304,14 @@ describe("S-tetromino", function () {
             -XX--
             -----
         `);
-        let resultFunction = tetris.rotateTetromino(typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates);
+        let result = tetris.rotateTetromino(typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates);
         let expectedResult = tetris.buildTetromino(`
             -----
             -X---
             -XX--
             --X--
         `);
-        assert.deepEqual(resultFunction, expectedResult);
+        assert.deepEqual(result, expectedResult);
     });
 
     it("S-tetromino rotation vertical to horizontal", function () {
@@ -323,14 +323,14 @@ describe("S-tetromino", function () {
             -XX--
             --X--
         `);
-        let resultFunction = tetris.rotateTetromino(typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates);
+        let result = tetris.rotateTetromino(typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates);
         let expectedResult = tetris.buildTetromino(`
             -----
             --XX-
             -XX--
             -----
         `);
-        assert.deepEqual(resultFunction, expectedResult);
+        assert.deepEqual(result, expectedResult);
     });
 });
 
@@ -344,14 +344,14 @@ describe("I-tetromino", function () {
             --X--
             --X--
         `);
-        let resultFunction = tetris.rotateTetromino(typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates);
+        let result = tetris.rotateTetromino(typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates);
         let expectedResult = tetris.buildTetromino(`
             -----
             -XXXX
             -----
             -----
         `);
-        assert.deepEqual(resultFunction, expectedResult);
+        assert.deepEqual(result, expectedResult);
     });
 
     it("I-tetromino rotation horizontal to vertical", function () {
@@ -363,13 +363,13 @@ describe("I-tetromino", function () {
             -----
             -----
         `);
-        let resultFunction = tetris.rotateTetromino(typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates);
+        let result = tetris.rotateTetromino(typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates);
         let expectedResult = tetris.buildTetromino(`
             --X--
             --X--
             --X--
             --X--
         `);
-        assert.deepEqual(resultFunction, expectedResult);
+        assert.deepEqual(result, expectedResult);
     });
 });
