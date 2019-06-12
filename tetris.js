@@ -349,7 +349,7 @@ module.exports = {
 			if (rotationPhaseOfTetromino === "down") {
 				return { x: 0, y: 1 };
 			}
-			if (typeOfTetromino === "J") {
+			if (rotationPhaseOfTetromino === "right") {
 				return { x: 0, y: 2 };
 			}
 		}
