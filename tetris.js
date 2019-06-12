@@ -333,16 +333,6 @@ module.exports = {
 		}
 		return newCoordinates
 	},
-	rotationPhaseOfTetromino: function (arrayCoordinatesOfTetromino) {
-		let phases = []
-		if (arrayCoordinatesOfTetromino === "L" || arrayCoordinatesOfTetromino === "J" || arrayCoordinatesOfTetromino === "T") {
-			return phases = ["left", "down", "right", "up"];
-		} else if (arrayCoordinatesOfTetromino === "I" || arrayCoordinatesOfTetromino === "S" || arrayCoordinatesOfTetromino === "Z") {
-			return phases = ["vertical", "horizontal"];
-		} else if (arrayCoordinatesOfTetromino === "O") {
-			return phases = ["stable"];
-		}
-	},
 	determineShift: function (typeOfTetromino, rotationPhaseOfTetromino) {
 		if (typeOfTetromino === "O") {
 			if (rotationPhaseOfTetromino === "stable") {
