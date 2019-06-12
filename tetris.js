@@ -344,12 +344,61 @@ module.exports = {
 		}
 	},
 	determineShift: function (typeOfTetromino, rotationPhaseOfTetromino) {
-		return { x: 0, y: 0 };
+		if(rotationPhaseOfTetromino === "stable"){
+			return { x:0, y:1 };
+		}
+		if(rotationPhaseOfTetromino === "up"){
+			if (typeOfTetromino === "J" || typeOfTetromino === "L") {
+				return { x:0, y:1 };
+			}
+			if (typeOfTetromino === "T") {
+				return { x:0, y:2 };
+			}
+		}
+		if(rotationPhaseOfTetromino === "left"){
+			if (typeOfTetromino === "J" || typeOfTetromino === "T" || typeOfTetromino === "L") {
+				return { x:0, y:2 };
+			}
+		}
+		if(rotationPhaseOfTetromino === "down"){
+			if (typeOfTetromino === "T") {
+				return { x:1, y:1 };
+			}			
+			if (typeOfTetromino === "J" ||typeOfTetromino === "L") {
+				return { x:0, y:1 };
+			}
+		}
+		if(rotationPhaseOfTetromino === "right"){
+			if (typeOfTetromino === "T") {
+				return { x:-1, y:1 };
+			}
+			if (typeOfTetromino === "J" || typeOfTetromino === "L") {
+				return { x:0, y:2 };
+			}
+		}
+		if(rotationPhaseOfTetromino === "horizontal"){
+			if (typeOfTetromino === "Z" || typeOfTetromino === "S") {
+				return { x:0, y:2 };
+			}
+			if (typeOfTetromino === "I"){
+				return { x:1, y:2 };
+			}
+		}
+		if(rotationPhaseOfTetromino === "vertical"){
+			if (typeOfTetromino === "Z" || typeOfTetromino === "S") {
+				return { x:0, y:1 };
+			}
+			if (typeOfTetromino === "I"){
+				return { x:-1, y:1 };
+			}
+		}	
+
 	},
 	rotateTetromino: function (typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates) {
-		let shift = determineShift(typeOfTetromino, rotationPhaseOfTetromino)
+		let shift = this.determineShift(typeOfTetromino, rotationPhaseOfTetromino)
 		let pivot = this.calculatorCoordinateOfTopLeft(tetrominoCoordinates);
-		let newCoordinates = this.rotateArrayOfCoordinates(tetrominoCoordinates, pivot)
-		return this.shiftCoordinates(newCoordinates, shift)
+		let newCoordinates = this.rotatesArrayOfCoordinates(tetrominoCoordinates, pivot)
+		let result = this.shiftCoordinates(newCoordinates, shift)
+		return result.sort(this.orderCoordinates);
 	}
 }
