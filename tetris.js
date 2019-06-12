@@ -344,55 +344,21 @@ module.exports = {
 		}
 	},
 	determineShift: function (typeOfTetromino, rotationPhaseOfTetromino) {
-		if(rotationPhaseOfTetromino === "stable"){
+		if(rotationPhaseOfTetromino === "up" && typeOfTetromino === "J" || rotationPhaseOfTetromino === "up" && typeOfTetromino === "L"|| rotationPhaseOfTetromino === "down" && typeOfTetromino === "J" || rotationPhaseOfTetromino === "down" && typeOfTetromino === "L" || rotationPhaseOfTetromino === "stable"  || rotationPhaseOfTetromino === "vertical" && typeOfTetromino === "Z" || rotationPhaseOfTetromino === "vertical" && typeOfTetromino === "S") {
 			return { x:0, y:1 };
 		}
-		if(rotationPhaseOfTetromino === "up"){
-			if (typeOfTetromino === "J" || typeOfTetromino === "L") {
-				return { x:0, y:1 };
-			}
-			if (typeOfTetromino === "T") {
-				return { x:0, y:2 };
-			}
+		if(rotationPhaseOfTetromino === "up" && typeOfTetromino === "T" || rotationPhaseOfTetromino === "left" && typeOfTetromino === "J" || rotationPhaseOfTetromino === "left" && typeOfTetromino === "T" || rotationPhaseOfTetromino === "left" && typeOfTetromino === "L" || rotationPhaseOfTetromino === "right" &&  typeOfTetromino === "J" || typeOfTetromino === "L" || rotationPhaseOfTetromino === "horizontal" && typeOfTetromino === "Z" || rotationPhaseOfTetromino === "horizontal" && typeOfTetromino === "S"){
+			return { x:0, y:2 };
 		}
-		if(rotationPhaseOfTetromino === "left"){
-			if (typeOfTetromino === "J" || typeOfTetromino === "T" || typeOfTetromino === "L") {
-				return { x:0, y:2 };
-			}
+		if(rotationPhaseOfTetromino === "down" && typeOfTetromino === "T"){
+			return { x:1, y:1 };
 		}
-		if(rotationPhaseOfTetromino === "down"){
-			if (typeOfTetromino === "T") {
-				return { x:1, y:1 };
-			}			
-			if (typeOfTetromino === "J" ||typeOfTetromino === "L") {
-				return { x:0, y:1 };
-			}
+		if(rotationPhaseOfTetromino === "right" && typeOfTetromino === "T" || rotationPhaseOfTetromino === "vertical" && typeOfTetromino === "I"){
+			return { x:-1, y:1 };
 		}
-		if(rotationPhaseOfTetromino === "right"){
-			if (typeOfTetromino === "T") {
-				return { x:-1, y:1 };
-			}
-			if (typeOfTetromino === "J" || typeOfTetromino === "L") {
-				return { x:0, y:2 };
-			}
+		if(rotationPhaseOfTetromino === "horizontal" && typeOfTetromino === "I"){
+			return { x:1, y:2 };
 		}
-		if(rotationPhaseOfTetromino === "horizontal"){
-			if (typeOfTetromino === "Z" || typeOfTetromino === "S") {
-				return { x:0, y:2 };
-			}
-			if (typeOfTetromino === "I"){
-				return { x:1, y:2 };
-			}
-		}
-		if(rotationPhaseOfTetromino === "vertical"){
-			if (typeOfTetromino === "Z" || typeOfTetromino === "S") {
-				return { x:0, y:1 };
-			}
-			if (typeOfTetromino === "I"){
-				return { x:-1, y:1 };
-			}
-		}	
-
 	},
 	rotateTetromino: function (typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates) {
 		let shift = this.determineShift(typeOfTetromino, rotationPhaseOfTetromino)
