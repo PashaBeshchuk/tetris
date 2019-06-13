@@ -412,5 +412,6 @@ module.exports = {
 		let newCoordinates = this.rotatesArrayOfCoordinates(tetrominoCoordinates, pivot)
 		let result = this.shiftCoordinates(newCoordinates, shift)
 		return result.sort(this.orderCoordinates);
-	}
+	},
+	incrementPhase: function (typeOfTetromino, currentRotationPhaseOfTetromino) { }
 }
