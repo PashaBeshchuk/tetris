@@ -308,29 +308,109 @@ module.exports = {
 		}
 		return firstCoordinate.x - secondCoordinate.x;
 	},
-	calculatorCoordinateOfTopLeft: function (arrayCoordinates){
+	calculatorCoordinateOfTopLeft: function (arrayCoordinates) {
 		let coordinateOfTopLeft = {};
-		for(let i = 0; i < arrayCoordinates.length; i++){
-			if(coordinateOfTopLeft.x > arrayCoordinates[i].x || coordinateOfTopLeft.x === undefined){
+		for (let i = 0; i < arrayCoordinates.length; i++) {
+			if (coordinateOfTopLeft.x > arrayCoordinates[i].x || coordinateOfTopLeft.x === undefined) {
 				coordinateOfTopLeft.x = arrayCoordinates[i].x;
 			}
-			if(coordinateOfTopLeft.y > arrayCoordinates[i].y || coordinateOfTopLeft.y === undefined){
+			if (coordinateOfTopLeft.y > arrayCoordinates[i].y || coordinateOfTopLeft.y === undefined) {
 				coordinateOfTopLeft.y = arrayCoordinates[i].y;
 			}
 		}
 		return coordinateOfTopLeft
 	},
-	shiftCoordinate: function(coordinate, shift){
+	shiftCoordinate: function (coordinate, shift) {
 		let newCoordinates = {};
 		newCoordinates.x = coordinate.x + shift.x;
 		newCoordinates.y = coordinate.y + shift.y;
 		return newCoordinates;
 	},
-	shiftCoordinates: function(arrayCoordinates, shift){
+	shiftCoordinates: function (arrayCoordinates, shift) {
 		let newCoordinates = []
-		for(let elem of arrayCoordinates){
+		for (let elem of arrayCoordinates) {
 			newCoordinates.push(this.shiftCoordinate(elem, shift))
 		}
 		return newCoordinates
+	},
+	determineShift: function (typeOfTetromino, rotationPhaseOfTetromino) {
+		if (typeOfTetromino === "O") {
+			if (rotationPhaseOfTetromino === "stable") {
+				return { x: 0, y: 1 };
+			}
+		}
+		if (typeOfTetromino === "J") {
+			if (rotationPhaseOfTetromino === "up") {
+				return { x: 0, y: 1 };
+			}
+			if (rotationPhaseOfTetromino === "left") {
+				return { x: 0, y: 2 };
+			}
+			if (rotationPhaseOfTetromino === "down") {
+				return { x: 0, y: 1 };
+			}
+			if (rotationPhaseOfTetromino === "right") {
+				return { x: 0, y: 2 };
+			}
+		}
+		if (typeOfTetromino === "L") {
+			if (rotationPhaseOfTetromino === "up") {
+				return { x: 0, y: 1 };
+			}
+			if (rotationPhaseOfTetromino === "left") {
+				return { x: 0, y: 2 };
+			}
+			if (rotationPhaseOfTetromino === "down") {
+				return { x: 0, y: 1 };
+			}
+			if (rotationPhaseOfTetromino === "right") {
+				return { x: 0, y: 2 };
+			}
+		}
+		if (typeOfTetromino === "T") {
+			if (rotationPhaseOfTetromino === "up") {
+				return { x: 0, y: 2 };
+			}
+			if (rotationPhaseOfTetromino === "left") {
+				return { x: 0, y: 2 };
+			}
+			if (rotationPhaseOfTetromino === "down") {
+				return { x: 1, y: 1 };
+			}
+			if (rotationPhaseOfTetromino === "right") {
+				return { x: -1, y: 1 };
+			}
+		}
+		if (typeOfTetromino === "S") {
+			if (rotationPhaseOfTetromino === "horizontal") {
+				return { x: 0, y: 2 };
+			}
+			if (rotationPhaseOfTetromino === "vertical") {
+				return { x: 0, y: 1 };
+			}
+		}
+		if (typeOfTetromino === "Z") {
+			if (rotationPhaseOfTetromino === "horizontal") {
+				return { x: 0, y: 2 };
+			}
+			if (rotationPhaseOfTetromino === "vertical") {
+				return { x: 0, y: 1 };
+			}
+		}
+		if (typeOfTetromino === "I") {
+			if (rotationPhaseOfTetromino === "horizontal") {
+				return { x: 1, y: 2 };
+			}
+			if (rotationPhaseOfTetromino === "vertical") {
+				return { x: -1, y: 1 };
+			}
+		}
+	},
+	rotateTetromino: function (typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates) {
+		let shift = this.determineShift(typeOfTetromino, rotationPhaseOfTetromino)
+		let pivot = this.calculatorCoordinateOfTopLeft(tetrominoCoordinates);
+		let newCoordinates = this.rotatesArrayOfCoordinates(tetrominoCoordinates, pivot)
+		let result = this.shiftCoordinates(newCoordinates, shift)
+		return result.sort(this.orderCoordinates);
 	}
 }

@@ -1,5 +1,5 @@
 var assert = require('chai').assert;
-var tetris = require('../tetris')
+var tetris = require('../tetris');
 describe("Incoming array is empty", function () {
     it("Array is empty", function () {
         let arrayOfCoordinates = [];
