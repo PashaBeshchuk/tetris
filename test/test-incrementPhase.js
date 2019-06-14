@@ -44,3 +44,101 @@ describe("I, Z, S-tetromino rotation phases", function (){
         assert.equal(expectedPhase, changePhase)
     })
 })
+describe("L, J, T-tetromino rotation phases", function (){
+    it("L-tetromino chenges its phase from up to left", function () {
+        let typeOfTetromino = "L"
+        let phaseRotation = "up"
+        let changePhase = tetris.incrementPhase(typeOfTetromino, phaseRotation)
+        let expectedPhase = "left"
+        assert.equal(expectedPhase, changePhase)
+    })
+    it("L-tetromino chenges its phase from left to down", function () {
+        let typeOfTetromino = "L"
+        let phaseRotation = "left"
+        let changePhase = tetris.incrementPhase(typeOfTetromino, phaseRotation)
+        let expectedPhase = "down"
+        assert.equal(expectedPhase, changePhase)
+    })
+    it("L-tetromino chenges its phase from down to right", function () {
+        let typeOfTetromino = "L"
+        let phaseRotation = "down"
+        let changePhase = tetris.incrementPhase(typeOfTetromino, phaseRotation)
+        let expectedPhase = "right"
+        assert.equal(expectedPhase, changePhase)
+    })
+    it("L-tetromino chenges its phase from right to up", function () {
+        let typeOfTetromino = "L"
+        let phaseRotation = "right"
+        let changePhase = tetris.incrementPhase(typeOfTetromino, phaseRotation)
+        let expectedPhase = "up"
+        assert.equal(expectedPhase, changePhase)
+    })
+
+    it("J-tetromino chenges its phase from up to left", function () {
+        let typeOfTetromino = "J"
+        let phaseRotation = "up"
+        let changePhase = tetris.incrementPhase(typeOfTetromino, phaseRotation)
+        let expectedPhase = "left"
+        assert.equal(expectedPhase, changePhase)
+    })
+    it("J-tetromino chenges its phase from left to down", function () {
+        let typeOfTetromino = "J"
+        let phaseRotation = "left"
+        let changePhase = tetris.incrementPhase(typeOfTetromino, phaseRotation)
+        let expectedPhase = "down"
+        assert.equal(expectedPhase, changePhase)
+    })
+    it("J-tetromino chenges its phase from down to right", function () {
+        let typeOfTetromino = "J"
+        let phaseRotation = "down"
+        let changePhase = tetris.incrementPhase(typeOfTetromino, phaseRotation)
+        let expectedPhase = "right"
+        assert.equal(expectedPhase, changePhase)
+    })
+    it("J-tetromino chenges its phase from right to up", function () {
+        let typeOfTetromino = "J"
+        let phaseRotation = "right"
+        let changePhase = tetris.incrementPhase(typeOfTetromino, phaseRotation)
+        let expectedPhase = "up"
+        assert.equal(expectedPhase, changePhase)
+    })
+
+    it("T-tetromino chenges its phase from up to left", function () {
+        let typeOfTetromino = "T"
+        let phaseRotation = "up"
+        let changePhase = tetris.incrementPhase(typeOfTetromino, phaseRotation)
+        let expectedPhase = "left"
+        assert.equal(expectedPhase, changePhase)
+    })
+    it("T-tetromino chenges its phase from left to down", function () {
+        let typeOfTetromino = "T"
+        let phaseRotation = "left"
+        let changePhase = tetris.incrementPhase(typeOfTetromino, phaseRotation)
+        let expectedPhase = "down"
+        assert.equal(expectedPhase, changePhase)
+    })
+    it("T-tetromino chenges its phase from down to right", function () {
+        let typeOfTetromino = "T"
+        let phaseRotation = "down"
+        let changePhase = tetris.incrementPhase(typeOfTetromino, phaseRotation)
+        let expectedPhase = "right"
+        assert.equal(expectedPhase, changePhase)
+    })
+    it("T-tetromino chenges its phase from right to up", function () {
+        let typeOfTetromino = "T"
+        let phaseRotation = "right"
+        let changePhase = tetris.incrementPhase(typeOfTetromino, phaseRotation)
+        let expectedPhase = "up"
+        assert.equal(expectedPhase, changePhase)
+    })
+})
+
+describe("O-tetromino rotation phases", function (){
+    it("O-tetromino chenges its phase from right to up", function () {
+        let typeOfTetromino = "O"
+        let phaseRotation = "stable"
+        let changePhase = tetris.incrementPhase(typeOfTetromino, phaseRotation)
+        let expectedPhase = "stable"
+        assert.equal(expectedPhase, changePhase)
+    })
+})
