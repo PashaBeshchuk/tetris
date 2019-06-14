@@ -413,5 +413,33 @@ module.exports = {
 		let result = this.shiftCoordinates(newCoordinates, shift)
 		return result.sort(this.orderCoordinates);
 	},
-	incrementPhase: function (typeOfTetromino, currentRotationPhaseOfTetromino) { }
+	incrementPhase: function (typeOfTetromino, currentRotationPhaseOfTetromino) {
+		if(typeOfTetromino === "I" || typeOfTetromino === "S" || typeOfTetromino === "Z"){
+			if(currentRotationPhaseOfTetromino === "vertical"){
+				return "horizontal"
+			}
+			if(currentRotationPhaseOfTetromino === "horizontal"){
+				return "vertical"
+			}
+		}
+		if(typeOfTetromino === "L" || typeOfTetromino === "J" || typeOfTetromino === "T"){
+			if(currentRotationPhaseOfTetromino === "up"){
+				return "left"
+			}
+			if(currentRotationPhaseOfTetromino === "left"){
+				return "down"
+			}
+			if(currentRotationPhaseOfTetromino === "down"){
+				return "right"
+			}
+			if(currentRotationPhaseOfTetromino === "right"){
+				return "up"
+			}
+		}
+		if(typeOfTetromino === "O"){
+			if(currentRotationPhaseOfTetromino === "stable"){
+				return "stable"
+			}
+		}
+	 }
 }
