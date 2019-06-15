@@ -417,32 +417,18 @@ module.exports = {
 		let arrayPhases = [];
 		if(typeOfTetromino === "I" || typeOfTetromino === "S" || typeOfTetromino === "Z"){
 			arrayPhases = ["vertical","horizontal"];
-			switch(currentRotationPhaseOfTetromino){
-				case arrayPhases[0]:
-					return arrayPhases[1];
-				case arrayPhases[1]:
-					return arrayPhases[0];
-			}
 		}
 		if(typeOfTetromino === "L" || typeOfTetromino === "J" || typeOfTetromino === "T"){
 			arrayPhases = ["up","left","down","right"];
-			switch(currentRotationPhaseOfTetromino){
-				case arrayPhases[0]:
-					return arrayPhases[1];
-				case arrayPhases[1]:
-					return arrayPhases[2];
-				case arrayPhases[2]:
-					return arrayPhases[3];
-				case arrayPhases[3]:
-					return arrayPhases[0];
-			}
 		}
 		if(typeOfTetromino === "O"){
 			arrayPhases = ["stable"];
-			switch(currentRotationPhaseOfTetromino){
-				case arrayPhases[0]:
-					return arrayPhases[0];
-			}
 		}
-	 }
+		let value = arrayPhases.indexOf(currentRotationPhaseOfTetromino)
+		if(arrayPhases.length-1 > value){
+			return arrayPhases[value+1]
+		}else if(arrayPhases.length-1 >= value){
+			return arrayPhases[0]
+		}
+	}
 }
