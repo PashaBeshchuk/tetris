@@ -424,10 +424,10 @@ module.exports = {
 		if(typeOfTetromino === "O"){
 			arrayPhases = ["stable"];
 		}
-		let value = arrayPhases.indexOf(currentRotationPhaseOfTetromino)
-		if(arrayPhases.length-1 > value){
-			return arrayPhases[value+1]
-		}else if(arrayPhases.length-1 >= value){
+		let numberPhase = arrayPhases.indexOf(currentRotationPhaseOfTetromino)
+		if(numberPhase !== arrayPhases.length-1){
+			return arrayPhases[numberPhase+1]
+		}else if(numberPhase === arrayPhases.length-1  ){
 			return arrayPhases[0]
 		}
 	}
