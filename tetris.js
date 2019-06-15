@@ -412,5 +412,23 @@ module.exports = {
 		let newCoordinates = this.rotatesArrayOfCoordinates(tetrominoCoordinates, pivot)
 		let result = this.shiftCoordinates(newCoordinates, shift)
 		return result.sort(this.orderCoordinates);
+	},
+	incrementPhase: function (typeOfTetromino, currentRotationPhaseOfTetromino) {
+		let arrayPhases = [];
+		if (typeOfTetromino === "I" || typeOfTetromino === "S" || typeOfTetromino === "Z") {
+			arrayPhases = ["vertical", "horizontal"];
+		}
+		if (typeOfTetromino === "L" || typeOfTetromino === "J" || typeOfTetromino === "T") {
+			arrayPhases = ["up", "left", "down", "right"];
+		}
+		if (typeOfTetromino === "O") {
+			arrayPhases = ["stable"];
+		}
+		let numberPhase = arrayPhases.indexOf(currentRotationPhaseOfTetromino)
+		if (numberPhase !== arrayPhases.length - 1) {
+			return arrayPhases[numberPhase + 1]
+		} else {
+			return arrayPhases[0]
+		}
 	}
 }
