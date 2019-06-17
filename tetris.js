@@ -430,6 +430,5 @@ module.exports = {
 		} else {
 			return arrayPhases[0]
 		}
-	},
-	newFunction:
+	}
 }
