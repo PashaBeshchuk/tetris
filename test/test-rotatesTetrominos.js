@@ -1,25 +1,25 @@
 var assert = require('chai').assert;
 var tetris = require('../tetris');
 describe("rotate L-tetromino", function (){
-    class Tetramino = {
+    class Tetromino {
         constructor(tetramino, phase, coordinates){
             this.typeTetramoni = tetramino
             this.initialRotationPhase = phase;
             this.initialCoordinates = coordinates;
         }
-        tetris.rotateTetromino(){
+        _rotateTetromino(){
 					
         }
-        tetris.incrementPhase(){
+        _incrementPhase(){
             
         }
-        tetris.finelRotationTetromino(field){
+        _finelRotationTetromino(field){
 
         }
             
     }
     it("L-tetromino rotation", function(){
-        let typeTetramoni = "L";
+        let typeTetromino = "L";
         let coordinatesTetromino = tetris.getCoordinates(`
             -----
             ----X
@@ -27,6 +27,6 @@ describe("rotate L-tetromino", function (){
             -----
         `);
         let phase = "rihgt";
-        let L-tetromino = class Tetramino(typeTetramoni, phase, coordinatesTetromino);
+        //let LTetromino = class Tetramino(typeTetramoni, phase, coordinatesTetromino);
     })
 })
