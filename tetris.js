@@ -2,14 +2,11 @@ module.exports = {
 	//тетрамино массив из 4 координат [{x: 1, y: 2}, {x: 2, y: 2}, {x: 3, y: 2}, {x: 4, y: 2}]
 	// field это массив двухмерный булин значений, если true в ней есть блок, false блока нет
 	rotateLine: function (field, tetromino) {
-		let lengthField_X = field[0].length;
-		let lengthField_Y = field.length;
 		let turningPoint = [];
 		let arrCoordinates_X = [];
 		let arrCoordinates_Y = [];
 		let a = -1;
 		let localTetromino = []
-		let localField = []
 
 		tetromino.forEach(function (coordinates) {
 			localTetromino.push(Object.assign({}, coordinates));
@@ -17,16 +14,11 @@ module.exports = {
 		tetromino.forEach(function (coordinates) {
 			turningPoint.push(Object.assign({}, coordinates));
 		})
-		field.forEach(function (coordinates) {
-			localField.push(Object.assign({}, coordinates));
-		})
 
 		for (let elem of turningPoint) {
 			arrCoordinates_X.push(elem.x);
 			arrCoordinates_Y.push(elem.y);
 		}
-
-		//this.checkThatTheFieldIsFree(arrayOfCoordinates, localField, lengthField_X, lengthField_Y)
 
 		if ((arrCoordinates_Y[0] === arrCoordinates_Y[1]) && (arrCoordinates_Y[2] === arrCoordinates_Y[3]) && (arrCoordinates_Y[1] === arrCoordinates_Y[2])) {
 
@@ -36,7 +28,7 @@ module.exports = {
 				a++;
 			}
 
-			if (this.checkThatTheFieldIsFree(turningPoint, localField, lengthField_X, lengthField_Y)) {
+			if (this.checkThatTheFieldIsFree(turningPoint, field)) {
 				return turningPoint
 			} else {
 				return localTetromino
@@ -55,7 +47,7 @@ module.exports = {
 				a++;
 			}
 
-			if (this.checkThatTheFieldIsFree(cloneTetromino, localField, lengthField_X, lengthField_Y)) {
+			if (this.checkThatTheFieldIsFree(cloneTetromino, field)) {
 				return cloneTetromino
 			} else {
 				return localTetromino
@@ -84,7 +76,7 @@ module.exports = {
 					}
 					newCoordinates.push(obj)
 				}
-				if (module.exports.checkThatTheFieldIsFree(newCoordinates, localField, lengthField_X, lengthField_Y)) {
+				if (module.exports.checkThatTheFieldIsFree(newCoordinates, field)) {
 					return newCoordinates
 				} else {
 					return localTetromino
@@ -113,7 +105,7 @@ module.exports = {
 					}
 					newCoordinates.push(obj)
 				}
-				if (module.exports.checkThatTheFieldIsFree(newCoordinates, localField, lengthField_X, lengthField_Y)) {
+				if (module.exports.checkThatTheFieldIsFree(newCoordinates, field)) {
 					return newCoordinates
 				} else {
 					return localTetromino
@@ -143,7 +135,7 @@ module.exports = {
 					newCoordinates.push(obj)
 				}
 
-				if (module.exports.checkThatTheFieldIsFree(newCoordinates, localField, lengthField_X, lengthField_Y)) {
+				if (module.exports.checkThatTheFieldIsFree(newCoordinates, field)) {
 					return newCoordinates
 				} else {
 					return localTetromino
@@ -173,7 +165,7 @@ module.exports = {
 					newCoordinates.push(obj)
 				}
 
-				if (module.exports.checkThatTheFieldIsFree(newCoordinates, localField, lengthField_X, lengthField_Y)) {
+				if (module.exports.checkThatTheFieldIsFree(newCoordinates, field)) {
 					return newCoordinates
 				} else {
 					return localTetromino
@@ -184,24 +176,26 @@ module.exports = {
 
 	},
 
-	checkThatTheFieldIsFree: function (arrayOfCoordinates, localField, lengthField_X, lengthField_Y) {
-		if (this.allItemsOnTheField(arrayOfCoordinates, lengthField_X, lengthField_Y) === false) {
+	checkThatTheFieldIsFree: function (arrayOfCoordinates, field) {
+		if (!this.allItemsOnTheField(arrayOfCoordinates, field)) {
 			return false
 		}
 		for (let coordinate of arrayOfCoordinates) {
-			if (localField[coordinate.y][coordinate.x] === true) {
+			if (field[coordinate.y][coordinate.x]) {
 				return false
 			}
 		}
 		return true;
 	},
 
-	allItemsOnTheField: function (arrayOfCoordinates, lengthField_X, lengthField_Y) {
+	allItemsOnTheField: function (arrayOfCoordinates, field) {
+		let lengthField_X = field[0].length;
+		let lengthField_Y = field.length;
 		for (let coordinate of arrayOfCoordinates) {
 			if (
 				(coordinate.x < 0 || coordinate.y < 0) ||
-				(coordinate.x > (lengthField_X - 1)) ||
-				(coordinate.y > (lengthField_Y - 1))
+				(coordinate.x >= lengthField_X) ||
+				(coordinate.y >= lengthField_Y)
 			) {
 				return false;
 			}
@@ -230,7 +224,7 @@ module.exports = {
 		let arr = stringField.split("\n")
 		for (let k = 0; k < arr.length; k++) {
 			for (let z = 0; z < arr[k].length; z++) {
-				if (arr[k][z] != "-" && arr[k][z] != "X" && arr[k][z] != false) {
+				if (arr[k][z] !== "-" && arr[k][z] !== "X" && arr[k][z] != false) {
 					throw new Error("invalid symbol")
 				}
 			}
@@ -247,7 +241,7 @@ module.exports = {
 					elementsForNewArray.push(true)
 				}
 			}
-			if (elementsForNewArray.length != 0) {
+			if (elementsForNewArray.length !== 0) {
 				newArr.push(elementsForNewArray)
 			}
 		}
@@ -291,7 +285,7 @@ module.exports = {
 		this.getCoordinates(stringOfCoordinates).forEach(function (coordinates) {
 			arrayOfCoordinates.push(Object.assign({}, coordinates));
 		})
-		if (arrayOfCoordinates.length != 4) {
+		if (arrayOfCoordinates.length !== 4) {
 			throw new Error("tetromino size is not correct");
 		}
 		return arrayOfCoordinates;
