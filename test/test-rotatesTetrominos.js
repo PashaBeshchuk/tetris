@@ -13,6 +13,7 @@ describe("Class tetramino", function () {
             -----
         `);
         let lTetromino = new Tetromino(typeOfTetromino, phase, coordinatesTetromino)
+        let rotateTetromino = finalTetraminoRotate(lTetromino.typeOfTetromino, lTetromino.typeOfTetromino, lTetromino.initialCoordinates)
     })
 
     it("J-tetromino rotation", function () {
