@@ -431,4 +431,15 @@ module.exports = {
 			return arrayPhases[0]
 		}
 	}
+	class Tetromino {
+		constructor(typeOfTetromino, initialRotationPhase, initialCoordinates) {
+			this.typeOfTetromino = typeOfTetromino
+			this.initialRotationPhase = initialRotationPhase;
+			this.initialCoordinates = initialCoordinates;
+		}
+		tetris.rotateTetromino(typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates)
+	
+		tetris.incrementPhase(typeOfTetromino, currentRotationPhaseOfTetromino)
+	}
+	
 }
