@@ -432,11 +432,12 @@ module.exports = {
 		}
 	}
 	class Tetromino {
-		constructor(typeOfTetromino, initialRotationPhase, initialCoordinates) {
+		constructor(typeOfTetromino, rotationPhase, coordinates) {
 			this.typeOfTetromino = typeOfTetromino
-			this.initialRotationPhase = initialRotationPhase;
-			this.initialCoordinates = initialCoordinates;
+			this.rotationPhase   = rotationPhase;
+			this.coordinates     = coordinates;
 		}
+		rotateTetromino(field)
 	}
 	
 }
