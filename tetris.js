@@ -437,9 +437,6 @@ module.exports = {
 			this.initialRotationPhase = initialRotationPhase;
 			this.initialCoordinates = initialCoordinates;
 		}
-		tetris.rotateTetromino(typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates)
-	
-		tetris.incrementPhase(typeOfTetromino, currentRotationPhaseOfTetromino)
 	}
 	
 }

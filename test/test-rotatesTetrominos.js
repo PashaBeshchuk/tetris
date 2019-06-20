@@ -13,8 +13,19 @@ describe("Class tetramino", function () {
             -----
         `);
         let lTetromino = new Tetromino(typeOfTetromino, phase, coordinatesTetromino)
-        let rotateTetromino = finalTetraminoRotate(lTetromino.typeOfTetromino, lTetromino.typeOfTetromino, lTetromino.initialCoordinates)
+        let rotateTetrominoUp    = tetris.rotateTetromino(lTetromino.typeOfTetromino, lTetromino.typeOfTetromino, lTetromino.initialCoordinates)
+        let rotateTetrominoLeft  = tetris.rotateTetromino(lTetromino.typeOfTetromino, lTetromino.typeOfTetromino, lTetromino.initialCoordinates)
+        let rotateTetrominoDown  = tetris.rotateTetromino(lTetromino.typeOfTetromino, lTetromino.typeOfTetromino, lTetromino.initialCoordinates)
+        let rotateTetrominoRight = tetris.rotateTetromino(lTetromino.typeOfTetromino, lTetromino.typeOfTetromino, lTetromino.initialCoordinates)
+        let expected = tetris.getCoordinates(`
+            -----
+            ----X
+            --XXX
+            -----
+        `); 
+        assert.deepEqual(rotateTetrominoUp, expected)
     })
+
 
     it("J-tetromino rotation", function () {
         let typeOfTetromino = "J";
