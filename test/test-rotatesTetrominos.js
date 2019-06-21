@@ -5,7 +5,7 @@ describe("Rotate all tetromino", function () {
 
     it("L-tetromino rotation", function () {
         let typeOfTetromino = "L";
-        let phase = "rihgt";
+        let phase = "right";
         let coordinatesTetromino = tetris.getCoordinates(`
             -----
             ----X
@@ -36,7 +36,7 @@ describe("Rotate all tetromino", function () {
 
     it("J-tetromino rotation", function () {
         let typeOfTetromino = "J";
-        let phase = "rihgt";
+        let phase = "right";
         let coordinatesTetromino = tetris.getCoordinates(`
             -XXX-
             ---X-
@@ -162,7 +162,6 @@ describe("Rotate all tetromino", function () {
             -----
         `);
         let iTetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinatesTetromino)
-        let rotateTetrominoVertical    = tetris.rotateTetromino(field)
         let rotateTetrominoHorizontal  = tetris.rotateTetromino(field)
         let expected = tetris.getCoordinates(`
             -----
@@ -205,7 +204,7 @@ describe("Rotate all tetromino", function () {
 describe("Tetramino can not rotate", function (){
     it("L tetromino can not rotate, there is an element on the way", function (){
         let typeOfTetromino = "L";
-        let phase = "rihgt";
+        let phase = "right";
         let coordinatesTetromino = tetris.getCoordinates(`
             -----
             ----X
