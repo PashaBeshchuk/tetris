@@ -430,14 +430,20 @@ module.exports = {
 		} else {
 			return arrayPhases[0]
 		}
-	}
-	class Tetromino {
+	},
+	Tetromino: class {
 		constructor(typeOfTetromino, rotationPhase, coordinates) {
 			this.typeOfTetromino = typeOfTetromino
-			this.rotationPhase   = rotationPhase;
-			this.coordinates     = coordinates;
+			this.rotationPhase = rotationPhase;
+			this.coordinates = coordinates;
 		}
-		rotateTetromino(field)
+		rotateTetromino(field) {
+			let tetrominoRotateResult = module.exports.rotateTetromino(this.typeOfTetromino, this.rotationPhase, this.coordinates)
+			if (module.exports.checkThatTheFieldIsFree(tetrominoRotateResult, field)) {
+				return tetrominoRotateResult
+			} else {
+				return this.coordinates
+			}
+		}
 	}
-	
 }
