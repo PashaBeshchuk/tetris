@@ -13,10 +13,10 @@ describe("Rotate all tetromino", function () {
             -----
         `);
         let field = tetris.buildField(`
-            ----
-            ----
-            ----
-            ----
+            -----
+            -----
+            -----
+            -----
         `);
 
         let lTetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinatesTetromino);
@@ -162,6 +162,7 @@ describe("Rotate all tetromino", function () {
             -----
         `);
         let iTetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinatesTetromino)
+        let rotateTetrominoVertical    = iTetromino.rotateTetromino(field)
         let rotateTetrominoHorizontal  = iTetromino.rotateTetromino(field)
         let expected = tetris.getCoordinates(`
             -----
