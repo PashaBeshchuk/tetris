@@ -20,16 +20,16 @@ describe("Rotate all tetromino", function () {
         `);
 
         let lTetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinatesTetromino);
-        let rotateTetrominoUp    = lTetromino.rotateTetromino(field);
-        let rotateTetrominoLeft  = lTetromino.rotateTetromino(field);
-        let rotateTetrominoDown  = lTetromino.rotateTetromino(field);
+        let rotateTetrominoUp = lTetromino.rotateTetromino(field);
+        let rotateTetrominoLeft = lTetromino.rotateTetromino(field);
+        let rotateTetrominoDown = lTetromino.rotateTetromino(field);
         let rotateTetrominoRight = lTetromino.rotateTetromino(field);
         let expected = tetris.getCoordinates(`
             -----
             ----X
             --XXX
             -----
-        `); 
+        `);
         assert.deepEqual(rotateTetrominoRight, expected);
     })
 
@@ -50,9 +50,9 @@ describe("Rotate all tetromino", function () {
             -----
         `);
         let jTetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinatesTetromino)
-        let rotateTetrominoUp    = jTetromino.rotateTetromino(field);
-        let rotateTetrominoLeft  = jTetromino.rotateTetromino(field);
-        let rotateTetrominoDown  = jTetromino.rotateTetromino(field);
+        let rotateTetrominoUp = jTetromino.rotateTetromino(field);
+        let rotateTetrominoLeft = jTetromino.rotateTetromino(field);
+        let rotateTetrominoDown = jTetromino.rotateTetromino(field);
         let rotateTetrominoRight = jTetromino.rotateTetromino(field);
         let expected = tetris.getCoordinates(`
             -XXX-
@@ -79,10 +79,10 @@ describe("Rotate all tetromino", function () {
             -----
         `);
         let tTetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinatesTetromino)
-        let rotateTetrominoLeft  = tTetromino.rotateTetromino(field)
-        let rotateTetrominoDown  = tTetromino.rotateTetromino(field)
+        let rotateTetrominoLeft = tTetromino.rotateTetromino(field)
+        let rotateTetrominoDown = tTetromino.rotateTetromino(field)
         let rotateTetrominoRight = tTetromino.rotateTetromino(field)
-        let rotateTetrominoUp    = tTetromino.rotateTetromino(field)
+        let rotateTetrominoUp = tTetromino.rotateTetromino(field)
         let expected = tetris.getCoordinates(`
             -----
             --X--
@@ -108,8 +108,8 @@ describe("Rotate all tetromino", function () {
             -----
         `);
         let zTetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinatesTetromino)
-        let rotateTetrominoVertical    = zTetromino.rotateTetromino(field)
-        let rotateTetrominoHorizontal  = zTetromino.rotateTetromino(field)
+        let rotateTetrominoVertical = zTetromino.rotateTetromino(field)
+        let rotateTetrominoHorizontal = zTetromino.rotateTetromino(field)
         let expected = tetris.getCoordinates(`
             -----
             -XX--
@@ -135,8 +135,8 @@ describe("Rotate all tetromino", function () {
             -----
         `);
         let sTetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinatesTetromino)
-        let rotateTetrominoVertical    = sTetromino.rotateTetromino(field)
-        let rotateTetrominoHorizontal  = sTetromino.rotateTetromino(field)
+        let rotateTetrominoVertical = sTetromino.rotateTetromino(field)
+        let rotateTetrominoHorizontal = sTetromino.rotateTetromino(field)
         let expected = tetris.getCoordinates(`
             -----
             --XX-
@@ -162,8 +162,8 @@ describe("Rotate all tetromino", function () {
             -----
         `);
         let iTetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinatesTetromino)
-        let rotateTetrominoVertical    = iTetromino.rotateTetromino(field)
-        let rotateTetrominoHorizontal  = iTetromino.rotateTetromino(field)
+        let rotateTetrominoVertical = iTetromino.rotateTetromino(field)
+        let rotateTetrominoHorizontal = iTetromino.rotateTetromino(field)
         let expected = tetris.getCoordinates(`
             -----
             -XXXX
@@ -189,9 +189,9 @@ describe("Rotate all tetromino", function () {
             -----
         `);
         let oTetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinatesTetromino)
-        let rotateTetrominoFirst  = oTetromino.rotateTetromino(field)
+        let rotateTetrominoFirst = oTetromino.rotateTetromino(field)
         let rotateTetrominoSecond = oTetromino.rotateTetromino(field)
-        let rotateTetrominoThird  = oTetromino.rotateTetromino(field)
+        let rotateTetrominoThird = oTetromino.rotateTetromino(field)
         let rotateTetrominoFourth = oTetromino.rotateTetromino(field)
         let expected = tetris.getCoordinates(`
             -----
@@ -200,10 +200,10 @@ describe("Rotate all tetromino", function () {
             -----
         `);
         assert.deepEqual(rotateTetrominoFourth, expected)
-    });``
+    }); ``
 })
-describe("Tetramino can not rotate", function (){
-    it("L tetromino can not rotate, there is an element on the way", function (){
+describe("Tetramino can not rotate", function () {
+    it("L tetromino can not rotate, there is an element on the way", function () {
         let typeOfTetromino = "L";
         let phase = "right";
         let coordinatesTetromino = tetris.getCoordinates(`
@@ -225,10 +225,10 @@ describe("Tetramino can not rotate", function (){
             ----X
             --XXX
             -----
-        `); 
+        `);
         assert.deepEqual(rotateTetromino, expected);
     })
-    it("L tetromino can not rotate, too right to the edge", function (){
+    it("L tetromino can not rotate, too right to the edge", function () {
         let typeOfTetromino = "L";
         let phase = "up";
         let coordinatesTetromino = tetris.getCoordinates(`
@@ -250,11 +250,11 @@ describe("Tetramino can not rotate", function (){
             ---XX
             ----X
             ----X
-        `); 
+        `);
         assert.deepEqual(rotateTetromino, expected);
     })
 
-    it("J tetromino can not rotate, there is an element on the way", function (){
+    it("J tetromino can not rotate, there is an element on the way", function () {
         let typeOfTetromino = "J";
         let phase = "up";
         let coordinatesTetromino = tetris.getCoordinates(`
@@ -280,7 +280,7 @@ describe("Tetramino can not rotate", function (){
         assert.deepEqual(rotateTetromino, expected)
     })
 
-    it("J tetromino can not rotate, too down to the edge", function (){
+    it("J tetromino can not rotate, too down to the edge", function () {
         let typeOfTetromino = "J";
         let phase = "left";
         let coordinatesTetromino = tetris.getCoordinates(`
@@ -305,7 +305,7 @@ describe("Tetramino can not rotate", function (){
         `);
         assert.deepEqual(rotateTetromino, expected)
     })
-    it("T tetromino can not rotate, there is an element on the way", function (){
+    it("T tetromino can not rotate, there is an element on the way", function () {
         let typeOfTetromino = "T";
         let phase = "left";
         let coordinatesTetromino = tetris.getCoordinates(`
@@ -321,8 +321,8 @@ describe("Tetramino can not rotate", function (){
             -----
         `);
         let tTetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinatesTetromino)
-        let rotateTetromino  = tTetromino.rotateTetromino(field)
-        
+        let rotateTetromino = tTetromino.rotateTetromino(field)
+
         let expected = tetris.getCoordinates(`
             -----
             --X--
@@ -331,7 +331,7 @@ describe("Tetramino can not rotate", function (){
         `);
         assert.deepEqual(rotateTetromino, expected)
     })
-    it("T tetromino can not rotate, too left to the edge", function (){
+    it("T tetromino can not rotate, too left to the edge", function () {
         let typeOfTetromino = "T";
         let phase = "right";
         let coordinatesTetromino = tetris.getCoordinates(`
@@ -347,7 +347,7 @@ describe("Tetramino can not rotate", function (){
             -----
         `);
         let tTetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinatesTetromino)
-        let rotateTetromino  = tTetromino.rotateTetromino(field)
+        let rotateTetromino = tTetromino.rotateTetromino(field)
         let expected = tetris.getCoordinates(`
             -----
             X----
@@ -356,7 +356,7 @@ describe("Tetramino can not rotate", function (){
         `);
         assert.deepEqual(rotateTetromino, expected)
     })
-    it("Z tetromino can not rotate, there is an element on the way", function (){
+    it("Z tetromino can not rotate, there is an element on the way", function () {
         let typeOfTetromino = "Z";
         let phase = "vertical";
         let coordinatesTetromino = tetris.getCoordinates(`
@@ -381,7 +381,7 @@ describe("Tetramino can not rotate", function (){
         `);
         assert.deepEqual(rotateTetromino, expected)
     })
-    it("Z tetromino can not rotate, too down to the edge", function (){
+    it("Z tetromino can not rotate, too down to the edge", function () {
         let typeOfTetromino = "Z";
         let phase = "horizontal";
         let coordinatesTetromino = tetris.getCoordinates(`
@@ -406,7 +406,7 @@ describe("Tetramino can not rotate", function (){
         `);
         assert.deepEqual(rotateTetromino, expected)
     })
-    it("S tetromino can not rotate, there is an element on the way", function (){
+    it("S tetromino can not rotate, there is an element on the way", function () {
         let typeOfTetromino = "S";
         let phase = "vertical";
         let coordinatesTetromino = tetris.getCoordinates(`
@@ -431,7 +431,7 @@ describe("Tetramino can not rotate", function (){
         `);
         assert.deepEqual(rotateTetromino, expected)
     })
-    it("S tetromino can not rotate, too right to the edge", function (){
+    it("S tetromino can not rotate, too right to the edge", function () {
         let typeOfTetromino = "S";
         let phase = "vertical";
         let coordinatesTetromino = tetris.getCoordinates(`
@@ -456,7 +456,7 @@ describe("Tetramino can not rotate", function (){
         `);
         assert.deepEqual(rotateTetromino, expected)
     })
-    it("I tetromino can not rotate, there is an element on the way", function (){
+    it("I tetromino can not rotate, there is an element on the way", function () {
         let typeOfTetromino = "I";
         let phase = "horizontal";
         let coordinatesTetromino = tetris.getCoordinates(`
@@ -482,7 +482,7 @@ describe("Tetramino can not rotate", function (){
         assert.deepEqual(rotateTetromino, expected)
     })
 
-    it("I tetromino can not rotate, too down to the edge", function (){
+    it("I tetromino can not rotate, too down to the edge", function () {
         let typeOfTetromino = "I";
         let phase = "horizontal";
         let coordinatesTetromino = tetris.getCoordinates(`
@@ -507,7 +507,7 @@ describe("Tetramino can not rotate", function (){
         `);
         assert.deepEqual(rotateTetromino, expected)
     })
-    it("O tetromino can not rotate, too down to the edge and field have element", function (){
+    it("O tetromino can not rotate, too down to the edge and field have element", function () {
         let typeOfTetromino = "O";
         let phase = "stable";
         let coordinatesTetromino = tetris.getCoordinates(`
@@ -523,7 +523,7 @@ describe("Tetramino can not rotate", function (){
             -----
         `);
         let oTetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinatesTetromino)
-        let rotateTetromino  = oTetromino.rotateTetromino(field)
+        let rotateTetromino = oTetromino.rotateTetromino(field)
         let expected = tetris.getCoordinates(`
             -----
             -----

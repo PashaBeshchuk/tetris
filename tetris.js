@@ -441,11 +441,14 @@ module.exports = {
 			let tetrominoRotateResult = module.exports.rotateTetromino(this.typeOfTetromino, this.rotationPhase, this.coordinates)
 			if (module.exports.checkThatTheFieldIsFree(tetrominoRotateResult, field)) {
 				this.rotationPhase = module.exports.incrementPhase(this.typeOfTetromino, this.rotationPhase)
-				this.coordinates   = tetrominoRotateResult
+				this.coordinates = tetrominoRotateResult
 				return tetrominoRotateResult
 			} else {
 				return this.coordinates
 			}
+		}
+		moveTetromino(){
+			
 		}
 	}
 }
