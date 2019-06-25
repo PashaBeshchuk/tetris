@@ -1,7 +1,7 @@
 var assert = require('chai').assert;
 var tetris = require('../tetris');
 describe("Move tetromino", function () {
-    it("Move L tetromino", function (){
+    it("Move left L tetromino", function () {
         let coordinates = tetris.getCoordinates(`
             -----
             ----X
@@ -14,16 +14,17 @@ describe("Move tetromino", function () {
             -----
             -----
         `);
+        let shift = { x: -1, y: 0 };
         let lTetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinatesTetromino);
-        let resultMoveTetromino = lTetromino.moveTetromino(coordinates, field);
+        let resultMoveTetromino = lTetromino.moveTetromino(field, shift);
         let expected = tetris.getCoordinates(`
             -----
+            ---X-
+            -XXX-
             -----
-            ----X
-            --XXX
         `)
     })
-    it("L tetromino can not move, there is an element on the way", function (){
+    it("L tetromino can not move, there is an element on the way", function () {
         let coordinates = tetris.getCoordinates(`
             -----
             ----X
@@ -32,12 +33,13 @@ describe("Move tetromino", function () {
         `)
         let field = tetris.buildField(`
             -----
+            ---X-
             -----
             -----
-            --X--
         `);
+        let shift = { x: -1, y: 0 };
         let lTetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinatesTetromino);
-        let resultMoveTetromino = lTetromino.moveTetromino(coordinates, field);
+        let resultMoveTetromino = lTetromino.moveTetromino(field, shift);
         let expected = tetris.getCoordinates(`
             -----
             ----X
@@ -45,7 +47,7 @@ describe("Move tetromino", function () {
             -----
         `)
     })
-    it("Move J tetromino", function (){
+    it("Move down J tetromino", function () {
         let coordinates = tetris.getCoordinates(`
             -XX--
             -X---
@@ -58,8 +60,9 @@ describe("Move tetromino", function () {
             -----
             -----
         `);
+        let shift = { x: 0, y: -1 };
         let jTetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinatesTetromino);
-        let resultMoveTetromino = jTetromino.moveTetromino(coordinates, field);
+        let resultMoveTetromino = jTetromino.moveTetromino(field, shift);
         let expected = tetris.getCoordinates(`
             -----
             -XX--
@@ -67,7 +70,7 @@ describe("Move tetromino", function () {
             -X---
         `)
     })
-    it("J tetromino can not move, there is an element on the way", function (){
+    it("J tetromino can not move, there is an element on the way", function () {
         let coordinates = tetris.getCoordinates(`
             -XX--
             -X---
@@ -80,8 +83,9 @@ describe("Move tetromino", function () {
             -----
             -----
         `);
-        let lTetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinatesTetromino);
-        let resultMoveTetromino = jTetromino.moveTetromino(coordinates, field);
+        let shift = { x: 0, y: -1 };
+        let jTetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinatesTetromino);
+        let resultMoveTetromino = jTetromino.moveTetromino(field, shift);
         let expected = tetris.getCoordinates(`
             -XX--
             -X---
@@ -89,11 +93,11 @@ describe("Move tetromino", function () {
             -----
         `)
     })
-    it("Move T tetromino", function (){
+    it("Move right T tetromino", function () {
         let coordinates = tetris.getCoordinates(`
+            -----
             --X--
-            -XX--
-            --X--
+            -XXX-
             -----
         `)
         let field = tetris.buildField(`
@@ -102,38 +106,40 @@ describe("Move tetromino", function () {
             -----
             -----
         `);
+        let shift = { x: 1, y: 0 };
         let tTetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinatesTetromino);
-        let resultMoveTetromino = tTetromino.moveTetromino(coordinates, field);
+        let resultMoveTetromino = tTetromino.moveTetromino(field, shift);
         let expected = tetris.getCoordinates(`
             -----
-            --X--
-            -XX--
-            --X-- 
+            ---X-
+            --XXX
+            -----
         `)
     })
-    it("T tetromino can not move, there is an element on the way", function (){
+    it("T tetromino can not move, there is an element on the way", function () {
         let coordinates = tetris.getCoordinates(`
+            -----
             --X--
-            -XX--
-            --X--
+            -XXX-
             -----
         `)
         let field = tetris.buildField(`
             -----
+            ---X-
             -----
-            -X---
             -----
         `);
+        let shift = { x: 1, y: 0 };
         let tTetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinatesTetromino);
-        let resultMoveTetromino = tTetromino.moveTetromino(coordinates, field);
+        let resultMoveTetromino = tTetromino.moveTetromino(field, shift);
         let expected = tetris.getCoordinates(`
+            -----
             --X--
-            -XX--
-            --X--
+            -XXX-
             -----
         `)
     })
-    it("Move Z tetromino", function (){
+    it("Move down Z tetromino", function () {
         let coordinates = tetris.getCoordinates(`
             -XX--
             --XX-
@@ -146,8 +152,9 @@ describe("Move tetromino", function () {
             -----
             -----
         `);
+        let shift = { x: 0, y: -1 };
         let zTetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinatesTetromino);
-        let resultMoveTetromino = zTetromino.moveTetromino(coordinates, field);
+        let resultMoveTetromino = zTetromino.moveTetromino(field, shift);
         let expected = tetris.getCoordinates(`
             -----
             -XX--
@@ -155,7 +162,7 @@ describe("Move tetromino", function () {
             -----
         `)
     })
-    it("Z tetromino can not move, there is an element on the way", function (){
+    it("Z tetromino can not move, there is an element on the way", function () {
         let coordinates = tetris.getCoordinates(`
             -XX--
             --XX-
@@ -168,8 +175,9 @@ describe("Move tetromino", function () {
             -----
             -----
         `);
+        let shift = { x: 0, y: -1 };
         let zTetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinatesTetromino);
-        let resultMoveTetromino = zTetromino.moveTetromino(coordinates, field);
+        let resultMoveTetromino = zTetromino.moveTetromino(field, shift);
         let expected = tetris.getCoordinates(`
             -XX--
             --XX-
@@ -177,7 +185,7 @@ describe("Move tetromino", function () {
             -----
         `)
     })
-    it("Move S tetromino", function (){
+    it("Move right S tetromino", function () {
         let coordinates = tetris.getCoordinates(`
             -X---
             -XX--
@@ -190,16 +198,17 @@ describe("Move tetromino", function () {
             -----
             -----
         `);
+        let shift = { x: 1, y: 0 };
         let sTetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinatesTetromino);
-        let resultMoveTetromino = sTetromino.moveTetromino(coordinates, field);
+        let resultMoveTetromino = sTetromino.moveTetromino(field, shift);
         let expected = tetris.getCoordinates(`
-            -----
-            -X---
-            -XX--
             --X--
+            --XX-
+            ---X-
+            -----
         `)
     })
-    it("S tetromino can not move, there is an element on the way", function (){
+    it("S tetromino can not move, there is an element on the way", function () {
         let coordinates = tetris.getCoordinates(`
             -X---
             -XX--
@@ -207,13 +216,14 @@ describe("Move tetromino", function () {
             -----
         `)
         let field = tetris.buildField(`
+            --X--
             -----
             -----
-            -X---
             -----
         `);
+        let shift = { x: 1, y: 0 };
         let sTetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinatesTetromino);
-        let resultMoveTetromino = sTetromino.moveTetromino(coordinates, field);
+        let resultMoveTetromino = sTetromino.moveTetromino(field, shift);
         let expected = tetris.getCoordinates(`
             -X---
             -XX--
@@ -221,7 +231,7 @@ describe("Move tetromino", function () {
             -----
         `)
     })
-    it("Move I tetromino", function (){
+    it("Move left I tetromino", function () {
         let coordinates = tetris.getCoordinates(`
             -----
             -XXXX
@@ -234,16 +244,17 @@ describe("Move tetromino", function () {
             -----
             -----
         `);
+        let shift = { x: -1, y: 0 };
         let iTetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinatesTetromino);
-        let resultMoveTetromino = iTetromino.moveTetromino(coordinates, field);
+        let resultMoveTetromino = iTetromino.moveTetromino(field, shift);
         let expected = tetris.getCoordinates(`
             -----
+            XXXX-
             -----
-            -XXXX
             -----
         `)
     })
-    it("I tetromino can not move, there is an element on the way", function (){
+    it("I tetromino can not move, there is an element on the way", function () {
         let coordinates = tetris.getCoordinates(`
             -----
             -XXXX
@@ -252,12 +263,13 @@ describe("Move tetromino", function () {
         `)
         let field = tetris.buildField(`
             -----
+            X----
             -----
-            ----X
             -----
         `);
+        let shift = { x: -1, y: 0 };
         let iTetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinatesTetromino);
-        let resultMoveTetromino = iTetromino.moveTetromino(coordinates, field);
+        let resultMoveTetromino = iTetromino.moveTetromino(field, shift);
         let expected = tetris.getCoordinates(`
             -----
             -XXXX
@@ -265,7 +277,7 @@ describe("Move tetromino", function () {
             -----
         `)
     })
-    it("Move O tetromino", function (){
+    it("Move down O tetromino", function () {
         let coordinates = tetris.getCoordinates(`
             -XX--
             -XX--
@@ -278,8 +290,9 @@ describe("Move tetromino", function () {
             -----
             -----
         `);
+        let shift = { x: 0, y: -1 };
         let oTetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinatesTetromino);
-        let resultMoveTetromino = oTetromino.moveTetromino(coordinates, field);
+        let resultMoveTetromino = oTetromino.moveTetromino(field, shift);
         let expected = tetris.getCoordinates(`
             -----
             -XX--
@@ -287,7 +300,7 @@ describe("Move tetromino", function () {
             -----
         `)
     })
-    it("O tetromino can not move, there is an element on the way", function (){
+    it("O tetromino can not move, there is an element on the way", function () {
         let coordinates = tetris.getCoordinates(`
             -XX--
             -XX--
@@ -300,8 +313,9 @@ describe("Move tetromino", function () {
             -X---
             -----
         `);
+        let shift = { x: 0, y: -1 };
         let oTetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinatesTetromino);
-        let resultMoveTetromino = oTetromino.moveTetromino(coordinates, field);
+        let resultMoveTetromino = oTetromino.moveTetromino(field, shift);
         let expected = tetris.getCoordinates(`
             -XX--
             -XX--
