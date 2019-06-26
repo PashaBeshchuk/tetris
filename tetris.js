@@ -446,6 +446,7 @@ module.exports = {
 		moveTetromino(field, shift){
 			let shiftTetrominoResult = module.exports.shiftCoordinates(this.coordinates, shift)
 			if(module.exports.checkThatTheFieldIsFree(shiftTetrominoResult, field)){
+				this.coordinates = shiftTetrominoResult
 				return shiftTetrominoResult
 			}else{
 				this.coordinates
