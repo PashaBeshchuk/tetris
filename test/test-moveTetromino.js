@@ -123,7 +123,7 @@ describe("Move tetromino", function () {
             -----
             -----
         `);
-        let shift = { x: 0, y: -1 };
+        let shift = { x: 0, y: 1 };
         let lTetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinatesTetromino);
         let resultMoveTetromino = lTetromino.moveTetromino(field, shift);
         let expected = tetris.getCoordinates(`
@@ -149,7 +149,7 @@ describe("Move tetromino", function () {
             -----
             -----
         `);
-        let shift = { x: 0, y: -1 };
+        let shift = { x: 0, y: 1 };
         let jTetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinatesTetromino);
         let resultMoveTetromino = jTetromino.moveTetromino(field, shift);
         let expected = tetris.getCoordinates(`
@@ -176,7 +176,7 @@ describe("Move tetromino", function () {
             -----
         `);
         let shift = { x: 1, y: 0 };
-        let nextShift = { x: 0, y: -1 };
+        let nextShift = { x: 0, y: 1 };
         let jTetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinatesTetromino);
         let resultMoveTetromino = jTetromino.moveTetromino(field, shift);
         let nextResultMoveTetromino = jTetromino.moveTetromino(field, nextShift);
@@ -413,7 +413,7 @@ describe("Move tetromino", function () {
             -----
             -----
         `);
-        let shift = { x: 0, y: -1 };
+        let shift = { x: 0, y: 1 };
         let tTetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinatesTetromino);
         let resultMoveTetromino = tTetromino.moveTetromino(field, shift);
         let expected = tetris.getCoordinates(`
@@ -439,7 +439,7 @@ describe("Move tetromino", function () {
             -----
             -----
         `);
-        let shift = { x: 0, y: -1 };
+        let shift = { x: 0, y: 1 };
         let zTetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinatesTetromino);
         let resultMoveTetromino = zTetromino.moveTetromino(field, shift);
         let expected = tetris.getCoordinates(`
@@ -465,7 +465,7 @@ describe("Move tetromino", function () {
             -----
             -----
         `);
-        let shift = { x: 0, y: -1 };
+        let shift = { x: 0, y: 1 };
         let nextShift = { x: 1, y: 0 };
         let zTetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinatesTetromino);
         let resultMoveTetromino = zTetromino.moveTetromino(field, shift);
@@ -519,7 +519,7 @@ describe("Move tetromino", function () {
             -----
             -----
         `);
-        let shift = { x: 0, y: -1 };
+        let shift = { x: 0, y: 1 };
         let zTetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinatesTetromino);
         let resultMoveTetromino = zTetromino.moveTetromino(field, shift);
         let expected = tetris.getCoordinates(`
@@ -624,7 +624,7 @@ describe("Move tetromino", function () {
             -----
         `);
         let shift = { x: 1, y: 0 };
-        let nextShift = { x: 0, y: -1 };
+        let nextShift = { x: 0, y: 1 };
         let sTetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinatesTetromino);
         let resultMoveTetromino = sTetromino.moveTetromino(field, shift);
         let nextResultMoveTetromino = sTetromino.moveTetromino(field, nextShift);
@@ -887,7 +887,7 @@ describe("Move tetromino", function () {
             -----
             -----
         `);
-        let shift = { x: 0, y: -1 };
+        let shift = { x: 0, y: 1 };
         let iTetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinatesTetromino);
         let resultMoveTetromino = iTetromino.moveTetromino(field, shift);
         let expected = tetris.getCoordinates(`
@@ -913,7 +913,7 @@ describe("Move tetromino", function () {
             -----
             -----
         `);
-        let shift = { x: 0, y: -1 };
+        let shift = { x: 0, y: 1 };
         let oTetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinatesTetromino);
         let resultMoveTetromino = oTetromino.moveTetromino(field, shift);
         let expected = tetris.getCoordinates(`
@@ -939,7 +939,7 @@ describe("Move tetromino", function () {
             -----
             -----
         `);
-        let shift = { x: 0, y: -1 };
+        let shift = { x: 0, y: 1 };
         let nextShift = { x: 1, y: 0 };
         let oTetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinatesTetromino);
         let resultMoveTetromino = oTetromino.moveTetromino(field, shift);
@@ -1045,7 +1045,7 @@ describe("Move tetromino", function () {
             -----
             -----
         `);
-        let shift = { x: 0, y: -1 };
+        let shift = { x: 0, y: 1 };
         let oTetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinatesTetromino);
         let resultMoveTetromino = oTetromino.moveTetromino(field, shift);
         let expected = tetris.getCoordinates(`

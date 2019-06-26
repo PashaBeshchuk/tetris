@@ -449,7 +449,7 @@ module.exports = {
 				this.coordinates = shiftTetrominoResult
 				return shiftTetrominoResult
 			}else{
-				this.coordinates
+				return this.coordinates
 			}
 		}
 	}
