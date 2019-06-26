@@ -192,11 +192,7 @@ module.exports = {
 		let lengthField_X = field[0].length;
 		let lengthField_Y = field.length;
 		for (let coordinate of arrayOfCoordinates) {
-			if (
-				(coordinate.x < 0 || coordinate.y < 0) ||
-				(coordinate.x >= lengthField_X) ||
-				(coordinate.y >= lengthField_Y)
-			) {
+			if ((coordinate.x < 0 || coordinate.y < 0) || (coordinate.x >= lengthField_X) ||(coordinate.y >= lengthField_Y)) {
 				return false;
 			}
 		}
@@ -447,8 +443,13 @@ module.exports = {
 				return this.coordinates
 			}
 		}
-		moveTetromino(){
-			
+		moveTetromino(field, shift){
+			let shiftTetrominoResult = module.exports.shiftCoordinates(this.coordinates, shift)
+			if(module.exports.checkThatTheFieldIsFree(shiftTetrominoResult, field)){
+				return shiftTetrominoResult
+			}else{
+				this.coordinates
+			}
 		}
 	}
 }

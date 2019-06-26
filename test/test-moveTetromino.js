@@ -2,7 +2,9 @@ var assert = require('chai').assert;
 var tetris = require('../tetris');
 describe("Move tetromino", function () {
     it("Move left L tetromino", function () {
-        let coordinates = tetris.getCoordinates(`
+        let typeOfTetromino = "L";
+        let phase = "right";
+        let coordinatesTetromino = tetris.getCoordinates(`
             -----
             ----X
             --XXX
@@ -25,7 +27,9 @@ describe("Move tetromino", function () {
         `)
     })
     it("L tetromino can not move, there is an element on the way", function () {
-        let coordinates = tetris.getCoordinates(`
+        let typeOfTetromino = "L";
+        let phase = "right";
+        let coordinatesTetromino = tetris.getCoordinates(`
             -----
             ----X
             --XXX
@@ -48,14 +52,16 @@ describe("Move tetromino", function () {
         `)
     })
     it("L tetromino can not move, the element is out of the field", function () {
-        let coordinates = tetris.getCoordinates(`
+        let typeOfTetromino = "L";
+        let phase = "left";
+        let coordinatesTetromino = tetris.getCoordinates(`
             -----
             --XXX
             --X--
             -----
         `)
         let field = tetris.buildField(`
-            -----+
+            -----
             -----
             -----
             -----
@@ -71,7 +77,9 @@ describe("Move tetromino", function () {
         `);
     })
     it("L tetromino can not move, item too low", function () {
-        let coordinates = tetris.getCoordinates(`
+        let typeOfTetromino = "L";
+        let phase = "up";
+        let coordinatesTetromino = tetris.getCoordinates(`
             -----
             --XX-
             ---X-
@@ -94,7 +102,9 @@ describe("Move tetromino", function () {
         `);
     })
     it("Move down J tetromino", function () {
-        let coordinates = tetris.getCoordinates(`
+        let typeOfTetromino = "J";
+        let phase = "up";
+        let coordinatesTetromino = tetris.getCoordinates(`
             -XX--
             -X---
             -X---
@@ -117,7 +127,9 @@ describe("Move tetromino", function () {
         `)
     })
     it("J tetromino can not move, there is an element on the way", function () {
-        let coordinates = tetris.getCoordinates(`
+        let typeOfTetromino = "J";
+        let phase = "up";
+        let coordinatesTetromino = tetris.getCoordinates(`
             -XX--
             -X---
             -X---
@@ -140,7 +152,9 @@ describe("Move tetromino", function () {
         `)
     })
     it("J tetromino can not move, item too left", function () {
-        let coordinates = tetris.getCoordinates(`
+        let typeOfTetromino = "J";
+        let phase = "down";
+        let coordinatesTetromino = tetris.getCoordinates(`
             -X---
             -X---
             XX---
@@ -163,7 +177,9 @@ describe("Move tetromino", function () {
         `)
     })
     it("J tetromino can not move, item too right", function () {
-        let coordinates = tetris.getCoordinates(`
+        let typeOfTetromino = "J";
+        let phase = "down";
+        let coordinatesTetromino = tetris.getCoordinates(`
             ----X
             ----X
             ---XX
@@ -186,7 +202,9 @@ describe("Move tetromino", function () {
         `)
     })
     it("J tetromino can not move, item too down", function () {
-        let coordinates = tetris.getCoordinates(`
+        let typeOfTetromino = "J";
+        let phase = "right";
+        let coordinatesTetromino = tetris.getCoordinates(`
             -----
             -----
             -XXX-
@@ -209,7 +227,9 @@ describe("Move tetromino", function () {
         `)
     })
     it("Move right T tetromino", function () {
-        let coordinates = tetris.getCoordinates(`
+        let typeOfTetromino = "T";
+        let phase = "up";
+        let coordinatesTetromino = tetris.getCoordinates(`
             -----
             --X--
             -XXX-
@@ -232,7 +252,9 @@ describe("Move tetromino", function () {
         `)
     })
     it("T tetromino can not move, item too right", function () {
-        let coordinates = tetris.getCoordinates(`
+        let typeOfTetromino = "T";
+        let phase = "up";
+        let coordinatesTetromino = tetris.getCoordinates(`
             -----
             ---X-
             --XXX
@@ -255,7 +277,9 @@ describe("Move tetromino", function () {
         `)
     })
     it("T tetromino can not move, item too left", function () {
-        let coordinates = tetris.getCoordinates(`
+        let typeOfTetromino = "T";
+        let phase = "left";
+        let coordinatesTetromino = tetris.getCoordinates(`
             -X---
             XX---
             -X---
@@ -278,7 +302,9 @@ describe("Move tetromino", function () {
         `)
     })
     it("T tetromino can not move, item too down", function () {
-        let coordinates = tetris.getCoordinates(`
+        let typeOfTetromino = "T";
+        let phase = "down";
+        let coordinatesTetromino = tetris.getCoordinates(`
             -----
             -----
             -XXX-
@@ -301,7 +327,9 @@ describe("Move tetromino", function () {
         `)
     })
     it("Move down Z tetromino", function () {
-        let coordinates = tetris.getCoordinates(`
+        let typeOfTetromino = "Z";
+        let phase = "horizontal";
+        let coordinatesTetromino = tetris.getCoordinates(`
             -XX--
             --XX-
             -----
@@ -324,7 +352,9 @@ describe("Move tetromino", function () {
         `)
     })
     it("Z tetromino can not move, there is an element on the way", function () {
-        let coordinates = tetris.getCoordinates(`
+        let typeOfTetromino = "Z";
+        let phase = "horizontal";
+        let coordinatesTetromino = tetris.getCoordinates(`
             -XX--
             --XX-
             -----
@@ -347,7 +377,9 @@ describe("Move tetromino", function () {
         `)
     })
     it("Z tetromino can not move, item too down", function () {
-        let coordinates = tetris.getCoordinates(`
+        let typeOfTetromino = "Z";
+        let phase = "vertical";
+        let coordinatesTetromino = tetris.getCoordinates(`
             -----
             --X--
             -XX--
@@ -370,7 +402,9 @@ describe("Move tetromino", function () {
         `)
     })
     it("Z tetromino can not move, item too left", function () {
-        let coordinates = tetris.getCoordinates(`
+        let typeOfTetromino = "Z";
+        let phase = "horizontal";
+        let coordinatesTetromino = tetris.getCoordinates(`
             -----
             XX---
             -XX--
@@ -393,7 +427,9 @@ describe("Move tetromino", function () {
         `)
     })
     it("Z tetromino can not move, item too right", function () {
-        let coordinates = tetris.getCoordinates(`
+        let typeOfTetromino = "Z";
+        let phase = "horizontal";
+        let coordinatesTetromino = tetris.getCoordinates(`
             -----
             --XX-
             ---XX
@@ -416,7 +452,9 @@ describe("Move tetromino", function () {
         `)
     })
     it("Move right S tetromino", function () {
-        let coordinates = tetris.getCoordinates(`
+        let typeOfTetromino = "S";
+        let phase = "vertical";
+        let coordinatesTetromino = tetris.getCoordinates(`
             -X---
             -XX--
             --X--
@@ -439,7 +477,9 @@ describe("Move tetromino", function () {
         `)
     })
     it("S tetromino can not move, there is an element on the way", function () {
-        let coordinates = tetris.getCoordinates(`
+        let typeOfTetromino = "S";
+        let phase = "vertical";
+        let coordinatesTetromino = tetris.getCoordinates(`
             -X---
             -XX--
             --X--
@@ -462,7 +502,9 @@ describe("Move tetromino", function () {
         `)
     })
     it("S tetromino can not move, item too left", function () {
-        let coordinates = tetris.getCoordinates(`
+        let typeOfTetromino = "S";
+        let phase = "vertical";
+        let coordinatesTetromino = tetris.getCoordinates(`
             X----
             XX---
             -X---
@@ -485,7 +527,9 @@ describe("Move tetromino", function () {
         `)
     })
     it("S tetromino can not move, item too right", function () {
-        let coordinates = tetris.getCoordinates(`
+        let typeOfTetromino = "S";
+        let phase = "horizontal";
+        let coordinatesTetromino = tetris.getCoordinates(`
             -----
             ---XX
             --XX-
@@ -508,7 +552,9 @@ describe("Move tetromino", function () {
         `)
     })
     it("S tetromino can not move, item too down", function () {
-        let coordinates = tetris.getCoordinates(`
+        let typeOfTetromino = "S";
+        let phase = "horizontal";
+        let coordinatesTetromino = tetris.getCoordinates(`
             -----
             -----
             ---XX
@@ -531,7 +577,9 @@ describe("Move tetromino", function () {
         `)
     })
     it("Move left I tetromino", function () {
-        let coordinates = tetris.getCoordinates(`
+        let typeOfTetromino = "I";
+        let phase = "horizontal";
+        let coordinatesTetromino = tetris.getCoordinates(`
             -----
             -XXXX
             -----
@@ -554,7 +602,9 @@ describe("Move tetromino", function () {
         `)
     })
     it("I tetromino can not move, there is an element on the way", function () {
-        let coordinates = tetris.getCoordinates(`
+        let typeOfTetromino = "I";
+        let phase = "horizontal";
+        let coordinatesTetromino = tetris.getCoordinates(`
             -----
             -XXXX
             -----
@@ -577,7 +627,9 @@ describe("Move tetromino", function () {
         `)
     })
     it("I tetromino can not move, item too right", function () {
-        let coordinates = tetris.getCoordinates(`
+        let typeOfTetromino = "I";
+        let phase = "vertical";
+        let coordinatesTetromino = tetris.getCoordinates(`
             ----X
             ----X
             ----X
@@ -600,7 +652,9 @@ describe("Move tetromino", function () {
         `)
     })
     it("I tetromino can not move, item too left", function () {
-        let coordinates = tetris.getCoordinates(`
+        let typeOfTetromino = "I";
+        let phase = "vertical";
+        let coordinatesTetromino = tetris.getCoordinates(`
             X----
             X----
             X----
@@ -623,7 +677,9 @@ describe("Move tetromino", function () {
         `)
     })
     it("I tetromino can not move, item too down", function () {
-        let coordinates = tetris.getCoordinates(`
+        let typeOfTetromino = "I";
+        let phase = "horizontal";
+        let coordinatesTetromino = tetris.getCoordinates(`
             -----
             -----
             -----
@@ -646,7 +702,9 @@ describe("Move tetromino", function () {
         `)
     })
     it("Move down O tetromino", function () {
-        let coordinates = tetris.getCoordinates(`
+        let typeOfTetromino = "O";
+        let phase = "stable";
+        let coordinatesTetromino = tetris.getCoordinates(`
             -XX--
             -XX--
             -----
@@ -669,7 +727,9 @@ describe("Move tetromino", function () {
         `)
     })
     it("O tetromino can not move, there is an element on the way", function () {
-        let coordinates = tetris.getCoordinates(`
+        let typeOfTetromino = "O";
+        let phase = "stable";
+        let coordinatesTetromino = tetris.getCoordinates(`
             -XX--
             -XX--
             -----
@@ -692,7 +752,9 @@ describe("Move tetromino", function () {
         `)
     })
     it("O tetromino can not move, item too right", function () {
-        let coordinates = tetris.getCoordinates(`
+        let typeOfTetromino = "O";
+        let phase = "stable";
+        let coordinatesTetromino = tetris.getCoordinates(`
             ---XX
             ---XX
             -----
@@ -715,7 +777,9 @@ describe("Move tetromino", function () {
         `)
     })
     it("O tetromino can not move, item too left", function () {
-        let coordinates = tetris.getCoordinates(`
+        let typeOfTetromino = "O";
+        let phase = "stable";
+        let coordinatesTetromino = tetris.getCoordinates(`
             XX---
             XX---
             -----
@@ -738,7 +802,9 @@ describe("Move tetromino", function () {
         `)
     })
     it("O tetromino can not move, item too down", function () {
-        let coordinates = tetris.getCoordinates(`
+        let typeOfTetromino = "O";
+        let phase = "stable";
+        let coordinatesTetromino = tetris.getCoordinates(`
             -----
             -----
             XX---
