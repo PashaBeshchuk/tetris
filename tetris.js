@@ -454,12 +454,19 @@ module.exports = {
 		}
 	},
 	Field: class {
-		constructor(field, size){
-			this.field = field
-			this.size = size
-		}
-		generationField(size){
-			
+		constructor(field) {
+			if(Array.isArray(field)){
+				this.field = field
+			}else{
+				this.filed = []
+				for(let i = 0; i < field.y; i++){
+					let array = []
+					for(let j = 0; j < field.x; j++){
+						array.push(false)
+					}
+					this.filed.push(array)
+				}
+			}
 		}
 	}
 }
