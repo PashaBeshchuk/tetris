@@ -452,5 +452,10 @@ module.exports = {
 				return this.coordinates
 			}
 		}
+	},
+	Field: class {
+		constructor(field){
+			this.field = field
+		}
 	}
 }
