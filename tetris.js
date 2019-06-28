@@ -458,13 +458,13 @@ module.exports = {
 			if (Array.isArray(field)) {
 				this.field = field
 			} else {
-				this.filed = []
+				this.field = []
 				for (let i = 0; i < field.y; i++) {
 					let array = []
 					for (let j = 0; j < field.x; j++) {
 						array.push(false)
 					}
-					this.filed.push(array)
+					this.field.push(array)
 				}
 			}
 		}
