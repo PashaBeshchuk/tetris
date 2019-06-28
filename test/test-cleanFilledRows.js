@@ -47,4 +47,22 @@ describe("Check situation on field", function () {
             -----
         `)
     })
+    it("Rows are cleaned both above and below", function () {
+        let fieldSize = tetris.buildField(`
+            X--
+            XXX
+            --X
+            XXX
+            -X-
+        `)
+        let field = new tetris.Field(fieldSize)
+        let resultCheckField = field.cleanFilledRows()
+        let expectedResult = tetris.buildField(`
+            ---
+            ---
+            X--
+            --X
+            -X-
+        `)
+    })
 })

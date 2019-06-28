@@ -467,6 +467,7 @@ module.exports = {
 					this.field.push(array)
 				}
 			}
+			this.fieldSize = { x: this.field[0].length, y: this.field.length }
 		}
 		addTetrominoToField(coordinatesOfTetromino) {
 			for (let i = 0; i < coordinatesOfTetromino.length; i++) {
@@ -476,17 +477,17 @@ module.exports = {
 		}
 		cleanFilledRows() {
 			let partOfTheField = []
-			for (let i = 0; i < this.field[0].length; i++) {
+			for (let i = 0; i < this.fieldSize.x; i++) {
 				partOfTheField.push(false)
 			}
-			for (let i = 0; i < this.field.length; i++) {
+			for (let i = 0; i < this.fieldSize.y; i++) {
 				let sumFullCells = 0
-				for (let j = 0; j < this.field[i].length; j++) {
+				for (let j = 0; j < this.fieldSize.x; j++) {
 					if (this.field[i][j]) {
 						sumFullCells++
 					}
 				}
-				if (this.field.length === sumFullCells) {
+				if (this.fieldSize.x === sumFullCells) {
 					this.field.splice(i, 1);
 					this.field.unshift(partOfTheField)
 
