@@ -1,7 +1,7 @@
 var assert = require('chai').assert;
 var tetris = require('../tetris');
 describe("Add tetromino to field", function () {
-    it("Add L tetromino to filed", function () { 
+    it("Add L tetromino to filed", function () {
         let coordinatesTetromino = tetris.getCoordinates(`
             -X---
             -X---
@@ -19,7 +19,7 @@ describe("Add tetromino to field", function () {
         `)
         assert.deepEqual(addTotromino, expectedResult)
     })
-    it("Add J tetromino to filed", function () { 
+    it("Add J tetromino to filed", function () {
         let coordinatesTetromino = tetris.getCoordinates(`
             --X--
             XXX--
@@ -36,7 +36,7 @@ describe("Add tetromino to field", function () {
         `)
         assert.deepEqual(addTotromino, expectedResult)
     })
-    it("Add T tetromino to filed", function () { 
+    it("Add T tetromino to filed", function () {
         let coordinatesTetromino = tetris.getCoordinates(`
             -----
             -XXX-
@@ -53,7 +53,7 @@ describe("Add tetromino to field", function () {
         `)
         assert.deepEqual(addTotromino, expectedResult)
     })
-    it("Add I tetromino to filed", function () { 
+    it("Add I tetromino to filed", function () {
         let coordinatesTetromino = tetris.getCoordinates(`
             ----X-
             ----X-
@@ -71,7 +71,7 @@ describe("Add tetromino to field", function () {
         `)
         assert.deepEqual(addTotromino, expectedResult)
     })
-    it("Add Z tetromino to filed", function () { 
+    it("Add Z tetromino to filed", function () {
         let coordinatesTetromino = tetris.getCoordinates(`
             XX--
             -XX-
@@ -86,7 +86,7 @@ describe("Add tetromino to field", function () {
         `)
         assert.deepEqual(addTotromino, expectedResult)
     })
-    it("Add S tetromino to filed", function () { 
+    it("Add S tetromino to filed", function () {
         let coordinatesTetromino = tetris.getCoordinates(`
             -X--
             -XX-
@@ -102,7 +102,7 @@ describe("Add tetromino to field", function () {
         `)
         assert.deepEqual(addTotromino, expectedResult)
     })
-    it("Add O tetromino to filed", function () { 
+    it("Add O tetromino to filed", function () {
         let coordinatesTetromino = tetris.getCoordinates(`
             ----
             -XX-
