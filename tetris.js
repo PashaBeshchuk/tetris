@@ -454,8 +454,12 @@ module.exports = {
 		}
 	},
 	Field: class {
-		constructor(field){
+		constructor(field, size){
 			this.field = field
+			this.size = size
+		}
+		generationField(size){
+			
 		}
 	}
 }
