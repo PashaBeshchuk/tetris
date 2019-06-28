@@ -469,7 +469,10 @@ module.exports = {
 			}
 		}
 		addTetrominoToField(coordinatesOfTetromino) {
-
+			for(let i = 0; i < coordinatesOfTetromino.length; i++){
+				this.field[coordinatesOfTetromino[i].y][coordinatesOfTetromino[i].x] = true
+			}
+			return this.field
 		}
 		cleanFilledRows() { }
 	}
