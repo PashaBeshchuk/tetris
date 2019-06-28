@@ -455,18 +455,22 @@ module.exports = {
 	},
 	Field: class {
 		constructor(field) {
-			if(Array.isArray(field)){
+			if (Array.isArray(field)) {
 				this.field = field
-			}else{
+			} else {
 				this.filed = []
-				for(let i = 0; i < field.y; i++){
+				for (let i = 0; i < field.y; i++) {
 					let array = []
-					for(let j = 0; j < field.x; j++){
+					for (let j = 0; j < field.x; j++) {
 						array.push(false)
 					}
 					this.filed.push(array)
 				}
 			}
 		}
+		addTetrominoToField(coordinatesOfTetromino) {
+
+		}
+		cleanFilledRows() { }
 	}
 }
