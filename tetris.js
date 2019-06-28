@@ -476,20 +476,20 @@ module.exports = {
 		}
 		cleanFilledRows() {
 			let partOfTheField = []
-			for(let i = 0; i < this.field[0].length; i++){
+			for (let i = 0; i < this.field[0].length; i++) {
 				partOfTheField.push(false)
 			}
-			for(let i = 0; i < this.field.length; i++){
+			for (let i = 0; i < this.field.length; i++) {
 				let sumFullCells = 0
-				for(let j = 0; j < this.field[i].length; j++){
-					if(this.field[i][j]){
+				for (let j = 0; j < this.field[i].length; j++) {
+					if (this.field[i][j]) {
 						sumFullCells++
 					}
 				}
-				if(this.field.length === sumFullCells){
+				if (this.field.length === sumFullCells) {
 					this.field.splice(i, 1);
 					this.field.unshift(partOfTheField)
-					
+
 				}
 			}
 			return this.field
