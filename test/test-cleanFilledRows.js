@@ -129,6 +129,6 @@ describe("Check situation on field", function () {
             --X
             -X-
         `)
-        assert.deepEqual(secondResultCheckField, expectedResult)
+        assert.deepEqual(forthResultCheckField, expectedResult)
     })
 })
