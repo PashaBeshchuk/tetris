@@ -476,10 +476,6 @@ module.exports = {
 			return this.field
 		}
 		cleanFilledRows() {
-			let partOfTheField = []
-			for (let i = 0; i < this.fieldSize.x; i++) {
-				partOfTheField.push(false)
-			}
 			for (let i = 0; i < this.fieldSize.y; i++) {
 				let sumFullCells = 0
 				for (let j = 0; j < this.fieldSize.x; j++) {
@@ -488,6 +484,10 @@ module.exports = {
 					}
 				}
 				if (this.fieldSize.x === sumFullCells) {
+					let partOfTheField = []
+					for (let i = 0; i < this.fieldSize.x; i++) {
+						partOfTheField.push(false)
+					}
 					this.field.splice(i, 1);
 					this.field.unshift(partOfTheField)
 
