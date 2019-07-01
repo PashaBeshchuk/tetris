@@ -155,4 +155,58 @@ describe("Check situation on field", function () {
         `)
         assert.deepEqual(forthResultCheckField, expectedResult4)
     })
+    it("Full line in the middle of the field", function () {
+        let fieldSize = tetris.buildField(`
+            ---
+            ---
+            ---
+            -XX
+            -X-
+        `)
+        let coordinatesTetromino_I = tetris.getCoordinates(`
+            ---
+            X--
+            X--
+            X--
+            X--
+        `)
+        let field = new tetris.Field(fieldSize)
+        let addTetrominoI = field.addTetrominoToField(coordinatesTetromino_I)
+        let resultCheckField = field.cleanFilledRows()
+        let expectedResult = tetris.buildField(`
+            ---
+            ---
+            X--
+            X--
+            XX-
+        `)
+        assert.deepEqual(resultCheckField, expectedResult)
+    })
+    it("Full line in the down of the field", function () {
+        let fieldSize = tetris.buildField(`
+            ---
+            ---
+            ---
+            ---
+            -XX
+        `)
+        let coordinatesTetromino_J = tetris.getCoordinates(`
+            ---
+            ---
+            ---
+            XXX
+            X--
+        `)
+        let field = new tetris.Field(fieldSize)
+        let addTetrominoI = field.addTetrominoToField(coordinatesTetromino_J)
+        let resultCheckField = field.cleanFilledRows()
+        let expectedResult = tetris.buildField(`
+            ---
+            ---
+            ---
+            ---
+            ---
+        `)
+        assert.deepEqual(resultCheckField, expectedResult)
+    })
 })
