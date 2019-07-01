@@ -102,26 +102,8 @@ describe("Check situation on field", function () {
             XXX
             -X-
         `)
-        let coordinatesTetromino_L = tetris.getCoordinates(`
-            XXX
-            X--
-        `)
-        let coordinatesTetromino_Z = tetris.getCoordinates(`
-            XX-
-            -XX
-        `)
-        let coordinatesTetromino_J = tetris.getCoordinates(`
-            XXX
-            --X
-        `)
         let field = new tetris.Field(fieldSize)
         let firstResultCheckField = field.cleanFilledRows()
-        let addTetromino = field.addTetrominoToField(coordinatesTetromino_L)
-        let secondResultCheckField = field.cleanFilledRows()
-        let addNewTetromino = field.addTetrominoToField(coordinatesTetromino_Z)
-        let thirdResultCheckField = field.cleanFilledRows()
-        let addNewTetrominoJ = field.addTetrominoToField(coordinatesTetromino_J)
-        let forthResultCheckField = field.cleanFilledRows()
         let expectedResult = tetris.buildField(`
             ---
             ---
@@ -129,6 +111,48 @@ describe("Check situation on field", function () {
             --X
             -X-
         `)
-        assert.deepEqual(forthResultCheckField, expectedResult)
+        assert.deepEqual(firstResultCheckField, expectedResult)
+        let coordinatesTetromino_L = tetris.getCoordinates(`
+            XXX
+            X--
+        `)
+        let addTetrominoL = field.addTetrominoToField(coordinatesTetromino_L)
+        let secondResultCheckField = field.cleanFilledRows()
+        let expectedResult2 = tetris.buildField(`
+            ---
+            X--
+            X--
+            --X
+            -X-
+        `)
+        assert.deepEqual(secondResultCheckField, expectedResult2)
+        let coordinatesTetromino_Z = tetris.getCoordinates(`
+            XX-
+            -XX
+        `)
+        let addTetrominoZ = field.addTetrominoToField(coordinatesTetromino_Z)
+        let thirdResultCheckField = field.cleanFilledRows()
+        let expectedResult3 = tetris.buildField(`
+            ---
+            XX-
+            X--
+            --X
+            -X-
+        `)
+        assert.deepEqual(thirdResultCheckField, expectedResult3)
+        let coordinatesTetromino_J = tetris.getCoordinates(`
+            XXX
+            --X
+        `)
+        let addTetrominoJ = field.addTetrominoToField(coordinatesTetromino_J)
+        let forthResultCheckField = field.cleanFilledRows()
+        let expectedResult4 = tetris.buildField(`
+            ---
+            ---
+            X--
+            --X
+            -X-
+        `)
+        assert.deepEqual(forthResultCheckField, expectedResult4)
     })
 })
