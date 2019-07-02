@@ -452,5 +452,48 @@ module.exports = {
 				return this.coordinates
 			}
 		}
+	},
+	Field: class {
+		constructor(field) {
+			if (Array.isArray(field)) {
+				this.field = field
+			} else {
+				this.field = []
+				for (let i = 0; i < field.y; i++) {
+					let array = []
+					for (let j = 0; j < field.x; j++) {
+						array.push(false)
+					}
+					this.field.push(array)
+				}
+			}
+			this.fieldSize = { x: this.field[0].length, y: this.field.length }
+		}
+		addTetrominoToField(coordinatesOfTetromino) {
+			for (let i = 0; i < coordinatesOfTetromino.length; i++) {
+				this.field[coordinatesOfTetromino[i].y][coordinatesOfTetromino[i].x] = true
+			}
+			return this.field
+		}
+		cleanFilledRows() {
+			for (let i = 0; i < this.fieldSize.y; i++) {
+				let sumFullCells = 0
+				for (let j = 0; j < this.fieldSize.x; j++) {
+					if (this.field[i][j]) {
+						sumFullCells++
+					}
+				}
+				if (this.fieldSize.x === sumFullCells) {
+					let partOfTheField = []
+					for (let i = 0; i < this.fieldSize.x; i++) {
+						partOfTheField.push(false)
+					}
+					this.field.splice(i, 1);
+					this.field.unshift(partOfTheField)
+
+				}
+			}
+			return this.field
+		}
 	}
 }
