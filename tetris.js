@@ -496,7 +496,26 @@ module.exports = {
 			return this.field
 		}
 	},
-	startingPhaseOfTetromino: function (typeOfTetromino){
-		
+	startingPhaseOfTetromino: function (typeOfTetromino) {
+		switch (typeOfTetromino) {
+			case "L":
+				return "right";
+			case "J":
+				return "left";
+			case "T":
+				return "up";
+			case "Z":
+				return "horizontal";
+			case "S":
+				return "horizontal";
+			case "I":
+				return "vertical"
+			case "O":
+				return "stable";
+		}
+	},
+	getRandomTypeOfTetromino: function () {
+		let arrayTypeOfTetramino = ["L", "J", "T", "S", "Z", "I", "O"]
+		return arrayTypeOfTetramino[Math.floor(Math.random() * arrayTypeOfTetramino.length)]
 	}
 }
