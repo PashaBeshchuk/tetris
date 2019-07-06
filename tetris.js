@@ -515,7 +515,10 @@ module.exports = {
 		}
 	},
 	getRandomTypeOfTetromino: function () {
-		let arrayTypeOfTetramino = ["L", "J", "T", "S", "Z", "I", "O"]
-		return arrayTypeOfTetramino[Math.floor(Math.random() * arrayTypeOfTetramino.length)]
+		let arrayTypeOfTetramino = ["L", "J", "T", "S", "Z", "I", "O"];
+		return arrayTypeOfTetramino[Math.floor(Math.random() * arrayTypeOfTetramino.length)];
+	},
+	initCoordinates: function (typeOfTetromino, fieldSize ) {
+
 	}
 }
