@@ -495,5 +495,8 @@ module.exports = {
 			}
 			return this.field
 		}
+	},
+	startingPhaseOfTetromino: function (typeOfTetromino){
+		
 	}
 }
