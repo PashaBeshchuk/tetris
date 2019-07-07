@@ -518,7 +518,64 @@ module.exports = {
 		let arrayTypeOfTetramino = ["L", "J", "T", "S", "Z", "I", "O"];
 		return arrayTypeOfTetramino[Math.floor(Math.random() * arrayTypeOfTetramino.length)];
 	},
-	initCoordinates: function (typeOfTetromino, fieldSize ) {
-
+	initCoordinates: function (typeOfTetromino, fieldSize) {
+		let localFieldSize = Object.assign({}, fieldSize);
+		let arrayForTetromino = [];
+		let j;
+		let k;
+		if (typeOfTetromino === "I") {
+			j = -2;
+			k = 0;
+		}
+		if (typeOfTetromino === "L" || typeOfTetromino === "J" || typeOfTetromino === "T" || typeOfTetromino === "S") {
+			j = -1;
+			k = 1;
+		}
+		if (typeOfTetromino === "Z" || typeOfTetromino === "O") {
+			j = -1;
+			k = 0;
+		}
+		for (let i = 0; i < 4; i++ , j++) {
+			let coordinatesTetromino = {};
+			if (i === 3) {
+				if (typeOfTetromino === "T" || typeOfTetromino === "Z" || typeOfTetromino === "S" || typeOfTetromino === "O") {
+					j = 0;
+					k = 0;
+				}
+				if (typeOfTetromino === "L") {
+					j = 1;
+					k = 0;
+				}
+				if (typeOfTetromino === "J") {
+					j = -1;
+					k = 0;
+				}
+			}
+			if (i === 1) {
+				if (typeOfTetromino === "Z") {
+					k = 1;
+				}
+				if (typeOfTetromino === "O") {
+					j = -1;
+					k = 1;
+				}
+			}
+			if (i === 2) {
+				if (typeOfTetromino === "Z") {
+					k = 1;
+				}
+				if (typeOfTetromino === "S") {
+					k = 0;
+				}
+				if (typeOfTetromino === "O") {
+					j = 0;
+					k = 1;
+				}
+			}
+			coordinatesTetromino.x = coordinatesTetromino.x = (localFieldSize.x / 2) + j;
+			coordinatesTetromino.y = k;
+			arrayForTetromino.push(coordinatesTetromino);
+		}
+		return arrayForTetromino.sort(this.orderCoordinates);
 	}
 }
