@@ -520,62 +520,62 @@ module.exports = {
 	},
 	initCoordinates: function (typeOfTetromino, fieldSize) {
 		let localFieldSize = Object.assign({}, fieldSize);
-		let arrayForTetromino = [];
-		let j;
-		let k;
+		let newCoordinates;
+		let arrayForTetromino;
+		let shift = {}
+		shift.x = (localFieldSize.x / 2) - 1
+		shift.y = 0
+		if (typeOfTetromino === "L") {
+			arrayForTetromino = this.getCoordinates(`
+				--X
+				XXX
+			`)
+			newCoordinates = this.shiftCoordinates(arrayForTetromino, shift)
+		}
+		if (typeOfTetromino === "J") {
+			arrayForTetromino = this.getCoordinates(`
+				X--
+				XXX
+			`)
+			newCoordinates = this.shiftCoordinates(arrayForTetromino, shift)
+		}
+		if (typeOfTetromino === "T") {
+			arrayForTetromino = this.getCoordinates(`
+				-X-
+				XXX
+			`)
+			newCoordinates = this.shiftCoordinates(arrayForTetromino, shift)
+		}
+		if (typeOfTetromino === "Z") {
+			arrayForTetromino = this.getCoordinates(`
+				XX-
+				-XX
+			`)
+			newCoordinates = this.shiftCoordinates(arrayForTetromino, shift)
+		}
+		if (typeOfTetromino === "S") {
+			arrayForTetromino = this.getCoordinates(`
+				-XX
+				XX
+			`)
+			newCoordinates = this.shiftCoordinates(arrayForTetromino, shift)
+		}
 		if (typeOfTetromino === "I") {
-			j = -2;
-			k = 0;
+			shift.x = shift.x - 1
+			arrayForTetromino = this.getCoordinates(`
+				XXXX
+			`)
+			newCoordinates = this.shiftCoordinates(arrayForTetromino, shift)
 		}
-		if (typeOfTetromino === "L" || typeOfTetromino === "J" || typeOfTetromino === "T" || typeOfTetromino === "S") {
-			j = -1;
-			k = 1;
+		if (typeOfTetromino === "O") {
+			shift.x = shift.x
+			arrayForTetromino = this.getCoordinates(`
+				XX
+				XX
+			`)
+			newCoordinates = this.shiftCoordinates(arrayForTetromino, shift)
 		}
-		if (typeOfTetromino === "Z" || typeOfTetromino === "O") {
-			j = -1;
-			k = 0;
-		}
-		for (let i = 0; i < 4; i++ , j++) {
-			let coordinatesTetromino = {};
-			if (i === 3) {
-				if (typeOfTetromino === "T" || typeOfTetromino === "Z" || typeOfTetromino === "S" || typeOfTetromino === "O") {
-					j = 0;
-					k = 0;
-				}
-				if (typeOfTetromino === "L") {
-					j = 1;
-					k = 0;
-				}
-				if (typeOfTetromino === "J") {
-					j = -1;
-					k = 0;
-				}
-			}
-			if (i === 1) {
-				if (typeOfTetromino === "Z") {
-					k = 1;
-				}
-				if (typeOfTetromino === "O") {
-					j = -1;
-					k = 1;
-				}
-			}
-			if (i === 2) {
-				if (typeOfTetromino === "Z") {
-					k = 1;
-				}
-				if (typeOfTetromino === "S") {
-					k = 0;
-				}
-				if (typeOfTetromino === "O") {
-					j = 0;
-					k = 1;
-				}
-			}
-			coordinatesTetromino.x = coordinatesTetromino.x = (localFieldSize.x / 2) + j;
-			coordinatesTetromino.y = k;
-			arrayForTetromino.push(coordinatesTetromino);
-		}
-		return arrayForTetromino.sort(this.orderCoordinates);
+
+		return newCoordinates
 	}
 }
