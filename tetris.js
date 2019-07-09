@@ -519,10 +519,9 @@ module.exports = {
 		return arrayTypeOfTetramino[Math.floor(Math.random() * arrayTypeOfTetramino.length)];
 	},
 	initCoordinates: function (typeOfTetromino, fieldSize) {
-		let localFieldSize = Object.assign({}, fieldSize);
 		let newCoordinates;
 		let arrayForTetromino;
-		let shift = { x: Math.floor((localFieldSize.x / 2) - 1), y: 0 }
+		let shift = { x: Math.floor((fieldSize.x / 2) - 1), y: 0 }
 		switch (typeOfTetromino) {
 			case "L":
 				arrayForTetromino = this.getCoordinates(`
@@ -567,7 +566,7 @@ module.exports = {
 				`);
 				break;
 		}
-		newCoordinates = this.shiftCoordinates(arrayForTetromino, shift);
-		return newCoordinates
+		return newCoordinates = this.shiftCoordinates(arrayForTetromino, shift);
+		
 	}
 }
