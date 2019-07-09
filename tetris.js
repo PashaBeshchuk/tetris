@@ -495,5 +495,78 @@ module.exports = {
 			}
 			return this.field
 		}
+	},
+	startingPhaseOfTetromino: function (typeOfTetromino) {
+		switch (typeOfTetromino) {
+			case "L":
+				return "right";
+			case "J":
+				return "left";
+			case "T":
+				return "up";
+			case "Z":
+				return "horizontal";
+			case "S":
+				return "horizontal";
+			case "I":
+				return "vertical";
+			case "O":
+				return "stable";
+		}
+	},
+	getRandomTypeOfTetromino: function () {
+		let arrayTypeOfTetramino = ["L", "J", "T", "S", "Z", "I", "O"];
+		return arrayTypeOfTetramino[Math.floor(Math.random() * arrayTypeOfTetramino.length)];
+	},
+	initCoordinates: function (typeOfTetromino, fieldSize) {
+		let newCoordinates;
+		let arrayForTetromino;
+		let shift = { x: Math.floor((fieldSize.x / 2) - 1), y: 0 }
+		switch (typeOfTetromino) {
+			case "L":
+				arrayForTetromino = this.getCoordinates(`
+					--X
+					XXX
+				`);
+				break;
+			case "J":
+				arrayForTetromino = this.getCoordinates(`
+					X--
+					XXX
+				`);
+				break;
+			case "T":
+				arrayForTetromino = this.getCoordinates(`
+					-X-
+					XXX
+				`);
+				break;
+			case "Z":
+				arrayForTetromino = this.getCoordinates(`
+					XX-
+					-XX
+				`);
+				break;
+			case "S":
+				arrayForTetromino = this.getCoordinates(`
+					-XX
+					XX
+				`);
+				break;
+			case "I":
+				shift.x = shift.x - 1
+				arrayForTetromino = this.getCoordinates(`
+					XXXX
+				`);
+				break
+			case "O":
+				arrayForTetromino = this.getCoordinates(`
+					XX
+					XX
+				`);
+				break;
+		}
+		return newCoordinates = this.shiftCoordinates(arrayForTetromino, shift);
+		
 	}
 }
