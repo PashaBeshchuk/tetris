@@ -509,7 +509,7 @@ module.exports = {
 			case "S":
 				return "horizontal";
 			case "I":
-				return "vertical"
+				return "vertical";
 			case "O":
 				return "stable";
 		}
@@ -522,60 +522,52 @@ module.exports = {
 		let localFieldSize = Object.assign({}, fieldSize);
 		let newCoordinates;
 		let arrayForTetromino;
-		let shift = {}
-		shift.x = (localFieldSize.x / 2) - 1
-		shift.y = 0
-		if (typeOfTetromino === "L") {
-			arrayForTetromino = this.getCoordinates(`
-				--X
-				XXX
-			`)
-			newCoordinates = this.shiftCoordinates(arrayForTetromino, shift)
+		let shift = { x: Math.floor((localFieldSize.x / 2) - 1), y: 0 }
+		switch (typeOfTetromino) {
+			case "L":
+				arrayForTetromino = this.getCoordinates(`
+					--X
+					XXX
+				`);
+				break;
+			case "J":
+				arrayForTetromino = this.getCoordinates(`
+					X--
+					XXX
+				`);
+				break;
+			case "T":
+				arrayForTetromino = this.getCoordinates(`
+					-X-
+					XXX
+				`);
+				break;
+			case "Z":
+				arrayForTetromino = this.getCoordinates(`
+					XX-
+					-XX
+				`);
+				break;
+			case "S":
+				arrayForTetromino = this.getCoordinates(`
+					-XX
+					XX
+				`);
+				break;
+			case "I":
+				shift.x = shift.x - 1
+				arrayForTetromino = this.getCoordinates(`
+					XXXX
+				`);
+				break
+			case "O":
+				arrayForTetromino = this.getCoordinates(`
+					XX
+					XX
+				`);
+				break;
 		}
-		if (typeOfTetromino === "J") {
-			arrayForTetromino = this.getCoordinates(`
-				X--
-				XXX
-			`)
-			newCoordinates = this.shiftCoordinates(arrayForTetromino, shift)
-		}
-		if (typeOfTetromino === "T") {
-			arrayForTetromino = this.getCoordinates(`
-				-X-
-				XXX
-			`)
-			newCoordinates = this.shiftCoordinates(arrayForTetromino, shift)
-		}
-		if (typeOfTetromino === "Z") {
-			arrayForTetromino = this.getCoordinates(`
-				XX-
-				-XX
-			`)
-			newCoordinates = this.shiftCoordinates(arrayForTetromino, shift)
-		}
-		if (typeOfTetromino === "S") {
-			arrayForTetromino = this.getCoordinates(`
-				-XX
-				XX
-			`)
-			newCoordinates = this.shiftCoordinates(arrayForTetromino, shift)
-		}
-		if (typeOfTetromino === "I") {
-			shift.x = shift.x - 1
-			arrayForTetromino = this.getCoordinates(`
-				XXXX
-			`)
-			newCoordinates = this.shiftCoordinates(arrayForTetromino, shift)
-		}
-		if (typeOfTetromino === "O") {
-			shift.x = shift.x
-			arrayForTetromino = this.getCoordinates(`
-				XX
-				XX
-			`)
-			newCoordinates = this.shiftCoordinates(arrayForTetromino, shift)
-		}
-
+		newCoordinates = this.shiftCoordinates(arrayForTetromino, shift);
 		return newCoordinates
 	}
 }
