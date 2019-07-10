@@ -17,8 +17,8 @@ describe("Can move down tetromino or can't", function () {
             -----
         `);
         let tetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinates);
-        let resultOfMovement = tetromino.canMoveDown()
-        let expectedResult = "false"
+        let resultOfMovement = tetromino.canMoveDown(field)
+        let expectedResult = false
         assert.deepEqual(resultOfMovement, expectedResult)
     })
     it("L tetromino can move down", function(){
@@ -37,8 +37,8 @@ describe("Can move down tetromino or can't", function () {
             -----
         `);
         let tetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinates);
-        let resultOfMovement = tetromino.canMoveDown()
-        let expectedResult = "true"
+        let resultOfMovement = tetromino.canMoveDown(field)
+        let expectedResult = true
         assert.deepEqual(resultOfMovement, expectedResult)
     })
     it("J tetromino can't move down", function(){
@@ -57,8 +57,8 @@ describe("Can move down tetromino or can't", function () {
             -----
         `);
         let tetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinates);
-        let resultOfMovement = tetromino.canMoveDown()
-        let expectedResult = "false"
+        let resultOfMovement = tetromino.canMoveDown(field)
+        let expectedResult = false
         assert.deepEqual(resultOfMovement, expectedResult)
     })
     it("J tetromino can move down", function(){
@@ -77,8 +77,8 @@ describe("Can move down tetromino or can't", function () {
             -----
         `);
         let tetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinates);
-        let resultOfMovement = tetromino.canMoveDown()
-        let expectedResult = "true"
+        let resultOfMovement = tetromino.canMoveDown(field)
+        let expectedResult = true
         assert.deepEqual(resultOfMovement, expectedResult)
     })
     it("T tetromino can't move down", function(){
@@ -97,8 +97,8 @@ describe("Can move down tetromino or can't", function () {
             -----
         `);
         let tetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinates);
-        let resultOfMovement = tetromino.canMoveDown()
-        let expectedResult = "false"
+        let resultOfMovement = tetromino.canMoveDown(field)
+        let expectedResult = false
         assert.deepEqual(resultOfMovement, expectedResult)
     })
     it("T tetromino can move down", function(){
@@ -117,8 +117,8 @@ describe("Can move down tetromino or can't", function () {
             -----
         `);
         let tetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinates);
-        let resultOfMovement = tetromino.canMoveDown()
-        let expectedResult = "true"
+        let resultOfMovement = tetromino.canMoveDown(field)
+        let expectedResult = true
         assert.deepEqual(resultOfMovement, expectedResult)
     })
     it("Z tetromino can't move down", function(){
@@ -137,8 +137,8 @@ describe("Can move down tetromino or can't", function () {
             -----
         `);
         let tetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinates);
-        let resultOfMovement = tetromino.canMoveDown()
-        let expectedResult = "false"
+        let resultOfMovement = tetromino.canMoveDown(field)
+        let expectedResult = false
         assert.deepEqual(resultOfMovement, expectedResult)
     })
     it("Z tetromino can move down", function(){
@@ -157,8 +157,8 @@ describe("Can move down tetromino or can't", function () {
             -----
         `);
         let tetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinates);
-        let resultOfMovement = tetromino.canMoveDown()
-        let expectedResult = "true"
+        let resultOfMovement = tetromino.canMoveDown(field)
+        let expectedResult = true
         assert.deepEqual(resultOfMovement, expectedResult)
     })
     it("S tetromino can't move down", function(){
@@ -177,8 +177,8 @@ describe("Can move down tetromino or can't", function () {
             -----
         `);
         let tetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinates);
-        let resultOfMovement = tetromino.canMoveDown()
-        let expectedResult = "false"
+        let resultOfMovement = tetromino.canMoveDown(field)
+        let expectedResult = false
         assert.deepEqual(resultOfMovement, expectedResult)
     })
     it("S tetromino can move down", function(){
@@ -197,8 +197,8 @@ describe("Can move down tetromino or can't", function () {
             -----
         `);
         let tetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinates);
-        let resultOfMovement = tetromino.canMoveDown()
-        let expectedResult = "true"
+        let resultOfMovement = tetromino.canMoveDown(field)
+        let expectedResult = true
         assert.deepEqual(resultOfMovement, expectedResult)
     })
     it("I tetromino can't move down", function(){
@@ -217,8 +217,8 @@ describe("Can move down tetromino or can't", function () {
             -----
         `);
         let tetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinates);
-        let resultOfMovement = tetromino.canMoveDown()
-        let expectedResult = "false"
+        let resultOfMovement = tetromino.canMoveDown(field)
+        let expectedResult = false
         assert.deepEqual(resultOfMovement, expectedResult)
     })
     it("I tetromino can move down", function(){
@@ -237,8 +237,8 @@ describe("Can move down tetromino or can't", function () {
             -----
         `);
         let tetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinates);
-        let resultOfMovement = tetromino.canMoveDown()
-        let expectedResult = "true"
+        let resultOfMovement = tetromino.canMoveDown(field)
+        let expectedResult = true
         assert.deepEqual(resultOfMovement, expectedResult)
     })
     it("O tetromino can't move down", function(){
@@ -257,8 +257,8 @@ describe("Can move down tetromino or can't", function () {
             -----
         `);
         let tetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinates);
-        let resultOfMovement = tetromino.canMoveDown()
-        let expectedResult = "false"
+        let resultOfMovement = tetromino.canMoveDown(field)
+        let expectedResult = false
         assert.deepEqual(resultOfMovement, expectedResult)
     })
     it("O tetromino can move down", function(){
@@ -277,8 +277,8 @@ describe("Can move down tetromino or can't", function () {
             -----
         `);
         let tetromino = new tetris.Tetromino(typeOfTetromino, phase, coordinates);
-        let resultOfMovement = tetromino.canMoveDown()
-        let expectedResult = "true"
+        let resultOfMovement = tetromino.canMoveDown(field)
+        let expectedResult = true
         assert.deepEqual(resultOfMovement, expectedResult)
     })
 })
