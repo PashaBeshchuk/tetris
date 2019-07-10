@@ -452,6 +452,11 @@ module.exports = {
 				return this.coordinates
 			}
 		}
+		canMoveDown(field) {
+			let shift = { x: 0, y: 1 }
+			let shiftTetrominoResult = module.exports.shiftCoordinates(this.coordinates, shift)
+			return module.exports.checkThatTheFieldIsFree(shiftTetrominoResult, field)
+		}
 	},
 	Field: class {
 		constructor(field) {
@@ -519,7 +524,6 @@ module.exports = {
 		return arrayTypeOfTetramino[Math.floor(Math.random() * arrayTypeOfTetramino.length)];
 	},
 	initCoordinates: function (typeOfTetromino, fieldSize) {
-		let newCoordinates;
 		let arrayForTetromino;
 		let shift = { x: Math.floor((fieldSize.x / 2) - 1), y: 0 }
 		switch (typeOfTetromino) {
@@ -566,7 +570,7 @@ module.exports = {
 				`);
 				break;
 		}
-		return newCoordinates = this.shiftCoordinates(arrayForTetromino, shift);
-		
+		return this.shiftCoordinates(arrayForTetromino, shift);
+
 	}
 }
