@@ -571,6 +571,8 @@ module.exports = {
 				break;
 		}
 		return this.shiftCoordinates(arrayForTetromino, shift);
-
+	},
+	Tetris: class {
+		
 	}
 }
