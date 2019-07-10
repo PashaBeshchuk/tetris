@@ -452,14 +452,10 @@ module.exports = {
 				return this.coordinates
 			}
 		}
-		canMoveDown(field){
-			let shift = { x:0, y:1 }
+		canMoveDown(field) {
+			let shift = { x: 0, y: 1 }
 			let shiftTetrominoResult = module.exports.shiftCoordinates(this.coordinates, shift)
-			if(module.exports.checkThatTheFieldIsFree(shiftTetrominoResult, field)){
-				return true
-			}else {
-				return false
-			}
+			return module.exports.checkThatTheFieldIsFree(shiftTetrominoResult, field)
 		}
 	},
 	Field: class {
@@ -575,6 +571,6 @@ module.exports = {
 				break;
 		}
 		return this.shiftCoordinates(arrayForTetromino, shift);
-		
+
 	}
 }
