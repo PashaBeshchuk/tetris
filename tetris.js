@@ -581,10 +581,12 @@ module.exports = {
 	Tetris: class {
 		constructor (fieldSize){
 			this.fieldSize = fieldSize;
-			let typeOfTetromino = obj.getRandomTypeOfTetromino()
-			let coordinateOfTetramino = obj.initCoordinates(typeOfTetromino, fieldSize)
-			let tetromino = obj.createTetromino(fieldSize)
-			let field = new obj.Field(fieldSize)
+			this.typeOfTetromino = obj.getRandomTypeOfTetromino()
+			this.coordinateOfTetramino = obj.initCoordinates(this.typeOfTetromino, this.fieldSize)
+			this.tetromino = obj.createTetromino(this.fieldSize)
+			this.field = new obj.Field(this.fieldSize)						
+		}
+		tick(){
 		}
 	}
 }
