@@ -577,5 +577,14 @@ module.exports = {
 		let phase = this.startingPhaseOfTetromino(typeOfTetromino)
 		let coodinates = this.initCoordinates(typeOfTetromino, fieldSize)
 		return  new this.Tetromino(typeOfTetromino, phase, coodinates)
+	},
+	Tetris: class {
+		constructor (fieldSize){
+			this.fieldSize = fieldSize;
+			let typeOfTetromino = obj.getRandomTypeOfTetromino()
+			let coordinateOfTetramino = obj.initCoordinates(typeOfTetromino, fieldSize)
+			let tetromino = obj.createTetromino(fieldSize)
+			let field = new obj.Field(fieldSize)
+		}
 	}
 }
