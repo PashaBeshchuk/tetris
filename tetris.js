@@ -581,12 +581,20 @@ module.exports = {
 	Tetris: class {
 		constructor (fieldSize){
 			this.fieldSize = fieldSize;
-			this.typeOfTetromino = obj.getRandomTypeOfTetromino()
-			this.coordinateOfTetramino = obj.initCoordinates(this.typeOfTetromino, this.fieldSize)
-			this.tetromino = obj.createTetromino(this.fieldSize)
-			this.field = new obj.Field(this.fieldSize)						
+			this.typeOfTetromino = module.exports.getRandomTypeOfTetromino()
+			this.coordinatesOfTetramino = module.exports.initCoordinates(this.typeOfTetromino, this.fieldSize)
+			this.tetromino = module.exports.createTetromino(this.fieldSize)
+			this.field = new module.exports.Field(this.fieldSize)	
 		}
 		tick(){
+			let shift = {x: 0, y: 1}
+			if(this.tetromino.canMoveTetromino(this.field.field)){
+				this.tetromino.moveTetromino(this.field.field, shift)
+			}else{
+				this.field.addTetrominoToField(this.coordinatesOfTetramino)
+				this.tetromino = module.exports.createTetromino(this.fieldSize)
+				this.field.cleanFilledRows()
+			}
 		}
 	}
 }
