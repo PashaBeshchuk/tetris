@@ -572,7 +572,10 @@ module.exports = {
 		}
 		return this.shiftCoordinates(arrayForTetromino, shift);
 	},
-	Tetris: class {
-		
+	createTetromino: function (fieldSize) {
+		let typeOfTetromino = this.getRandomTypeOfTetromino()
+		let phase = this.startingPhaseOfTetromino(typeOfTetromino)
+		let coodinates = this.initCoordinates(typeOfTetromino, fieldSize)
+		return  new this.Tetromino(typeOfTetromino, phase, coodinates)
 	}
 }
