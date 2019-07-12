@@ -576,25 +576,40 @@ module.exports = {
 		let typeOfTetromino = this.getRandomTypeOfTetromino()
 		let phase = this.startingPhaseOfTetromino(typeOfTetromino)
 		let coodinates = this.initCoordinates(typeOfTetromino, fieldSize)
-		return  new this.Tetromino(typeOfTetromino, phase, coodinates)
+		return new this.Tetromino(typeOfTetromino, phase, coodinates)
 	},
 	Tetris: class {
-		constructor (fieldSize){
+		constructor(fieldSize) {
 			this.fieldSize = fieldSize;
 			this.typeOfTetromino = module.exports.getRandomTypeOfTetromino()
 			this.coordinatesOfTetramino = module.exports.initCoordinates(this.typeOfTetromino, this.fieldSize)
 			this.tetromino = module.exports.createTetromino(this.fieldSize)
-			this.field = new module.exports.Field(this.fieldSize)	
+			this.field = new module.exports.Field(this.fieldSize)
 		}
-		tick(){
-			let shift = {x: 0, y: 1}
-			if(this.tetromino.canMoveTetromino(this.field.field)){
+		tick() {
+			let shift = { x: 0, y: 1 }
+			if (this.tetromino.canMoveTetromino(this.field.field)) {
 				this.tetromino.moveTetromino(this.field.field, shift)
-			}else{
+			} else {
 				this.field.addTetrominoToField(this.coordinatesOfTetramino)
 				this.tetromino = module.exports.createTetromino(this.fieldSize)
 				this.field.cleanFilledRows()
 			}
+		}
+		moveLeft() {
+			let shift = { x: -1, y: 0 }
+			this.tetromino.moveTetromino(this.field.field, shift)
+		}
+		moveRight() {
+			let shift = { x: 1, y: 0 }
+			this.tetromino.moveTetromino(this.field.field, shift)
+		}
+		moveDown(){
+			let shift = { x: 0, y: 1 }
+			this.tetromino.moveTetromino(this.field.field, shift)
+		}
+		rotate(){
+			this.tetromino.rotateTetromino(this.field.field)
 		}
 	}
 }
