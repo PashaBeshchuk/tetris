@@ -514,7 +514,7 @@ module.exports = {
 			case "S":
 				return "horizontal";
 			case "I":
-				return "vertical";
+				return "horizontal";
 			case "O":
 				return "stable";
 		}
