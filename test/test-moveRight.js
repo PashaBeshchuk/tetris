@@ -1,144 +1,144 @@
 var sinon = require('sinon');
 var assert = require('chai').assert;
 var tetris = require('../tetris');
-describe("All tetromino move left", function () {
+describe("All tetromino move right", function () {
     let stubForGetRandomTypeOfTetromino = sinon.stub(tetris, "getRandomTypeOfTetromino");
-    it('Move L tetromino left', function () {
+    it('Move L tetromino right', function () {
         stubForGetRandomTypeOfTetromino.returns("L")
         let fieldSize = { x: 7, y: 3 }
         let elementTetris = new tetris.Tetris(fieldSize)
-        elementTetris.moveLeft()
+        elementTetris.moveRight()
         let expected = tetris.getCoordinates(`
-            ---X---
-            -XXX---
+            -----X-
+            ---XXX-
             -------
         `)
-
+        
         assert.deepEqual(elementTetris.tetromino.coordinates, expected)
-        elementTetris.moveLeft()
+        elementTetris.moveRight()
         let nextExpected = tetris.getCoordinates(`
-            --X----
-            XXX----
+            ------X
+            ----XXX
             -------
         `)
         assert.deepEqual(elementTetris.tetromino.coordinates, nextExpected)
     })
-    it('Move J tetromino left', function () {
+    it('Move J tetromino right', function () {
         stubForGetRandomTypeOfTetromino.returns("J")
         let fieldSize = { x: 7, y: 3 }
         let elementTetris = new tetris.Tetris(fieldSize)
-        elementTetris.moveLeft()
+        elementTetris.moveRight()
         let expected = tetris.getCoordinates(`
-            -X-----
-            -XXX---
+            ---X---
+            ---XXX-
             -------
         `)
-
+        
         assert.deepEqual(elementTetris.tetromino.coordinates, expected)
-        elementTetris.moveLeft()
+        elementTetris.moveRight()
         let nextExpected = tetris.getCoordinates(`
-            X------
-            XXX----
+            ----X--
+            ----XXX
             -------
         `)
         assert.deepEqual(elementTetris.tetromino.coordinates, nextExpected)
     })
-    it('Move T tetromino left', function () {
+    it('Move T tetromino right', function () {
         stubForGetRandomTypeOfTetromino.returns("T")
         let fieldSize = { x: 7, y: 3 }
         let elementTetris = new tetris.Tetris(fieldSize)
-        elementTetris.moveLeft()
+        elementTetris.moveRight()
         let expected = tetris.getCoordinates(`
-            --X----
-            -XXX---
+            ----X--
+            ---XXX-
             -------
         `)
-
+        
         assert.deepEqual(elementTetris.tetromino.coordinates, expected)
-        elementTetris.moveLeft()
+        elementTetris.moveRight()
         let nextExpected = tetris.getCoordinates(`
-            -X-----
-            XXX----
+            -----X-
+            ----XXX
             -------
         `)
         assert.deepEqual(elementTetris.tetromino.coordinates, nextExpected)
     })
-    it('Move S tetromino left', function () {
+    it('Move S tetromino right', function () {
         stubForGetRandomTypeOfTetromino.returns("S")
         let fieldSize = { x: 7, y: 3 }
         let elementTetris = new tetris.Tetris(fieldSize)
-        elementTetris.moveLeft()
+        elementTetris.moveRight()
         let expected = tetris.getCoordinates(`
-            --XX---
-            -XX----
+            ----XX-
+            ---XX--
             -------
         `)
-
+        
         assert.deepEqual(elementTetris.tetromino.coordinates, expected)
-        elementTetris.moveLeft()
+        elementTetris.moveRight()
         let nextExpected = tetris.getCoordinates(`
-            -XX----
-            XX-----
+            -----XX
+            ----XX-
             -------
         `)
         assert.deepEqual(elementTetris.tetromino.coordinates, nextExpected)
     })
-    it('Move Z tetromino left', function () {
+    it('Move Z tetromino right', function () {
         stubForGetRandomTypeOfTetromino.returns("Z")
         let fieldSize = { x: 7, y: 3 }
         let elementTetris = new tetris.Tetris(fieldSize)
-        elementTetris.moveLeft()
+        elementTetris.moveRight()
         let expected = tetris.getCoordinates(`
-            -XX----
-            --XX---
+            ---XX--
+            ----XX-
             -------
         `)
-
+        
         assert.deepEqual(elementTetris.tetromino.coordinates, expected)
-        elementTetris.moveLeft()
+        elementTetris.moveRight()
         let nextExpected = tetris.getCoordinates(`
-            XX-----
-            -XX----
+            ----XX-
+            -----XX
             -------
         `)
         assert.deepEqual(elementTetris.tetromino.coordinates, nextExpected)
     })
-    it('Move I tetromino left', function () {
+    it('Move I tetromino right', function () {
         stubForGetRandomTypeOfTetromino.returns("I")
-        let fieldSize = { x: 8, y: 3 }
+        let fieldSize = { x: 7, y: 3 }
         let elementTetris = new tetris.Tetris(fieldSize)
-        elementTetris.moveLeft()
+        elementTetris.moveRight()
         let expected = tetris.getCoordinates(`
-            -XXXX---
-            --------
-            --------
+            --XXXX-
+            -------
+            -------
         `)
-
+        
         assert.deepEqual(elementTetris.tetromino.coordinates, expected)
-        elementTetris.moveLeft()
+        elementTetris.moveRight()
         let nextExpected = tetris.getCoordinates(`
-            XXXX----
-            --------
-            --------
+            ---XXXX
+            -------
+            -------
         `)
         assert.deepEqual(elementTetris.tetromino.coordinates, nextExpected)
     })
-    it('Move O tetromino left', function () {
+    it('Move O tetromino right', function () {
         stubForGetRandomTypeOfTetromino.returns("O")
         let fieldSize = { x: 7, y: 3 }
         let elementTetris = new tetris.Tetris(fieldSize)
-        elementTetris.moveLeft()
+        elementTetris.moveRight()
         let expected = tetris.getCoordinates(`
-            -XX----
-            -XX----
+            ---XX--
+            ---XX--
             -------
         `)
-
+        
         assert.deepEqual(elementTetris.tetromino.coordinates, expected)
-        elementTetris.moveLeft()
+        elementTetris.moveRight()
         let nextExpected = tetris.getCoordinates(`
-            XX-----
-            XX-----
+            ----XX-
+            ----XX-
             -------
         `)
         assert.deepEqual(elementTetris.tetromino.coordinates, nextExpected)
