@@ -2,9 +2,9 @@ var sinon = require('sinon');
 var assert = require('chai').assert;
 var tetris = require('../tetris');
 describe("Create tetromino", function () {
-    let stub = sinon.stub(tetris,"getRandomTypeOfTetromino")
+    let stubForGetRandomTypeOfTetromino = sinon.stub(tetris,"getRandomTypeOfTetromino")
     it("Create L tetromino", function () {
-        stub.returns("L");
+        stubForGetRandomTypeOfTetromino.returns("L");
         let fieldSize = { x: 5, y: 2 };
         let resultFunction = tetris.createTetromino(fieldSize);
         let expected = {
@@ -18,7 +18,7 @@ describe("Create tetromino", function () {
         assert.deepEqual(resultFunction, expected);
     })
     it("Create J tetromino", function () {
-        stub.returns("J");
+        stubForGetRandomTypeOfTetromino.returns("J");
         let fieldSize = { x: 5, y: 2 };
         let resultFunction = tetris.createTetromino(fieldSize);
         let expected = {
@@ -32,7 +32,7 @@ describe("Create tetromino", function () {
         assert.deepEqual(resultFunction, expected);
     })
     it("Create T tetromino", function () {
-        stub.returns("T");
+        stubForGetRandomTypeOfTetromino.returns("T");
         let fieldSize = { x: 5, y: 2 };
         let resultFunction = tetris.createTetromino(fieldSize);
         let expected = {
@@ -46,7 +46,7 @@ describe("Create tetromino", function () {
         assert.deepEqual(resultFunction, expected);
     })
     it("Create S tetromino", function () {
-        stub.returns("S");
+        stubForGetRandomTypeOfTetromino.returns("S");
         let fieldSize = { x: 5, y: 2 };
         let resultFunction = tetris.createTetromino(fieldSize);
         let expected = {
@@ -60,7 +60,7 @@ describe("Create tetromino", function () {
         assert.deepEqual(resultFunction, expected);
     })
     it("Create Z tetromino", function () {
-        stub.returns("Z");
+        stubForGetRandomTypeOfTetromino.returns("Z");
         let fieldSize = { x: 5, y: 2 };
         let resultFunction = tetris.createTetromino(fieldSize);
         let expected = {
@@ -74,7 +74,7 @@ describe("Create tetromino", function () {
         assert.deepEqual(resultFunction, expected);
     })
     it("Create I tetromino", function () {
-        stub.returns("I");
+        stubForGetRandomTypeOfTetromino.returns("I");
         let fieldSize = { x: 5, y: 4 };
         let resultFunction = tetris.createTetromino(fieldSize);
         let expected = {
@@ -87,7 +87,7 @@ describe("Create tetromino", function () {
         assert.deepEqual(resultFunction, expected);
     })
     it("Create O tetromino", function () {
-        stub.returns("O");
+        stubForGetRandomTypeOfTetromino.returns("O");
         let fieldSize = { x: 5, y: 4 };
         let resultFunction = tetris.createTetromino(fieldSize);
         let expected = {
@@ -99,7 +99,7 @@ describe("Create tetromino", function () {
                 -----
             `)
         };
-        stub.restore()
+        stubForGetRandomTypeOfTetromino.restore()
         assert.deepEqual(resultFunction, expected);
     })
 })
