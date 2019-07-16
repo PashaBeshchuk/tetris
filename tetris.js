@@ -588,7 +588,7 @@ module.exports = {
 		}
 		tick() {
 			let shift = { x: 0, y: 1 }
-			if (this.tetromino.canMoveTetromino(this.field.field)) {
+			if (this.tetromino.canMoveDown(this.field.field)) {
 				this.tetromino.moveTetromino(this.field.field, shift)
 			} else {
 				this.field.addTetrominoToField(this.coordinatesOfTetramino)

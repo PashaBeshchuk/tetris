@@ -2,7 +2,7 @@ var sinon = require('sinon');
 var assert = require('chai').assert;
 var tetris = require('../tetris');
 describe("Create tetromino", function () {
-    let stubForGetRandomTypeOfTetromino = sinon.stub(tetris,"getRandomTypeOfTetromino")
+    let stubForGetRandomTypeOfTetromino = sinon.stub(tetris, "getRandomTypeOfTetromino")
     it("Create L tetromino", function () {
         stubForGetRandomTypeOfTetromino.returns("L");
         let fieldSize = { x: 5, y: 2 };
@@ -99,7 +99,6 @@ describe("Create tetromino", function () {
                 -----
             `)
         };
-        stubForGetRandomTypeOfTetromino.restore()
         assert.deepEqual(resultFunction, expected);
     })
 })
