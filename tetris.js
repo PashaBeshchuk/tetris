@@ -611,5 +611,22 @@ module.exports = {
 		rotate(){
 			this.tetromino.rotateTetromino(this.field.field)
 		}
+	},
+	keyboardHandler: function (keyCode, tetris){
+		switch(keyCode){
+			case "keyCodeRightButton":
+				tetris.moveRight()
+				break;
+			case "keyCodeLeftButton":
+				tetris.moveLeft()
+				break;
+			case "keyCodeUpButton":
+				tetris.rotate()
+				break;
+			case "keyCodeDownButton":
+				tetris.moveDown()
+				break;
+		}
 	}
+
 }
