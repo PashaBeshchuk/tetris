@@ -591,7 +591,7 @@ module.exports = {
 			if (this.tetromino.canMoveDown(this.field.field)) {
 				this.tetromino.moveTetromino(this.field.field, shift)
 			} else {
-				this.field.addTetrominoToField(this.coordinatesOfTetramino)
+				this.field.addTetrominoToField(this.tetromino.coordinates)
 				this.tetromino = module.exports.createTetromino(this.fieldSize)
 				this.field.cleanFilledRows()
 			}
