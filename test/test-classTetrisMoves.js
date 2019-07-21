@@ -286,9 +286,9 @@ describe("All moves tetromino", function () {
         --XXXX--
         XXXX-XXX
     `)
-    assert.deepEqual(elementTetris.field.field, expectedFieldAddOSecond)
-    elementTetris.tick()
-    let expectedFieldAddOThird = tetris.buildField(`
+        assert.deepEqual(elementTetris.field.field, expectedFieldAddOSecond)
+        elementTetris.tick()
+        let expectedFieldAddOThird = tetris.buildField(`
         --XXXX--
         -----X--
         -----X--
@@ -296,6 +296,6 @@ describe("All moves tetromino", function () {
         --XXXX--
         XXXX-XXX
     `)
-    assert.deepEqual(elementTetris.field.field, expectedFieldAddOThird)
-    })    
+        assert.deepEqual(elementTetris.field.field, expectedFieldAddOThird)
+    })
 })
