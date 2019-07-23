@@ -1,3 +1,4 @@
+var initFile = require('./init')
 module.exports = {
 	//тетрамино массив из 4 координат [{x: 1, y: 2}, {x: 2, y: 2}, {x: 3, y: 2}, {x: 4, y: 2}]
 	// field это массив двухмерный булин значений, если true в ней есть блок, false блока нет
@@ -594,6 +595,9 @@ module.exports = {
 				this.field.addTetrominoToField(this.tetromino.coordinates)
 				this.tetromino = module.exports.createTetromino(this.fieldSize)
 				this.field.cleanFilledRows()
+				if (!checkThatTheFieldIsFree(this.tetromino.coordinates){
+					initFile.init.stopTick()
+				})
 			}
 		}
 		moveLeft() {
@@ -604,29 +608,12 @@ module.exports = {
 			let shift = { x: 1, y: 0 }
 			this.tetromino.moveTetromino(this.field.field, shift)
 		}
-		moveDown(){
+		moveDown() {
 			let shift = { x: 0, y: 1 }
 			this.tetromino.moveTetromino(this.field.field, shift)
 		}
-		rotate(){
+		rotate() {
 			this.tetromino.rotateTetromino(this.field.field)
 		}
-	},
-	keyboardHandler: function (keyCode, tetris){
-		switch(keyCode){
-			case "keyCodeRightButton":
-				tetris.moveRight()
-				break;
-			case "keyCodeLeftButton":
-				tetris.moveLeft()
-				break;
-			case "keyCodeUpButton":
-				tetris.rotate()
-				break;
-			case "keyCodeDownButton":
-				tetris.moveDown()
-				break;
-		}
 	}
-
 }

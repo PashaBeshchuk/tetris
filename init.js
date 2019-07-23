@@ -3,7 +3,7 @@ module.exports = {
     init: function () {
         let fieldSIze = { x: 5, y: 5 };
         let newTetris = new tetris.Tetris(fieldSIze);
-        let tick = setInterval(newTetris.tick(), 1000);
+        let tick = setInterval(newTetris.tick, 1000);
         keyboardHandler: function (keyCode, tetris) {
             switch (keyCode) {
                 case keyCodeRightButton:
@@ -19,6 +19,9 @@ module.exports = {
                     newTetris.moveDown()
                     break;
             }
-        }
+        };
+        stopTick: function () {
+            clearInterval(tick)
+        };
     }
 }
