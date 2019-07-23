@@ -1,13 +1,15 @@
 var sinon = require('sinon');
 var assert = require('chai').assert;
 var tetris = require('../tetris');
+var init = require('../init');
 describe("All moves tetromino", function () {
     let stubForGetRandomTypeOfTetromino = sinon.stub(tetris, "getRandomTypeOfTetromino");
     it("Mini Game", function () {
+        console.log(init.init.)
         stubForGetRandomTypeOfTetromino.returns("O")
         let fieldSize = { x: 8, y: 6 }
-        let elementTetris = new tetris.Tetris(fieldSize)
-        elementTetris.moveLeft()
+        let gameTetris = new tetris.Tetris(fieldSize)
+        gameTetris.moveLeft()
         let expectedMoveRight = tetris.getCoordinates(`
             --XX----
             --XX----
@@ -16,11 +18,11 @@ describe("All moves tetromino", function () {
             --------
             --------
         `)
-        assert.deepEqual(elementTetris.tetromino.coordinates, expectedMoveRight)
-        elementTetris.tick()
-        elementTetris.tick()
-        elementTetris.tick()
-        elementTetris.tick()
+        assert.deepEqual(gameTetris.tetromino.coordinates, expectedMoveRight)
+        gameTetris.tick()
+        gameTetris.tick()
+        gameTetris.tick()
+        gameTetris.tick()
         let expectedWhenCantMove = tetris.getCoordinates(`
             --------
             --------
@@ -29,9 +31,9 @@ describe("All moves tetromino", function () {
             --XX----
             --XX----
         `)
-        assert.deepEqual(elementTetris.tetromino.coordinates, expectedWhenCantMove)
+        assert.deepEqual(gameTetris.tetromino.coordinates, expectedWhenCantMove)
         stubForGetRandomTypeOfTetromino.returns("J")
-        elementTetris.tick()
+        gameTetris.tick()
         let expectedField = tetris.buildField(`
             --------
             --------
@@ -40,7 +42,7 @@ describe("All moves tetromino", function () {
             --XX----
             --XX----
         `)
-        assert.deepEqual(elementTetris.field.field, expectedField)
+        assert.deepEqual(gameTetris.field.field, expectedField)
         let expectedNewTetrominoJ = tetris.getCoordinates(`
             ---X----
             ---XXX--
@@ -49,14 +51,14 @@ describe("All moves tetromino", function () {
             --------
             --------
         `)
-        assert.deepEqual(elementTetris.tetromino.coordinates, expectedNewTetrominoJ)
-        elementTetris.rotate()
-        elementTetris.moveRight()
-        elementTetris.moveRight()
-        elementTetris.moveRight()
-        elementTetris.moveDown()
-        elementTetris.moveDown()
-        elementTetris.moveDown()
+        assert.deepEqual(gameTetris.tetromino.coordinates, expectedNewTetrominoJ)
+        gameTetris.rotate()
+        gameTetris.moveRight()
+        gameTetris.moveRight()
+        gameTetris.moveRight()
+        gameTetris.moveDown()
+        gameTetris.moveDown()
+        gameTetris.moveDown()
         let expectedRotateMoveRightAndMovesDownJ = tetris.getCoordinates(`
             --------
             --------
@@ -65,9 +67,9 @@ describe("All moves tetromino", function () {
             -------X
             ------XX
         `)
-        assert.deepEqual(elementTetris.tetromino.coordinates, expectedRotateMoveRightAndMovesDownJ)
+        assert.deepEqual(gameTetris.tetromino.coordinates, expectedRotateMoveRightAndMovesDownJ)
         stubForGetRandomTypeOfTetromino.returns("S")
-        elementTetris.tick()
+        gameTetris.tick()
         let expectedFieldAddJ = tetris.buildField(`
             --------
             --------
@@ -76,7 +78,7 @@ describe("All moves tetromino", function () {
             --XX---X
             --XX--XX
         `)
-        assert.deepEqual(elementTetris.field.field, expectedFieldAddJ)
+        assert.deepEqual(gameTetris.field.field, expectedFieldAddJ)
         let expectedNewTetrominoS = tetris.getCoordinates(`
             ----XX--
             ---XX---
@@ -85,12 +87,12 @@ describe("All moves tetromino", function () {
             --------
             --------
         `)
-        assert.deepEqual(elementTetris.tetromino.coordinates, expectedNewTetrominoS)
-        elementTetris.moveRight()
-        elementTetris.tick()
-        elementTetris.tick()
-        elementTetris.tick()
-        elementTetris.tick()
+        assert.deepEqual(gameTetris.tetromino.coordinates, expectedNewTetrominoS)
+        gameTetris.moveRight()
+        gameTetris.tick()
+        gameTetris.tick()
+        gameTetris.tick()
+        gameTetris.tick()
         let expectedMoveRightTicksS = tetris.getCoordinates(`
             --------
             --------
@@ -99,9 +101,9 @@ describe("All moves tetromino", function () {
             -----XX-
             ----XX--
         `)
-        assert.deepEqual(elementTetris.tetromino.coordinates, expectedMoveRightTicksS)
+        assert.deepEqual(gameTetris.tetromino.coordinates, expectedMoveRightTicksS)
         stubForGetRandomTypeOfTetromino.returns("L")
-        elementTetris.tick()
+        gameTetris.tick()
         let expectedFieldAddS = tetris.buildField(`
             --------
             --------
@@ -110,7 +112,7 @@ describe("All moves tetromino", function () {
             --XX-XXX
             --XXXXXX
         `)
-        assert.deepEqual(elementTetris.field.field, expectedFieldAddS)
+        assert.deepEqual(gameTetris.field.field, expectedFieldAddS)
         let expectedNewTetrominoL = tetris.getCoordinates(`
             -----X--
             ---XXX--
@@ -119,17 +121,17 @@ describe("All moves tetromino", function () {
             --------
             --------
         `)
-        assert.deepEqual(elementTetris.tetromino.coordinates, expectedNewTetrominoL)
-        elementTetris.rotate()
-        elementTetris.rotate()
-        elementTetris.rotate()
-        elementTetris.moveLeft()
-        elementTetris.moveLeft()
-        elementTetris.moveLeft()
-        elementTetris.moveLeft()
-        elementTetris.tick()
-        elementTetris.tick()
-        elementTetris.tick()
+        assert.deepEqual(gameTetris.tetromino.coordinates, expectedNewTetrominoL)
+        gameTetris.rotate()
+        gameTetris.rotate()
+        gameTetris.rotate()
+        gameTetris.moveLeft()
+        gameTetris.moveLeft()
+        gameTetris.moveLeft()
+        gameTetris.moveLeft()
+        gameTetris.tick()
+        gameTetris.tick()
+        gameTetris.tick()
         let expectedRotatesMovesLeftAndTickL = tetris.getCoordinates(`
             --------
             --------
@@ -138,9 +140,9 @@ describe("All moves tetromino", function () {
             X-------
             XX------
         `)
-        assert.deepEqual(elementTetris.tetromino.coordinates, expectedRotatesMovesLeftAndTickL)
+        assert.deepEqual(gameTetris.tetromino.coordinates, expectedRotatesMovesLeftAndTickL)
         stubForGetRandomTypeOfTetromino.returns("Z")
-        elementTetris.tick()
+        gameTetris.tick()
         let expectedFieldAddL = tetris.buildField(`
             --------
             --------
@@ -149,7 +151,7 @@ describe("All moves tetromino", function () {
             X------X
             X-XX-XXX
         `)
-        assert.deepEqual(elementTetris.field.field, expectedFieldAddL)
+        assert.deepEqual(gameTetris.field.field, expectedFieldAddL)
         let expectedNewTetrominoZ = tetris.getCoordinates(`
             ---XX---
             ----XX--
@@ -158,13 +160,13 @@ describe("All moves tetromino", function () {
             --------
             --------
         `)
-        assert.deepEqual(elementTetris.tetromino.coordinates, expectedNewTetrominoZ)
-        elementTetris.rotate()
-        elementTetris.moveLeft()
-        elementTetris.moveLeft()
-        elementTetris.tick()
-        elementTetris.tick()
-        elementTetris.tick()
+        assert.deepEqual(gameTetris.tetromino.coordinates, expectedNewTetrominoZ)
+        gameTetris.rotate()
+        gameTetris.moveLeft()
+        gameTetris.moveLeft()
+        gameTetris.tick()
+        gameTetris.tick()
+        gameTetris.tick()
         let expectedRotatesMovesLeftAndTicksZ = tetris.getCoordinates(`
             --------
             --------
@@ -173,9 +175,9 @@ describe("All moves tetromino", function () {
             -XX-----
             -X------
         `)
-        assert.deepEqual(elementTetris.tetromino.coordinates, expectedRotatesMovesLeftAndTicksZ)
+        assert.deepEqual(gameTetris.tetromino.coordinates, expectedRotatesMovesLeftAndTicksZ)
         stubForGetRandomTypeOfTetromino.returns("I")
-        elementTetris.tick()
+        gameTetris.tick()
         let expectedFieldAddZ = tetris.buildField(`
             --------
             --------
@@ -184,7 +186,7 @@ describe("All moves tetromino", function () {
             XXX----X
             XXXX-XXX
         `)
-        assert.deepEqual(elementTetris.field.field, expectedFieldAddZ)
+        assert.deepEqual(gameTetris.field.field, expectedFieldAddZ)
         let expectedNewTetrominoI = tetris.getCoordinates(`
             --XXXX--
             --------
@@ -193,12 +195,12 @@ describe("All moves tetromino", function () {
             --------
             --------
         `)
-        assert.deepEqual(elementTetris.tetromino.coordinates, expectedNewTetrominoI)
-        elementTetris.moveRight()
-        elementTetris.tick()
-        elementTetris.tick()
-        elementTetris.tick()
-        elementTetris.tick()
+        assert.deepEqual(gameTetris.tetromino.coordinates, expectedNewTetrominoI)
+        gameTetris.moveRight()
+        gameTetris.tick()
+        gameTetris.tick()
+        gameTetris.tick()
+        gameTetris.tick()
         let expectedMoveLeftAndTicksI = tetris.getCoordinates(`
             --------
             --------
@@ -207,9 +209,9 @@ describe("All moves tetromino", function () {
             ---XXXX-
             --------
         `)
-        assert.deepEqual(elementTetris.tetromino.coordinates, expectedMoveLeftAndTicksI)
+        assert.deepEqual(gameTetris.tetromino.coordinates, expectedMoveLeftAndTicksI)
         stubForGetRandomTypeOfTetromino.returns("I")
-        elementTetris.tick()
+        gameTetris.tick()
         let expectedFieldAddI = tetris.buildField(`
             --------
             --------
@@ -218,7 +220,7 @@ describe("All moves tetromino", function () {
             --X-----
             XXXX-XXX
         `)
-        assert.deepEqual(elementTetris.field.field, expectedFieldAddI)
+        assert.deepEqual(gameTetris.field.field, expectedFieldAddI)
         let expectedNewTetrominoISecomd = tetris.getCoordinates(`
             --XXXX--
             --------
@@ -227,12 +229,12 @@ describe("All moves tetromino", function () {
             --------
             --------
         `)
-        assert.deepEqual(elementTetris.tetromino.coordinates, expectedNewTetrominoISecomd)
-        elementTetris.tick()
-        elementTetris.rotate()
-        elementTetris.moveRight()
-        elementTetris.moveRight()
-        elementTetris.tick()
+        assert.deepEqual(gameTetris.tetromino.coordinates, expectedNewTetrominoISecomd)
+        gameTetris.tick()
+        gameTetris.rotate()
+        gameTetris.moveRight()
+        gameTetris.moveRight()
+        gameTetris.tick()
         let expectedTicksRotateMovesRightI = tetris.getCoordinates(`
             --------
             -----X--
@@ -241,9 +243,9 @@ describe("All moves tetromino", function () {
             -----X--
             --------
         `)
-        assert.deepEqual(elementTetris.tetromino.coordinates, expectedTicksRotateMovesRightI)
+        assert.deepEqual(gameTetris.tetromino.coordinates, expectedTicksRotateMovesRightI)
         stubForGetRandomTypeOfTetromino.returns("O")
-        elementTetris.tick()
+        gameTetris.tick()
         let expectedFieldAddISecond = tetris.buildField(`
             --------
             -----X--
@@ -252,7 +254,7 @@ describe("All moves tetromino", function () {
             --X--X--
             XXXX-XXX
         `)
-        assert.deepEqual(elementTetris.field.field, expectedFieldAddISecond)
+        assert.deepEqual(gameTetris.field.field, expectedFieldAddISecond)
         let expectedNewTetrominoOSecond = tetris.getCoordinates(`
             ---XX---
             ---XX---
@@ -261,12 +263,12 @@ describe("All moves tetromino", function () {
             --------
             --------
         `)
-        assert.deepEqual(elementTetris.tetromino.coordinates, expectedNewTetrominoOSecond)
-        elementTetris.moveRight()
-        elementTetris.moveRight()
-        elementTetris.tick()
-        elementTetris.tick()
-        elementTetris.tick()
+        assert.deepEqual(gameTetris.tetromino.coordinates, expectedNewTetrominoOSecond)
+        gameTetris.moveRight()
+        gameTetris.moveRight()
+        gameTetris.tick()
+        gameTetris.tick()
+        gameTetris.tick()
         let expectedMovesRightTicksO = tetris.getCoordinates(`
             --------
             --------
@@ -275,27 +277,27 @@ describe("All moves tetromino", function () {
             ---XX---
             --------
         `)
-        assert.deepEqual(elementTetris.tetromino.coordinates, expectedMovesRightTicksO)
+        assert.deepEqual(gameTetris.tetromino.coordinates, expectedMovesRightTicksO)
         stubForGetRandomTypeOfTetromino.returns("I")
-        elementTetris.tick()
+        gameTetris.tick()
         let expectedFieldAddOSecond = tetris.buildField(`
-        --------
-        -----X--
-        -----X--
-        ---XXX--
-        --XXXX--
-        XXXX-XXX
-    `)
-        assert.deepEqual(elementTetris.field.field, expectedFieldAddOSecond)
-        elementTetris.tick()
+            --------
+            -----X--
+            -----X--
+            ---XXX--
+            --XXXX--
+            XXXX-XXX
+        `)
+        assert.deepEqual(gameTetris.field.field, expectedFieldAddOSecond)
+        gameTetris.tick()
         let expectedFieldAddOThird = tetris.buildField(`
-        --XXXX--
-        -----X--
-        -----X--
-        ---XXX--
-        --XXXX--
-        XXXX-XXX
-    `)
-        assert.deepEqual(elementTetris.field.field, expectedFieldAddOThird)
+            --XXXX--
+            -----X--
+            -----X--
+            ---XXX--
+            --XXXX--
+            XXXX-XXX
+        `)
+        assert.deepEqual(gameTetris.field.field, expectedFieldAddOThird)
     })
 })

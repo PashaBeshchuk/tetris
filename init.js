@@ -2,9 +2,11 @@ let tetris = require('./tetris');
 module.exports = {
     init: function () {
         let fieldSIze = { x: 5, y: 5 };
-        let newTetris = new tetris.Tetris(fieldSIze, this.stopTick());
+        let newTetris = new tetris.Tetris(fieldSIze, stopTick());
         let tick = setInterval(newTetris.tick, 1000);
-        keyboardHandler: function (keyCode, tetris) {
+
+        keyboardHandler()   
+        function keyboardHandler(keyCode, tetris) {
             switch (keyCode) {
                 case keyCodeRightButton:
                     newTetris.moveRight()
@@ -19,9 +21,10 @@ module.exports = {
                     newTetris.moveDown()
                     break;
             }
-        };
-        stopTick: function () {
+        },
+        function stopTick() {
             clearInterval(tick)
-        };
+            console.log("stopTick")
+        }
     }
 }
