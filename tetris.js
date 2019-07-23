@@ -580,12 +580,13 @@ module.exports = {
 		return new this.Tetromino(typeOfTetromino, phase, coodinates)
 	},
 	Tetris: class {
-		constructor(fieldSize) {
+		constructor(fieldSize, callback) {
 			this.fieldSize = fieldSize;
 			this.typeOfTetromino = module.exports.getRandomTypeOfTetromino()
 			this.coordinatesOfTetramino = module.exports.initCoordinates(this.typeOfTetromino, this.fieldSize)
 			this.tetromino = module.exports.createTetromino(this.fieldSize)
 			this.field = new module.exports.Field(this.fieldSize)
+			this.callback = callback
 		}
 		tick() {
 			let shift = { x: 0, y: 1 }
@@ -596,7 +597,7 @@ module.exports = {
 				this.tetromino = module.exports.createTetromino(this.fieldSize)
 				this.field.cleanFilledRows()
 				if (!checkThatTheFieldIsFree(this.tetromino.coordinates){
-					initFile.init.stopTick()
+					this.callback()
 				})
 			}
 		}
