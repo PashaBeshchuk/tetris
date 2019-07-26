@@ -4,8 +4,7 @@ module.exports = {
         let fieldSIze = { x: 5, y: 5 };
         let newTetris = new tetris.Tetris(fieldSIze, stopTick());
         let tick = setInterval(newTetris.tick, 1000);
-
-        keyboardHandler()   
+        keyboardHandler(event.keyCode, newTetris)
         function keyboardHandler(keyCode, tetris) {
             switch (keyCode) {
                 case keyCodeRightButton:
