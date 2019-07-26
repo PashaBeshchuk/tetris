@@ -587,21 +587,18 @@ module.exports = {
 			this.tetromino = module.exports.createTetromino(this.fieldSize)
 			this.field = new module.exports.Field(this.fieldSize)
 			this.gameOverCallback = gameOverCallback
-			//console.log(this.gameOverCallback)
 		}
 		tick() {
 			let shift = { x: 0, y: 1 }
 			if (this.tetromino.canMoveDown(this.field.field)) {
 				this.tetromino.moveTetromino(this.field.field, shift)
-				//console.log(this.gameOverCallback)
 			} else {
 				this.field.addTetrominoToField(this.tetromino.coordinates)
 				this.tetromino = module.exports.createTetromino(this.fieldSize)
 				this.field.cleanFilledRows()
-				//console.log(this.gameOverCallback)
-				// if (!module.exports.checkThatTheFieldIsFree(this.tetromino.coordinates){
-				// 	this.gameOverCallback
-				// })
+				if(!module.exports.checkThatTheFieldIsFree(this.tetromino.coordinates, this.field.field)){
+					this.gameOverCallback
+				}
 			}
 		}
 		moveLeft() {

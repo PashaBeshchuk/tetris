@@ -21,10 +21,9 @@ module.exports = {
                     newTetris.moveDown()
                     break;
             }
-        },
+        }
         function stopTick() {
             clearInterval(tick)
-            console.log("stopTick")
         }
     }
 }

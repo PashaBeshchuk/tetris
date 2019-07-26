@@ -5,7 +5,6 @@ var init = require('../init');
 describe("All moves tetromino", function () {
     let stubForGetRandomTypeOfTetromino = sinon.stub(tetris, "getRandomTypeOfTetromino");
     it("Mini Game", function () {
-        console.log(init.init.)
         stubForGetRandomTypeOfTetromino.returns("O")
         let fieldSize = { x: 8, y: 6 }
         let gameTetris = new tetris.Tetris(fieldSize)
@@ -299,5 +298,15 @@ describe("All moves tetromino", function () {
             XXXX-XXX
         `)
         assert.deepEqual(gameTetris.field.field, expectedFieldAddOThird)
+        gameTetris.tick()
+        let expectedStopGame = tetris.buildField(`
+            --XXXX--
+            -----X--
+            -----X--
+            ---XXX--
+            --XXXX--
+            XXXX-XXX
+        `)
+        assert.deepEqual(gameTetris.field.field, expectedStopGame)
     })
 })
