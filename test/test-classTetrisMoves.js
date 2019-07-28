@@ -10,7 +10,7 @@ describe("All moves tetromino", function () {
         let fieldSize = { x: 8, y: 6 }
         let gameTetris = new tetris.Tetris(fieldSize, callback)
         gameTetris.moveLeft()
-        let expectedMoveRight = tetris.getCoordinates(`
+        let expectedMoveRightOTetromino = tetris.getCoordinates(`
             --XX----
             --XX----
             --------
@@ -18,12 +18,12 @@ describe("All moves tetromino", function () {
             --------
             --------
         `)
-        assert.deepEqual(gameTetris.tetromino.coordinates, expectedMoveRight)
+        assert.deepEqual(gameTetris.tetromino.coordinates, expectedMoveRightOTetromino)
         gameTetris.tick()
         gameTetris.tick()
         gameTetris.tick()
         gameTetris.tick()
-        let expectedWhenCantMove = tetris.getCoordinates(`
+        let expectedWhenCantMoveOTetromino = tetris.getCoordinates(`
             --------
             --------
             --------
@@ -31,7 +31,7 @@ describe("All moves tetromino", function () {
             --XX----
             --XX----
         `)
-        assert.deepEqual(gameTetris.tetromino.coordinates, expectedWhenCantMove)
+        assert.deepEqual(gameTetris.tetromino.coordinates, expectedWhenCantMoveOTetromino)
         stubForGetRandomTypeOfTetromino.returns("J")
         gameTetris.tick()
         let expectedField = tetris.buildField(`
@@ -290,7 +290,7 @@ describe("All moves tetromino", function () {
         `)
         assert.deepEqual(gameTetris.field.field, expectedFieldAddIThird)
         gameTetris.tick()
-        let expectedFieldAddOThird = tetris.buildField(`
+        let expectedFieldAddIFifth = tetris.buildField(`
             --XXXX--
             -----X--
             -----X--
@@ -298,7 +298,7 @@ describe("All moves tetromino", function () {
             --XXXX--
             XXXX-XXX
         `)
-        assert.deepEqual(gameTetris.field.field, expectedFieldAddOThird)
+        assert.deepEqual(gameTetris.field.field, expectedFieldAddIFifth)
         gameTetris.tick()
         assert(callback.called)
     })

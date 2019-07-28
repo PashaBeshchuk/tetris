@@ -9,9 +9,8 @@ module.exports = {
         let newTetris = new tetris.Tetris(fieldSIze, stopTick);
         let tick = setInterval(newTetris.tick, 1000);
         window.addEventListener("keydown", keyboardHandler)
-        keyboardHandler(event.keyCode, newTetris)
-        function keyboardHandler(keyCode, tetris) {
-            switch (keyCode) {
+        function keyboardHandler(event, tetris) {
+            switch (event.keyCode) {
                 case keyCodeRightButton:
                     newTetris.moveRight()
                     break;
