@@ -4,10 +4,11 @@ var tetris = require('../tetris');
 var init = require('../init');
 describe("All moves tetromino", function () {
     let stubForGetRandomTypeOfTetromino = sinon.stub(tetris, "getRandomTypeOfTetromino");
+    let callback = sinon.spy()
     it("Mini Game", function () {
         stubForGetRandomTypeOfTetromino.returns("O")
         let fieldSize = { x: 8, y: 6 }
-        let gameTetris = new tetris.Tetris(fieldSize)
+        let gameTetris = new tetris.Tetris(fieldSize, callback)
         gameTetris.moveLeft()
         let expectedMoveRight = tetris.getCoordinates(`
             --XX----
@@ -279,7 +280,7 @@ describe("All moves tetromino", function () {
         assert.deepEqual(gameTetris.tetromino.coordinates, expectedMovesRightTicksO)
         stubForGetRandomTypeOfTetromino.returns("I")
         gameTetris.tick()
-        let expectedFieldAddOSecond = tetris.buildField(`
+        let expectedFieldAddIThird = tetris.buildField(`
             --------
             -----X--
             -----X--
@@ -287,7 +288,7 @@ describe("All moves tetromino", function () {
             --XXXX--
             XXXX-XXX
         `)
-        assert.deepEqual(gameTetris.field.field, expectedFieldAddOSecond)
+        assert.deepEqual(gameTetris.field.field, expectedFieldAddIThird)
         gameTetris.tick()
         let expectedFieldAddOThird = tetris.buildField(`
             --XXXX--
@@ -299,14 +300,6 @@ describe("All moves tetromino", function () {
         `)
         assert.deepEqual(gameTetris.field.field, expectedFieldAddOThird)
         gameTetris.tick()
-        let expectedStopGame = tetris.buildField(`
-            --XXXX--
-            -----X--
-            -----X--
-            ---XXX--
-            --XXXX--
-            XXXX-XXX
-        `)
-        assert.deepEqual(gameTetris.field.field, expectedStopGame)
+        assert(callback.called)
     })
 })

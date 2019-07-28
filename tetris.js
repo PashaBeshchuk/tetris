@@ -597,7 +597,7 @@ module.exports = {
 				this.tetromino = module.exports.createTetromino(this.fieldSize)
 				this.field.cleanFilledRows()
 				if(!module.exports.checkThatTheFieldIsFree(this.tetromino.coordinates, this.field.field)){
-					this.gameOverCallback
+					this.gameOverCallback()
 				}
 			}
 		}
