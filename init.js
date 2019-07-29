@@ -6,22 +6,22 @@ module.exports = {
 		let keyCodeLeftButton =  37;
 		let keyCodeUpButton = 38;
 		let keyCodeDownButton = 40;
-        let newTetris = new tetris.Tetris(fieldSIze, stopTick);
+        let tetris = new tetris.Tetris(fieldSIze, stopTick);
         let tick = setInterval(newTetris.tick, 1000);
         window.addEventListener("keydown", keyboardHandler)
-        function keyboardHandler(event, tetris) {
+        function keyboardHandler(event) {
             switch (event.keyCode) {
                 case keyCodeRightButton:
-                    newTetris.moveRight()
+                    tetris.moveRight()
                     break;
                 case keyCodeLeftButton:
-                    newTetris.moveLeft()
+                    tetris.moveLeft()
                     break;
                 case keyCodeUpButton:
-                    newTetris.rotate()
+                    tetris.rotate()
                     break;
                 case keyCodeDownButton:
-                    newTetris.moveDown()
+                    tetris.moveDown()
                     break;
             }
         }
