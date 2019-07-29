@@ -10,7 +10,7 @@ describe("All moves tetromino", function () {
         let fieldSize = { x: 8, y: 6 }
         let gameTetris = new tetris.Tetris(fieldSize, callback)
         gameTetris.moveLeft()
-        let expectedMoveRightOTetromino = tetris.getCoordinates(`
+        let expectedMoveLeftOTetromino = tetris.getCoordinates(`
             --XX----
             --XX----
             --------
@@ -18,7 +18,7 @@ describe("All moves tetromino", function () {
             --------
             --------
         `)
-        assert.deepEqual(gameTetris.tetromino.coordinates, expectedMoveRightOTetromino)
+        assert.deepEqual(gameTetris.tetromino.coordinates, expectedMoveLeftOTetromino)
         gameTetris.tick()
         gameTetris.tick()
         gameTetris.tick()
@@ -59,7 +59,7 @@ describe("All moves tetromino", function () {
         gameTetris.moveDown()
         gameTetris.moveDown()
         gameTetris.moveDown()
-        let expectedRotateMoveRightAndMovesDownJ = tetris.getCoordinates(`
+        let expectedRotateMovesRightAndMovesDownJ = tetris.getCoordinates(`
             --------
             --------
             --------
@@ -67,7 +67,7 @@ describe("All moves tetromino", function () {
             -------X
             ------XX
         `)
-        assert.deepEqual(gameTetris.tetromino.coordinates, expectedRotateMoveRightAndMovesDownJ)
+        assert.deepEqual(gameTetris.tetromino.coordinates, expectedRotateMovesRightAndMovesDownJ)
         stubForGetRandomTypeOfTetromino.returns("S")
         gameTetris.tick()
         let expectedFieldAddJ = tetris.buildField(`
@@ -93,7 +93,7 @@ describe("All moves tetromino", function () {
         gameTetris.tick()
         gameTetris.tick()
         gameTetris.tick()
-        let expectedMoveRightTicksS = tetris.getCoordinates(`
+        let expectedMoveRightAndTicksS = tetris.getCoordinates(`
             --------
             --------
             --------
@@ -101,7 +101,7 @@ describe("All moves tetromino", function () {
             -----XX-
             ----XX--
         `)
-        assert.deepEqual(gameTetris.tetromino.coordinates, expectedMoveRightTicksS)
+        assert.deepEqual(gameTetris.tetromino.coordinates, expectedMoveRightAndTicksS)
         stubForGetRandomTypeOfTetromino.returns("L")
         gameTetris.tick()
         let expectedFieldAddS = tetris.buildField(`
@@ -167,7 +167,7 @@ describe("All moves tetromino", function () {
         gameTetris.tick()
         gameTetris.tick()
         gameTetris.tick()
-        let expectedRotatesMovesLeftAndTicksZ = tetris.getCoordinates(`
+        let expectedRotateMovesLeftAndTicksZ = tetris.getCoordinates(`
             --------
             --------
             --------
@@ -175,7 +175,7 @@ describe("All moves tetromino", function () {
             -XX-----
             -X------
         `)
-        assert.deepEqual(gameTetris.tetromino.coordinates, expectedRotatesMovesLeftAndTicksZ)
+        assert.deepEqual(gameTetris.tetromino.coordinates, expectedRotateMovesLeftAndTicksZ)
         stubForGetRandomTypeOfTetromino.returns("I")
         gameTetris.tick()
         let expectedFieldAddZ = tetris.buildField(`
@@ -201,7 +201,7 @@ describe("All moves tetromino", function () {
         gameTetris.tick()
         gameTetris.tick()
         gameTetris.tick()
-        let expectedMoveLeftAndTicksI = tetris.getCoordinates(`
+        let expectedMoveRightAndTicksI = tetris.getCoordinates(`
             --------
             --------
             --------
@@ -209,7 +209,7 @@ describe("All moves tetromino", function () {
             ---XXXX-
             --------
         `)
-        assert.deepEqual(gameTetris.tetromino.coordinates, expectedMoveLeftAndTicksI)
+        assert.deepEqual(gameTetris.tetromino.coordinates, expectedMoveRightAndTicksI)
         stubForGetRandomTypeOfTetromino.returns("I")
         gameTetris.tick()
         let expectedFieldAddI = tetris.buildField(`
@@ -235,7 +235,7 @@ describe("All moves tetromino", function () {
         gameTetris.moveRight()
         gameTetris.moveRight()
         gameTetris.tick()
-        let expectedTicksRotateMovesRightI = tetris.getCoordinates(`
+        let expectedTickRotateAndMovesRightI = tetris.getCoordinates(`
             --------
             -----X--
             -----X--
@@ -243,7 +243,7 @@ describe("All moves tetromino", function () {
             -----X--
             --------
         `)
-        assert.deepEqual(gameTetris.tetromino.coordinates, expectedTicksRotateMovesRightI)
+        assert.deepEqual(gameTetris.tetromino.coordinates, expectedTickRotateAndMovesRightI)
         stubForGetRandomTypeOfTetromino.returns("O")
         gameTetris.tick()
         let expectedFieldAddISecond = tetris.buildField(`
@@ -269,7 +269,7 @@ describe("All moves tetromino", function () {
         gameTetris.tick()
         gameTetris.tick()
         gameTetris.tick()
-        let expectedMovesRightTicksO = tetris.getCoordinates(`
+        let expectedMovesRightAndTicksO = tetris.getCoordinates(`
             --------
             --------
             --------
@@ -277,7 +277,7 @@ describe("All moves tetromino", function () {
             ---XX---
             --------
         `)
-        assert.deepEqual(gameTetris.tetromino.coordinates, expectedMovesRightTicksO)
+        assert.deepEqual(gameTetris.tetromino.coordinates, expectedMovesRightAndTicksO)
         stubForGetRandomTypeOfTetromino.returns("I")
         gameTetris.tick()
         let expectedFieldAddIThird = tetris.buildField(`
