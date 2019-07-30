@@ -34,7 +34,7 @@ describe("Identification starting phase tetromino", function () {
     it("Starting phase I tetromino", function () {
         let typeOfTetromino = "I"
         let identificationPhase = tetris.startingPhaseOfTetromino(typeOfTetromino)
-        let expected = "vertical"
+        let expected = "horizontal"
         assert.deepEqual(identificationPhase, expected)
     })
     it("Starting phase O tetromino", function () {

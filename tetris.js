@@ -1,3 +1,4 @@
+var initFile = require('./init')
 module.exports = {
 	//тетрамино массив из 4 координат [{x: 1, y: 2}, {x: 2, y: 2}, {x: 3, y: 2}, {x: 4, y: 2}]
 	// field это массив двухмерный булин значений, если true в ней есть блок, false блока нет
@@ -514,7 +515,7 @@ module.exports = {
 			case "S":
 				return "horizontal";
 			case "I":
-				return "vertical";
+				return "horizontal";
 			case "O":
 				return "stable";
 		}
@@ -571,6 +572,49 @@ module.exports = {
 				break;
 		}
 		return this.shiftCoordinates(arrayForTetromino, shift);
-
+	},
+	createTetromino: function (fieldSize) {
+		let typeOfTetromino = this.getRandomTypeOfTetromino()
+		let phase = this.startingPhaseOfTetromino(typeOfTetromino)
+		let coodinates = this.initCoordinates(typeOfTetromino, fieldSize)
+		return new this.Tetromino(typeOfTetromino, phase, coodinates)
+	},
+	Tetris: class {
+		constructor(fieldSize, gameOverCallback) {
+			this.fieldSize = fieldSize;
+			this.typeOfTetromino = module.exports.getRandomTypeOfTetromino()
+			this.coordinatesOfTetramino = module.exports.initCoordinates(this.typeOfTetromino, this.fieldSize)
+			this.tetromino = module.exports.createTetromino(this.fieldSize)
+			this.field = new module.exports.Field(this.fieldSize)
+			this.gameOverCallback = gameOverCallback
+		}
+		tick() {
+			let shift = { x: 0, y: 1 }
+			if (this.tetromino.canMoveDown(this.field.field)) {
+				this.tetromino.moveTetromino(this.field.field, shift)
+			} else {
+				this.field.addTetrominoToField(this.tetromino.coordinates)
+				this.tetromino = module.exports.createTetromino(this.fieldSize)
+				this.field.cleanFilledRows()
+				if(!module.exports.checkThatTheFieldIsFree(this.tetromino.coordinates, this.field.field)){
+					this.gameOverCallback()
+				}
+			}
+		}
+		moveLeft() {
+			let shift = { x: -1, y: 0 }
+			this.tetromino.moveTetromino(this.field.field, shift)
+		}
+		moveRight() {
+			let shift = { x: 1, y: 0 }
+			this.tetromino.moveTetromino(this.field.field, shift)
+		}
+		moveDown() {
+			let shift = { x: 0, y: 1 }
+			this.tetromino.moveTetromino(this.field.field, shift)
+		}
+		rotate() {
+			this.tetromino.rotateTetromino(this.field.field)
+		}
 	}
 }
