@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<script type="module">
+		import {tetris} from "./tetris.js"
+		function init() {
+			let fieldSIze = { x: 5, y: 5 };
+			let keyCodeRightButton = 39;
+			let keyCodeLeftButton = 37;
+			let keyCodeUpButton = 38;
+			let keyCodeDownButton = 40;
+			let newTetris = new tetris.Tetris(fieldSIze, stopTick);
+			let tick = setInterval(newTetris.tick, 1000);
+			window.addEventListener("keydown", keyboardHandler)
+			function keyboardHandler(event) {
+				switch (event.keyCode) {
+					case keyCodeRightButton:
+						newTetris.moveRight()
+						break;
+					case keyCodeLeftButton:
+						newTetris.moveLeft()
+						break;
+					case keyCodeUpButton:
+						newTetris.rotate()
+						break;
+					case keyCodeDownButton:
+						newTetris.moveDown()
+						break;
+				}
+			}
+			function stopTick() {
+				clearInterval(tick)
+				console.log("Game Over")
+			}
+		}
+		init()
+	</script>
+
+</head>
+
+</html>
