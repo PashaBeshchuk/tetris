@@ -5,15 +5,20 @@
 	<script type="module">
 		import {tetris} from "./tetris.js"
 		function init() {
-			let fieldSIze = { x: 5, y: 5 };
+			let fieldSize = { x: 5, y: 5 };
 			let keyCodeRightButton = 39;
 			let keyCodeLeftButton = 37;
 			let keyCodeUpButton = 38;
 			let keyCodeDownButton = 40;
-			let newTetris = new tetris.Tetris(fieldSIze, stopTick);
-			let tick = setInterval(newTetris.tick, 1000);
+			let newTetris = new tetris.Tetris(fieldSize, stopTick);
+			function onTick() {
+				// something here
+				newTetris.tick()
+			}
+			let tick = setInterval(onTick, 1000);
 			window.addEventListener("keydown", keyboardHandler)
 			function keyboardHandler(event) {
+				// something here
 				switch (event.keyCode) {
 					case keyCodeRightButton:
 						newTetris.moveRight()
