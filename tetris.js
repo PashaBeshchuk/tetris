@@ -616,6 +616,24 @@ let tetris = {
 		rotate() {
 			this.tetromino.rotateTetromino(this.field.field)
 		}
+	},
+	displayField: function (fieldSize){
+		let fieldImage;
+		let newImage;
+		for(let y = 0; y < fieldSize.y; y++){
+			for(let x = 0; x < fieldSize.x; x++){
+				if(!fieldImage){
+					fieldImage = `\n            `
+					fieldImage += `-`
+				}else {
+					fieldImage += `-`
+				}
+			}
+			fieldImage = fieldImage + `\n            `
+			console.log(fieldImage)
+		}
+		newImage = fieldImage
+		return newImage
 	}
 }
 module.exports = tetris
