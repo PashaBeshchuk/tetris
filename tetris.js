@@ -1,4 +1,5 @@
-export let tetris = {
+
+let tetris = {
 	//тетрамино массив из 4 координат [{x: 1, y: 2}, {x: 2, y: 2}, {x: 3, y: 2}, {x: 4, y: 2}]
 	// field это массив двухмерный булин значений, если true в ней есть блок, false блока нет
 	rotateLine: function (field, tetromino) {
@@ -587,7 +588,7 @@ export let tetris = {
 			this.field = new tetris.Field(this.fieldSize)
 			this.gameOverCallback = gameOverCallback
 		}
-		tick = () => {
+		tick() {
 			let shift = { x: 0, y: 1 }
 			if (this.tetromino.canMoveDown(this.field.field)) {
 				this.tetromino.moveTetromino(this.field.field, shift)
@@ -600,20 +601,21 @@ export let tetris = {
 				}
 			}
 		}
-		moveLeft = () => {
+		moveLeft() {
 			let shift = { x: -1, y: 0 }
 			this.tetromino.moveTetromino(this.field.field, shift)
 		}
-		moveRight = () => {
+		moveRight() {
 			let shift = { x: 1, y: 0 }
 			this.tetromino.moveTetromino(this.field.field, shift)
 		}
-		moveDown = () => {
+		moveDown() {
 			let shift = { x: 0, y: 1 }
 			this.tetromino.moveTetromino(this.field.field, shift)
 		}
-		rotate = () => {
+		rotate() {
 			this.tetromino.rotateTetromino(this.field.field)
 		}
 	}
 }
+module.exports = tetris

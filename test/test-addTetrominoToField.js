@@ -1,5 +1,5 @@
 var assert = require('chai').assert;
-import { tetris } from "../tetris.js"
+let tetris = require("../tetris.js")
 describe("Add tetromino to field", function () {
     it("Add L tetromino to filed", function () {
         let coordinatesTetromino = tetris.getCoordinates(`

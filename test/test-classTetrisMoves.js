@@ -1,7 +1,6 @@
 var sinon = require('sinon');
 var assert = require('chai').assert;
 var tetris = require('../tetris');
-var init = require('../init');
 describe("All moves tetromino", function () {
     let stubForGetRandomTypeOfTetromino = sinon.stub(tetris, "getRandomTypeOfTetromino");
     let callback = sinon.spy()
