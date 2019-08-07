@@ -1,4 +1,3 @@
-
 let tetris = {
 	//тетрамино массив из 4 координат [{x: 1, y: 2}, {x: 2, y: 2}, {x: 3, y: 2}, {x: 4, y: 2}]
 	// field это массив двухмерный булин значений, если true в ней есть блок, false блока нет
@@ -616,26 +615,27 @@ let tetris = {
 		rotate() {
 			this.tetromino.rotateTetromino(this.field.field)
 		}
-	},
-	displayField: function (fieldSize){
-		let fieldImage;
-		for(let y = 0; y < fieldSize.y; y++){
-			for(let x = 0; x < fieldSize.x; x++){
-				if(!fieldImage){
-					fieldImage = `            `
-					fieldImage += `-`
-				}else {
-					fieldImage += `-`
-				}
-			}
-			if(y === fieldSize.y-1){
-				fieldImage = fieldImage
-			}else{
-				fieldImage = fieldImage + `\n            `
-			}
-			
-		}
-		return fieldImage
 	}
+	// ,
+	// displayField: function (fieldSize){
+	// 	let fieldImage;
+	// 	for(let y = 0; y < fieldSize.y; y++){
+	// 		for(let x = 0; x < fieldSize.x; x++){
+	// 			if(!fieldImage){
+	// 				fieldImage = `            `
+	// 				fieldImage += `-`
+	// 			}else {
+	// 				fieldImage += `-`
+	// 			}
+	// 		}
+	// 		if(y === fieldSize.y-1){
+	// 			fieldImage = fieldImage
+	// 		}else{
+	// 			fieldImage = fieldImage + `\n            `
+	// 		}
+			
+	// 	}
+	// 	return fieldImage
+	// }
 }
 module.exports = tetris

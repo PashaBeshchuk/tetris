@@ -2,15 +2,20 @@
 <html>
 
 <head>
-	<script type="module">
-		import {tetris} from "./tetris.js"
+	<script src = "./dist/build.js">
+		
+	</script>
+
+</head>
+<body>
+	<script>
 		function init() {
 			let fieldSize = { x: 5, y: 5 };
 			let keyCodeRightButton = 39;
 			let keyCodeLeftButton = 37;
 			let keyCodeUpButton = 38;
 			let keyCodeDownButton = 40;
-			let newTetris = new tetris.Tetris(fieldSize, stopTick);
+			let newTetris = new tetris.tetris.Tetris(fieldSize, stopTick);
 			function onTick() {
 				// something here
 				newTetris.tick()
@@ -42,6 +47,5 @@
 		init()
 	</script>
 
-</head>
-
+</body>
 </html>
