@@ -10,20 +10,20 @@
 <body>
 	<script>
 		function init() {
-			let fieldSize = { x: 5, y: 5 };
+			let fieldSize = { x: 10, y: 12 };
 			let keyCodeRightButton = 39;
 			let keyCodeLeftButton = 37;
 			let keyCodeUpButton = 38;
 			let keyCodeDownButton = 40;
 			let newTetris = new tetris.tetris.Tetris(fieldSize, stopTick);
 			function onTick() {
-				// something here
+				console.log(tetris.tetris.displayField(fieldSize, newTetris.tetromino.coordinates, newTetris.field.field))
 				newTetris.tick()
 			}
 			let tick = setInterval(onTick, 1000);
 			window.addEventListener("keydown", keyboardHandler)
 			function keyboardHandler(event) {
-				// something here
+				console.log(tetris.tetris.displayField(fieldSize, newTetris.tetromino.coordinates, newTetris.field.field))
 				switch (event.keyCode) {
 					case keyCodeRightButton:
 						newTetris.moveRight()
