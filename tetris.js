@@ -616,43 +616,30 @@ let tetris = {
 			this.tetromino.rotateTetromino(this.field.field)
 		}
 	},
-	displayField: function (fieldSize, tetromino, field){
-		let fieldImage;
-		for(let y = 0; y < fieldSize.y; y++){
-			for(let x = 0; x < fieldSize.x; x++){
-				if(!fieldImage){
-					if(field[y][x]){
-						fieldImage = "\n            "
-						fieldImage += `o`
-					}else if(this.coordinateMatchingCheck(tetromino, x, y)){
-						fieldImage = "\n            "
-						fieldImage += `X`
-					}else{
-						fieldImage = "\n            "
-						fieldImage += `-`
-					}
-				}else {
-					if(field[y][x]){
-						fieldImage += `o`
-					}else if(this.coordinateMatchingCheck(tetromino, x, y)){
-						fieldImage += `X`
-					}else{
-						fieldImage += `-`
-					}	
+	displayField: function (fieldSize, tetromino, field) {
+		let fieldImage = "\n            ";
+		for (let y = 0; y < fieldSize.y; y++) {
+			for (let x = 0; x < fieldSize.x; x++) {
+				if (field[y][x]) {
+					fieldImage += `o`
+				} else if (this.coordinateMatchingCheck(tetromino, x, y)) {
+					fieldImage += `X`
+				} else {
+					fieldImage += `-`
 				}
 			}
-			if(y === fieldSize.y-1){
+			if (y === fieldSize.y - 1) {
 				fieldImage = fieldImage + `\n        `
-			}else{
+			} else {
 				fieldImage = fieldImage + `\n            `
 			}
-			
+
 		}
 		return fieldImage
 	},
-	coordinateMatchingCheck: function(tetromino,x , y){
-		for(let i = 0; i < tetromino.length; i++){
-			if(tetromino[i].x === x && tetromino[i].y === y){
+	coordinateMatchingCheck: function (tetromino, x, y) {
+		for (let i = 0; i < tetromino.length; i++) {
+			if (tetromino[i].x === x && tetromino[i].y === y) {
 				return true;
 			}
 		}
