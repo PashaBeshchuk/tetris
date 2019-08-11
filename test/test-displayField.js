@@ -1,6 +1,26 @@
 var assert = require('chai').assert;
 var tetris = require('../tetris');
 describe("Build and display field", function () {
+    it("Build and display field 3x3", function () {
+        let fieldSize = { x: 3, y: 3 };
+        let fieldStatus = tetris.buildField(`
+            ---
+            ---
+            -XX
+        `)
+        let tetromino = tetris.getCoordinates(`
+            ---
+            XX-
+            ---
+        `)
+        let field = tetris.displayField(fieldSize, tetromino, fieldStatus);
+        let expected = `
+            ---
+            XX-
+            -oo
+        `
+        assert.deepEqual(expected, field)
+    })
     it("Build and display field 5x5", function () {
         let fieldSize = { x: 5, y: 5 };
         let fieldStatus = tetris.buildField(`
