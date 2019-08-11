@@ -18,8 +18,8 @@ describe("Build and display field", function () {
             ---
             XX-
             -oo
-        `
-        assert.deepEqual(expected, field)
+            `
+        assert.deepEqual(field, expected)
     })
     it("Build and display field 5x5", function () {
         let fieldSize = { x: 5, y: 5 };
@@ -44,7 +44,7 @@ describe("Build and display field", function () {
             -ooo-
             -----
             -----
-        `
+            `
         assert.deepEqual(expected, field)
     })
     it("Build and display field 7x3", function () {
@@ -64,7 +64,7 @@ describe("Build and display field", function () {
             XX-----
             Xo--oo-
             Xo--oo-
-        `
+            `
         assert.deepEqual(expected, field)
     })
     it("Build and display field 7x3", function () {
@@ -99,7 +99,7 @@ describe("Build and display field", function () {
             -o-
             -o-
             -o-
-        `
+            `
         assert.deepEqual(expected, field)
     })
 })

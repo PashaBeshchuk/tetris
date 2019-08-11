@@ -619,9 +619,6 @@ let tetris = {
 	displayField: function (fieldSize, tetromino, field) {
 		let fieldImage = "\n            ";
 		for (let y = 0; y < fieldSize.y; y++) {
-			if(y > 0){
-				fieldImage += "\n            ";
-			}
 			for (let x = 0; x < fieldSize.x; x++) {
 				if (field[y][x]) {
 					fieldImage += `o`
@@ -631,8 +628,8 @@ let tetris = {
 					fieldImage += `-`
 				}
 			}
+			fieldImage += "\n            ";
 		}
-		fieldImage += "\n        ";
 		return fieldImage
 	},
 	coordinateMatchingCheck: function (tetromino, x, y) {
