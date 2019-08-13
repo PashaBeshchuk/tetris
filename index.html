@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<script src = "./dist/build.js">
+		
+	</script>
+
+</head>
+<body>
+	<script>
+		function init() {
+			let fieldSize = { x: 10, y: 12 };
+			let keyCodeRightButton = 39;
+			let keyCodeLeftButton = 37;
+			let keyCodeUpButton = 38;
+			let keyCodeDownButton = 40;
+			let newTetris = new tetris.tetris.Tetris(fieldSize, stopTick);
+			function onTick() {
+				console.log(tetris.tetris.displayField(fieldSize, newTetris.tetromino.coordinates, newTetris.field.field))
+				newTetris.tick()
+			}
+			let tick = setInterval(onTick, 1000);
+			window.addEventListener("keydown", keyboardHandler)
+			function keyboardHandler(event) {
+				console.log(tetris.tetris.displayField(fieldSize, newTetris.tetromino.coordinates, newTetris.field.field))
+				switch (event.keyCode) {
+					case keyCodeRightButton:
+						newTetris.moveRight()
+						break;
+					case keyCodeLeftButton:
+						newTetris.moveLeft()
+						break;
+					case keyCodeUpButton:
+						newTetris.rotate()
+						break;
+					case keyCodeDownButton:
+						newTetris.moveDown()
+						break;
+				}
+			}
+			function stopTick() {
+				clearInterval(tick)
+				console.log("Game Over")
+			}
+		}
+		init()
+	</script>
+
+</body>
+</html>

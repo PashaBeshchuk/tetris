@@ -10,8 +10,8 @@ describe("Generation empty field", function () {
             -----
             -----
             -----
-        `)
-        assert.deepEqual(field.filed, expectedResult)
+       `)
+        assert.deepEqual(field.field, expectedResult)
     })
     it("Generation field 7x9", function () {
         let fieldSize = { x: 7, y: 9 }
@@ -27,7 +27,7 @@ describe("Generation empty field", function () {
             -------
             -------
         `)
-        assert.deepEqual(field.filed, expectedResult)
+        assert.deepEqual(field.field, expectedResult)
     })
     it("Generation field 2x5", function () {
         let fieldSize = { x: 2, y: 5 }
@@ -39,7 +39,7 @@ describe("Generation empty field", function () {
             --
             --
         `)
-        assert.deepEqual(field.filed, expectedResult)
+        assert.deepEqual(field.field, expectedResult)
     })
     it("Generation field 5x2", function () {
         let fieldSize = { x: 5, y: 2 }
@@ -48,6 +48,6 @@ describe("Generation empty field", function () {
             -----
             -----
         `)
-        assert.deepEqual(field.filed, expectedResult)
+        assert.deepEqual(field.field, expectedResult)
     })
 })

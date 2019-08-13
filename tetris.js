@@ -1,5 +1,4 @@
-var initFile = require('./init')
-module.exports = {
+let tetris = {
 	//тетрамино массив из 4 координат [{x: 1, y: 2}, {x: 2, y: 2}, {x: 3, y: 2}, {x: 4, y: 2}]
 	// field это массив двухмерный булин значений, если true в ней есть блок, false блока нет
 	rotateLine: function (field, tetromino) {
@@ -77,7 +76,7 @@ module.exports = {
 					}
 					newCoordinates.push(obj)
 				}
-				if (module.exports.checkThatTheFieldIsFree(newCoordinates, field)) {
+				if (tetris.checkThatTheFieldIsFree(newCoordinates, field)) {
 					return newCoordinates
 				} else {
 					return localTetromino
@@ -106,7 +105,7 @@ module.exports = {
 					}
 					newCoordinates.push(obj)
 				}
-				if (module.exports.checkThatTheFieldIsFree(newCoordinates, field)) {
+				if (tetris.checkThatTheFieldIsFree(newCoordinates, field)) {
 					return newCoordinates
 				} else {
 					return localTetromino
@@ -136,7 +135,7 @@ module.exports = {
 					newCoordinates.push(obj)
 				}
 
-				if (module.exports.checkThatTheFieldIsFree(newCoordinates, field)) {
+				if (tetris.checkThatTheFieldIsFree(newCoordinates, field)) {
 					return newCoordinates
 				} else {
 					return localTetromino
@@ -166,7 +165,7 @@ module.exports = {
 					newCoordinates.push(obj)
 				}
 
-				if (module.exports.checkThatTheFieldIsFree(newCoordinates, field)) {
+				if (tetris.checkThatTheFieldIsFree(newCoordinates, field)) {
 					return newCoordinates
 				} else {
 					return localTetromino
@@ -435,9 +434,9 @@ module.exports = {
 			this.coordinates = coordinates;
 		}
 		rotateTetromino(field) {
-			let tetrominoRotateResult = module.exports.rotateTetromino(this.typeOfTetromino, this.rotationPhase, this.coordinates)
-			if (module.exports.checkThatTheFieldIsFree(tetrominoRotateResult, field)) {
-				this.rotationPhase = module.exports.incrementPhase(this.typeOfTetromino, this.rotationPhase)
+			let tetrominoRotateResult = tetris.rotateTetromino(this.typeOfTetromino, this.rotationPhase, this.coordinates)
+			if (tetris.checkThatTheFieldIsFree(tetrominoRotateResult, field)) {
+				this.rotationPhase = tetris.incrementPhase(this.typeOfTetromino, this.rotationPhase)
 				this.coordinates = tetrominoRotateResult
 				return tetrominoRotateResult
 			} else {
@@ -445,8 +444,8 @@ module.exports = {
 			}
 		}
 		moveTetromino(field, shift) {
-			let shiftTetrominoResult = module.exports.shiftCoordinates(this.coordinates, shift)
-			if (module.exports.checkThatTheFieldIsFree(shiftTetrominoResult, field)) {
+			let shiftTetrominoResult = tetris.shiftCoordinates(this.coordinates, shift)
+			if (tetris.checkThatTheFieldIsFree(shiftTetrominoResult, field)) {
 				this.coordinates = shiftTetrominoResult
 				return shiftTetrominoResult
 			} else {
@@ -455,8 +454,8 @@ module.exports = {
 		}
 		canMoveDown(field) {
 			let shift = { x: 0, y: 1 }
-			let shiftTetrominoResult = module.exports.shiftCoordinates(this.coordinates, shift)
-			return module.exports.checkThatTheFieldIsFree(shiftTetrominoResult, field)
+			let shiftTetrominoResult = tetris.shiftCoordinates(this.coordinates, shift)
+			return tetris.checkThatTheFieldIsFree(shiftTetrominoResult, field)
 		}
 	},
 	Field: class {
@@ -582,10 +581,10 @@ module.exports = {
 	Tetris: class {
 		constructor(fieldSize, gameOverCallback) {
 			this.fieldSize = fieldSize;
-			this.typeOfTetromino = module.exports.getRandomTypeOfTetromino()
-			this.coordinatesOfTetramino = module.exports.initCoordinates(this.typeOfTetromino, this.fieldSize)
-			this.tetromino = module.exports.createTetromino(this.fieldSize)
-			this.field = new module.exports.Field(this.fieldSize)
+			this.typeOfTetromino = tetris.getRandomTypeOfTetromino()
+			this.coordinatesOfTetramino = tetris.initCoordinates(this.typeOfTetromino, this.fieldSize)
+			this.tetromino = tetris.createTetromino(this.fieldSize)
+			this.field = new tetris.Field(this.fieldSize)
 			this.gameOverCallback = gameOverCallback
 		}
 		tick() {
@@ -594,9 +593,9 @@ module.exports = {
 				this.tetromino.moveTetromino(this.field.field, shift)
 			} else {
 				this.field.addTetrominoToField(this.tetromino.coordinates)
-				this.tetromino = module.exports.createTetromino(this.fieldSize)
+				this.tetromino = tetris.createTetromino(this.fieldSize)
 				this.field.cleanFilledRows()
-				if(!module.exports.checkThatTheFieldIsFree(this.tetromino.coordinates, this.field.field)){
+				if (!tetris.checkThatTheFieldIsFree(this.tetromino.coordinates, this.field.field)) {
 					this.gameOverCallback()
 				}
 			}
@@ -616,5 +615,30 @@ module.exports = {
 		rotate() {
 			this.tetromino.rotateTetromino(this.field.field)
 		}
+	},
+	displayField: function (fieldSize, tetromino, field) {
+		let fieldImage = "\n            ";
+		for (let y = 0; y < fieldSize.y; y++) {
+			for (let x = 0; x < fieldSize.x; x++) {
+				if (field[y][x]) {
+					fieldImage += `o`
+				} else if (this.coordinateMatchingCheck(tetromino, x, y)) {
+					fieldImage += `X`
+				} else {
+					fieldImage += `-`
+				}
+			}
+			fieldImage += "\n            ";
+		}
+		return fieldImage
+	},
+	coordinateMatchingCheck: function (tetromino, x, y) {
+		for (let i = 0; i < tetromino.length; i++) {
+			if (tetromino[i].x === x && tetromino[i].y === y) {
+				return true;
+			}
+		}
+		return false
 	}
 }
+module.exports = tetris
