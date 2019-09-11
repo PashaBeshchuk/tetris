@@ -641,4 +641,51 @@ let tetris = {
 		return false
 	}
 }
+class TetrominoL extends tetris.Tetromino {
+	constructor() {
+		super()
+		this.arrayPhases = ["up", "left", "down", "right"]
+		this.startingPhaseOfTetromino = "right"
+
+	}
+	determineShift() {
+		if (rotationPhaseOfTetromino === "up") {
+			return { x: 0, y: 1 };
+		}
+		if (rotationPhaseOfTetromino === "left") {
+			return { x: 0, y: 2 };
+		}
+		if (rotationPhaseOfTetromino === "down") {
+			return { x: 0, y: 1 };
+		}
+		if (rotationPhaseOfTetromino === "right") {
+			return { x: 0, y: 2 };
+		}
+	}
+}
+
+class TetrominoJ extends tetris.Tetromino {
+	constructor() {
+		super()
+		this.arrayPhases = ["up", "left", "down", "right"]
+		this.startingPhaseOfTetromino = "right"
+
+	}
+	determineShift() {
+		if (rotationPhaseOfTetromino === "up") {
+			return { x: 0, y: 1 };
+		}
+		if (rotationPhaseOfTetromino === "left") {
+			return { x: 0, y: 2 };
+		}
+		if (rotationPhaseOfTetromino === "down") {
+			return { x: 0, y: 1 };
+		}
+		if (rotationPhaseOfTetromino === "right") {
+			return { x: 0, y: 2 };
+		}
+	}
+}
+
+
 module.exports = tetris
