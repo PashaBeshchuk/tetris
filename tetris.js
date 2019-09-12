@@ -641,12 +641,12 @@ let tetris = {
 		return false
 	}
 }
+//1
 class TetrominoL extends tetris.Tetromino {
 	constructor() {
-		super()
-		this.arrayPhases = ["up", "left", "down", "right"]
-		this.startingPhaseOfTetromino = "right"
-
+		super();
+		this.arrayPhases = ["up", "left", "down", "right"];
+		this.startingPhaseOfTetromino = "right";
 	}
 	determineShift() {
 		if (rotationPhaseOfTetromino === "up") {
@@ -660,29 +660,224 @@ class TetrominoL extends tetris.Tetromino {
 		}
 		if (rotationPhaseOfTetromino === "right") {
 			return { x: 0, y: 2 };
+		}
+	}
+	initCoordinates(fieldSize){
+		let arrayForTetromino = tetris.getCoordinates(`
+			--X
+			XXX
+		`);
+		let shift = { x: Math.floor((fieldSize.x / 2) - 1), y: 0 }
+		return tetris.shiftCoordinates(arrayForTetromino, shift);
+	}
+	incrementPhase(currentRotationPhaseOfTetromino){
+		let numberPhase = this.arrayPhases.indexOf(currentRotationPhaseOfTetromino)
+		if (numberPhase !== this.arrayPhases.length - 1) {
+			return this.arrayPhases[numberPhase + 1]
+		} else {
+			return this.arrayPhases[0]
+		}
+	}
+}
+//2
+class TetrominoJ extends tetris.Tetromino {
+	constructor() {
+		super();
+		this.arrayPhases = ["up", "left", "down", "right"];
+		this.startingPhaseOfTetromino = "right";
+	}
+	determineShift() {
+		if (rotationPhaseOfTetromino === "up") {
+			return { x: 0, y: 1 };
+		}
+		if (rotationPhaseOfTetromino === "left") {
+			return { x: 0, y: 2 };
+		}
+		if (rotationPhaseOfTetromino === "down") {
+			return { x: 0, y: 1 };
+		}
+		if (rotationPhaseOfTetromino === "right") {
+			return { x: 0, y: 2 };
+		}
+	}
+	initCoordinates(fieldSize){
+		let arrayForTetromino = tetris.getCoordinates(`
+			X--
+			XXX
+		`);
+		let shift = { x: Math.floor((fieldSize.x / 2) - 1), y: 0 }
+		return tetris.shiftCoordinates(arrayForTetromino, shift);
+	}
+	incrementPhase(currentRotationPhaseOfTetromino){
+		let numberPhase = this.arrayPhases.indexOf(currentRotationPhaseOfTetromino)
+		if (numberPhase !== this.arrayPhases.length - 1) {
+			return this.arrayPhases[numberPhase + 1]
+		} else {
+			return this.arrayPhases[0]
+		}
+	}
+}
+//3
+class TetrominoT extends tetris.Tetromino {
+	constructor() {
+		super();
+		this.arrayPhases = ["up", "left", "down", "right"];
+		this.startingPhaseOfTetromino = "up";
+	}
+	determineShift() {
+		if (rotationPhaseOfTetromino === "up") {
+			return { x: 0, y: 2 };
+		}
+		if (rotationPhaseOfTetromino === "left") {
+			return { x: 0, y: 2 };
+		}
+		if (rotationPhaseOfTetromino === "down") {
+			return { x: 1, y: 1 };
+		}
+		if (rotationPhaseOfTetromino === "right") {
+			return { x: -1, y: 1 };
+		}
+	}
+	initCoordinates(fieldSize){
+		let arrayForTetromino = tetris.getCoordinates(`
+			-X-
+			XXX
+		`);
+		let shift = { x: Math.floor((fieldSize.x / 2) - 1), y: 0 }
+		return tetris.shiftCoordinates(arrayForTetromino, shift);
+	}
+	incrementPhase(currentRotationPhaseOfTetromino){
+		let numberPhase = this.arrayPhases.indexOf(currentRotationPhaseOfTetromino)
+		if (numberPhase !== this.arrayPhases.length - 1) {
+			return this.arrayPhases[numberPhase + 1]
+		} else {
+			return this.arrayPhases[0]
+		}
+	}
+}
+//4
+class TetrominoS extends tetris.Tetromino {
+	constructor() {
+		super();
+		this.arrayPhases = ["vertical", "horizontal"];
+		this.startingPhaseOfTetromino = "horizontal";
+	}
+	determineShift() {
+		if (rotationPhaseOfTetromino === "horizontal") {
+			return { x: 0, y: 2 };
+		}
+		if (rotationPhaseOfTetromino === "vertical") {
+			return { x: 0, y: 1 };
+		}
+	}
+	initCoordinates(fieldSize){
+		let arrayForTetromino = tetris.getCoordinates(`
+			-XX
+			XX-
+		`);
+		let shift = { x: Math.floor((fieldSize.x / 2) - 1), y: 0 }
+		return tetris.shiftCoordinates(arrayForTetromino, shift);
+	}
+	incrementPhase(currentRotationPhaseOfTetromino){
+		let numberPhase = this.arrayPhases.indexOf(currentRotationPhaseOfTetromino)
+		if (numberPhase !== this.arrayPhases.length - 1) {
+			return this.arrayPhases[numberPhase + 1]
+		} else {
+			return this.arrayPhases[0]
+		}
+	}
+}
+//5
+class TetrominoZ extends tetris.Tetromino {
+	constructor() {
+		super();
+		this.arrayPhases = ["vertical", "horizontal"];
+		this.startingPhaseOfTetromino = "horizontal";
+	}
+	determineShift() {
+		if (rotationPhaseOfTetromino === "horizontal") {
+			return { x: 0, y: 2 };
+		}
+		if (rotationPhaseOfTetromino === "vertical") {
+			return { x: 0, y: 1 };
+		}
+	}
+	initCoordinates(fieldSize){
+		let arrayForTetromino = tetris.getCoordinates(`
+			XX-
+			-XX
+		`);
+		let shift = { x: Math.floor((fieldSize.x / 2) - 1), y: 0 }
+		return tetris.shiftCoordinates(arrayForTetromino, shift);
+	}
+	incrementPhase(currentRotationPhaseOfTetromino){
+		let numberPhase = this.arrayPhases.indexOf(currentRotationPhaseOfTetromino)
+		if (numberPhase !== this.arrayPhases.length - 1) {
+			return this.arrayPhases[numberPhase + 1]
+		} else {
+			return this.arrayPhases[0]
 		}
 	}
 }
 
-class TetrominoJ extends tetris.Tetromino {
+//6
+class TetrominoI extends tetris.Tetromino {
 	constructor() {
-		super()
-		this.arrayPhases = ["up", "left", "down", "right"]
-		this.startingPhaseOfTetromino = "right"
-
+		super();
+		this.arrayPhases = ["vertical", "horizontal"];
+		this.startingPhaseOfTetromino = "horizontal";
 	}
 	determineShift() {
-		if (rotationPhaseOfTetromino === "up") {
+		if (rotationPhaseOfTetromino === "horizontal") {
+			return { x: 1, y: 2 };
+		}
+		if (rotationPhaseOfTetromino === "vertical") {
+			return { x: -1, y: 1 };
+		}
+	}
+	initCoordinates(fieldSize){
+		let arrayForTetromino = tetris.getCoordinates(`
+			XXXX
+		`);
+		let shift = { x: (Math.floor((fieldSize.x / 2) - 1)-1), y: 0 }
+		return tetris.shiftCoordinates(arrayForTetromino, shift);
+	}
+	incrementPhase(currentRotationPhaseOfTetromino){
+		let numberPhase = this.arrayPhases.indexOf(currentRotationPhaseOfTetromino)
+		if (numberPhase !== this.arrayPhases.length - 1) {
+			return this.arrayPhases[numberPhase + 1]
+		} else {
+			return this.arrayPhases[0]
+		}
+	}
+}
+
+//7
+class TetrominoO extends tetris.Tetromino {
+	constructor() {
+		super();
+		this.arrayPhases = ["stable"];
+		this.startingPhaseOfTetromino = "stable";
+	}
+	determineShift() {
+		if (rotationPhaseOfTetromino === "stable") {
 			return { x: 0, y: 1 };
 		}
-		if (rotationPhaseOfTetromino === "left") {
-			return { x: 0, y: 2 };
-		}
-		if (rotationPhaseOfTetromino === "down") {
-			return { x: 0, y: 1 };
-		}
-		if (rotationPhaseOfTetromino === "right") {
-			return { x: 0, y: 2 };
+	}
+	initCoordinates(fieldSize){
+		let arrayForTetromino = tetris.getCoordinates(`
+			XX
+			XX
+		`);
+		let shift = { x: Math.floor((fieldSize.x / 2) - 1), y: 0 }
+		return tetris.shiftCoordinates(arrayForTetromino, shift);
+	}
+	incrementPhase(currentRotationPhaseOfTetromino){
+		let numberPhase = this.arrayPhases.indexOf(currentRotationPhaseOfTetromino)
+		if (numberPhase !== this.arrayPhases.length - 1) {
+			return this.arrayPhases[numberPhase + 1]
+		} else {
+			return this.arrayPhases[0]
 		}
 	}
 }
