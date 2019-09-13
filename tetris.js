@@ -457,6 +457,14 @@ let tetris = {
 			let shiftTetrominoResult = tetris.shiftCoordinates(this.coordinates, shift)
 			return tetris.checkThatTheFieldIsFree(shiftTetrominoResult, field)
 		}
+		incrementPhase(currentRotationPhaseOfTetromino){
+			let numberPhase = this.arrayPhases.indexOf(currentRotationPhaseOfTetromino)
+			if (numberPhase !== this.arrayPhases.length - 1) {
+				return this.arrayPhases[numberPhase + 1]
+			} else {
+				return this.arrayPhases[0]
+			}
+		}
 	},
 	Field: class {
 		constructor(field) {
@@ -670,14 +678,6 @@ class TetrominoL extends tetris.Tetromino {
 		let shift = { x: Math.floor((fieldSize.x / 2) - 1), y: 0 }
 		return tetris.shiftCoordinates(arrayForTetromino, shift);
 	}
-	incrementPhase(currentRotationPhaseOfTetromino){
-		let numberPhase = this.arrayPhases.indexOf(currentRotationPhaseOfTetromino)
-		if (numberPhase !== this.arrayPhases.length - 1) {
-			return this.arrayPhases[numberPhase + 1]
-		} else {
-			return this.arrayPhases[0]
-		}
-	}
 }
 //2
 class TetrominoJ extends tetris.Tetromino {
@@ -707,14 +707,6 @@ class TetrominoJ extends tetris.Tetromino {
 		`);
 		let shift = { x: Math.floor((fieldSize.x / 2) - 1), y: 0 }
 		return tetris.shiftCoordinates(arrayForTetromino, shift);
-	}
-	incrementPhase(currentRotationPhaseOfTetromino){
-		let numberPhase = this.arrayPhases.indexOf(currentRotationPhaseOfTetromino)
-		if (numberPhase !== this.arrayPhases.length - 1) {
-			return this.arrayPhases[numberPhase + 1]
-		} else {
-			return this.arrayPhases[0]
-		}
 	}
 }
 //3
@@ -746,14 +738,6 @@ class TetrominoT extends tetris.Tetromino {
 		let shift = { x: Math.floor((fieldSize.x / 2) - 1), y: 0 }
 		return tetris.shiftCoordinates(arrayForTetromino, shift);
 	}
-	incrementPhase(currentRotationPhaseOfTetromino){
-		let numberPhase = this.arrayPhases.indexOf(currentRotationPhaseOfTetromino)
-		if (numberPhase !== this.arrayPhases.length - 1) {
-			return this.arrayPhases[numberPhase + 1]
-		} else {
-			return this.arrayPhases[0]
-		}
-	}
 }
 //4
 class TetrominoS extends tetris.Tetromino {
@@ -777,14 +761,6 @@ class TetrominoS extends tetris.Tetromino {
 		`);
 		let shift = { x: Math.floor((fieldSize.x / 2) - 1), y: 0 }
 		return tetris.shiftCoordinates(arrayForTetromino, shift);
-	}
-	incrementPhase(currentRotationPhaseOfTetromino){
-		let numberPhase = this.arrayPhases.indexOf(currentRotationPhaseOfTetromino)
-		if (numberPhase !== this.arrayPhases.length - 1) {
-			return this.arrayPhases[numberPhase + 1]
-		} else {
-			return this.arrayPhases[0]
-		}
 	}
 }
 //5
@@ -810,14 +786,6 @@ class TetrominoZ extends tetris.Tetromino {
 		let shift = { x: Math.floor((fieldSize.x / 2) - 1), y: 0 }
 		return tetris.shiftCoordinates(arrayForTetromino, shift);
 	}
-	incrementPhase(currentRotationPhaseOfTetromino){
-		let numberPhase = this.arrayPhases.indexOf(currentRotationPhaseOfTetromino)
-		if (numberPhase !== this.arrayPhases.length - 1) {
-			return this.arrayPhases[numberPhase + 1]
-		} else {
-			return this.arrayPhases[0]
-		}
-	}
 }
 
 //6
@@ -842,14 +810,6 @@ class TetrominoI extends tetris.Tetromino {
 		let shift = { x: (Math.floor((fieldSize.x / 2) - 1)-1), y: 0 }
 		return tetris.shiftCoordinates(arrayForTetromino, shift);
 	}
-	incrementPhase(currentRotationPhaseOfTetromino){
-		let numberPhase = this.arrayPhases.indexOf(currentRotationPhaseOfTetromino)
-		if (numberPhase !== this.arrayPhases.length - 1) {
-			return this.arrayPhases[numberPhase + 1]
-		} else {
-			return this.arrayPhases[0]
-		}
-	}
 }
 
 //7
@@ -871,14 +831,6 @@ class TetrominoO extends tetris.Tetromino {
 		`);
 		let shift = { x: Math.floor((fieldSize.x / 2) - 1), y: 0 }
 		return tetris.shiftCoordinates(arrayForTetromino, shift);
-	}
-	incrementPhase(currentRotationPhaseOfTetromino){
-		let numberPhase = this.arrayPhases.indexOf(currentRotationPhaseOfTetromino)
-		if (numberPhase !== this.arrayPhases.length - 1) {
-			return this.arrayPhases[numberPhase + 1]
-		} else {
-			return this.arrayPhases[0]
-		}
 	}
 }
 
