@@ -374,24 +374,6 @@ let tetris = {
 				return this.arrayPhases[0]
 			}
 		}
-		determineShift(){}
-		initCoordinates(fieldSize){}
-		keyboardHandler(event){
-			switch (event.keyCode) {
-				case keyCodeRightButton:
-					Tetris.moveRight()
-					break;
-				case keyCodeLeftButton:
-					Tetris.moveLeft()
-					break;
-				case keyCodeUpButton:
-					Tetris.rotate()
-					break;
-				case keyCodeDownButton:
-					Tetris.moveDown()
-					break;
-			}
-		}
 	},
 	Field: class {
 		constructor(field) {
@@ -440,6 +422,7 @@ let tetris = {
 		let arrayTypeOfTetramino = ["L", "J", "T", "S", "Z", "I", "O"];
 		return arrayTypeOfTetramino[Math.floor(Math.random() * arrayTypeOfTetramino.length)];
 	},
+	//Переделать createTetromino
 	createTetromino: function (fieldSize) {
 		let typeOfTetromino = this.getRandomTypeOfTetromino()
 		let phase = this.startingPhaseOfTetromino(typeOfTetromino)
