@@ -330,7 +330,7 @@ let tetris = {
 		return newCoordinates
 	},
 	rotateTetromino: function (typeOfTetromino, rotationPhaseOfTetromino, tetrominoCoordinates) {
-		let shift = this.determineShift(typeOfTetromino, rotationPhaseOfTetromino)
+		let shift = typeOfTetromino.determineShift(rotationPhaseOfTetromino)
 		let pivot = this.calculatorCoordinateOfTopLeft(tetrominoCoordinates);
 		let newCoordinates = this.rotatesArrayOfCoordinates(tetrominoCoordinates, pivot)
 		let result = this.shiftCoordinates(newCoordinates, shift)
@@ -338,40 +338,49 @@ let tetris = {
 	},
 	Tetromino: class {
 		constructor(typeOfTetromino, rotationPhase, coordinates) {
-			this.typeOfTetromino = typeOfTetromino
-			this.rotationPhase = rotationPhase;
-			this.coordinates = coordinates;
+			this._typeOfTetromino = typeOfTetromino
+			this._rotationPhase   = rotationPhase;
+			this._coordinates     = coordinates;
+		}
+		get rotationPhase(){
+			return this._rotationPhase
+		}
+		get coordinates(){
+			return this._coordinates
+		}
+		get typeOfTetromino(){
+			return this._typeOfTetromino
 		}
 		rotateTetromino(field) {
-			let tetrominoRotateResult = tetris.rotateTetromino(this.typeOfTetromino, this.rotationPhase, this.coordinates)
+			let tetrominoRotateResult = tetris.rotateTetromino(this._typeOfTetromino, this._rotationPhase, this._coordinates)
 			if (tetris.checkThatTheFieldIsFree(tetrominoRotateResult, field)) {
-				this.rotationPhase = tetris.incrementPhase(this.typeOfTetromino, this.rotationPhase)
-				this.coordinates = tetrominoRotateResult
+				this._rotationPhase = this._typeOfTetromino.incrementPhase(this._typeOfTetromino, this._rotationPhase)
+				this._coordinates = tetrominoRotateResult
 				return tetrominoRotateResult
 			} else {
-				return this.coordinates
+				return this._coordinates
 			}
 		}
 		moveTetromino(field, shift) {
-			let shiftTetrominoResult = tetris.shiftCoordinates(this.coordinates, shift)
-			if (tetris.checkThatTheFieldIsFree(shiftTetrominoResult, field)) {
-				this.coordinates = shiftTetrominoResult
+			let shiftTetrominoResult = tetris.shiftCoordinates(this._coordinates, shift)
+			if(tetris.checkThatTheFieldIsFree(shiftTetrominoResult, field)){
+				this._coordinates = shiftTetrominoResult
 				return shiftTetrominoResult
-			} else {
-				return this.coordinates
+			}else{
+				return this._coordinates
 			}
 		}
 		canMoveDown(field) {
-			let shift = { x: 0, y: 1 }
-			let shiftTetrominoResult = tetris.shiftCoordinates(this.coordinates, shift)
+			let shift = { x:0, y:1 }
+			let shiftTetrominoResult = tetris.shiftCoordinates(this._coordinates, shift)
 			return tetris.checkThatTheFieldIsFree(shiftTetrominoResult, field)
 		}
-		incrementPhase(currentRotationPhaseOfTetromino){
-			let numberPhase = this.arrayPhases.indexOf(currentRotationPhaseOfTetromino)
-			if (numberPhase !== this.arrayPhases.length - 1) {
-				return this.arrayPhases[numberPhase + 1]
+		incrementPhase(currentRotationPhaseOfTetromino) {
+			let numberPhase = typeOfTetromino.arrayPhases.indexOf(currentRotationPhaseOfTetromino)
+			if (numberPhase !== typeOfTetromino.arrayPhases.length - 1) {
+				return typeOfTetromino.arrayPhases[numberPhase + 1]
 			} else {
-				return this.arrayPhases[0]
+				return typeOfTetromino.arrayPhases[0]
 			}
 		}
 	},
@@ -419,22 +428,21 @@ let tetris = {
 		}
 	},
 	getRandomTypeOfTetromino: function () {
-		let arrayTypeOfTetramino = ["L", "J", "T", "S", "Z", "I", "O"];
+		let arrayTypeOfTetramino = [new TetrominoL(fieldSize), new TetrominoJ(fieldSize), new TetrominoT(fieldSize), new TetrominoS(fieldSize), new TetrominoZ(fieldSize), new TetrominoI(fieldSize), new TetrominoO(fieldSize)];
 		return arrayTypeOfTetramino[Math.floor(Math.random() * arrayTypeOfTetramino.length)];
 	},
-	//Переделать createTetromino
 	createTetromino: function (fieldSize) {
-		let typeOfTetromino = this.getRandomTypeOfTetromino()
-		let phase = this.startingPhaseOfTetromino(typeOfTetromino)
-		let coodinates = this.initCoordinates(typeOfTetromino, fieldSize)
-		return new this.Tetromino(typeOfTetromino, phase, coodinates)
+		let typeOfTetromino = this.getRandomTypeOfTetromino(fieldSize)
+		let phase = typeOfTetromino.startingPhaseOfTetromino
+		let coodinates = typeOfTetromino.initCoordinates(fieldSize)
+		return  new this.Tetromino(typeOfTetromino, phase, coodinates)
 	},
 	Tetris: class {
 		constructor(fieldSize, gameOverCallback) {
 			this.fieldSize = fieldSize;
-			this.typeOfTetromino = tetris.getRandomTypeOfTetromino()
-			this.coordinatesOfTetramino = tetris.initCoordinates(this.typeOfTetromino, this.fieldSize)
-			this.tetromino = tetris.createTetromino(this.fieldSize)
+			this.createOfTetromino = tetris.createTetromino(this.fieldSize)
+			this.tetromino = new tetris.Tetromino(createOfTetromino.typeOfTetromino ,createOfTetromino.rotationPhase,createOfTetromino.coordinates)
+			this.coordinatesOfTetramino = this.tetromino.coordinates
 			this.field = new tetris.Field(this.fieldSize)
 			this.gameOverCallback = gameOverCallback
 		}
@@ -443,10 +451,11 @@ let tetris = {
 			if (this.tetromino.canMoveDown(this.field.field)) {
 				this.tetromino.moveTetromino(this.field.field, shift)
 			} else {
-				this.field.addTetrominoToField(this.tetromino.coordinates)
-				this.tetromino = tetris.createTetromino(this.fieldSize)
+				this.field.addTetrominoToField(this.coordinatesOfTetramino)
+				this.createOfTetromino = tetris.createTetromino(this.fieldSize)
+				this.tetromino = new tetris.Tetromino(createOfTetromino.typeOfTetromino ,createOfTetromino.rotationPhase,createOfTetromino.coordinates)
 				this.field.cleanFilledRows()
-				if (!tetris.checkThatTheFieldIsFree(this.tetromino.coordinates, this.field.field)) {
+				if (!tetris.checkThatTheFieldIsFree(this.coordinatesOfTetramino, this.field.field)) {
 					this.gameOverCallback()
 				}
 			}
@@ -513,7 +522,7 @@ class TetrominoL extends tetris.Tetromino {
 			return { x: 0, y: 2 };
 		}
 	}
-	initCoordinates(fieldSize){
+	initCoordinates(fieldSize) {
 		let arrayForTetromino = tetris.getCoordinates(`
 			--X
 			XXX
@@ -543,7 +552,7 @@ class TetrominoJ extends tetris.Tetromino {
 			return { x: 0, y: 2 };
 		}
 	}
-	initCoordinates(fieldSize){
+	initCoordinates(fieldSize) {
 		let arrayForTetromino = tetris.getCoordinates(`
 			X--
 			XXX
@@ -573,7 +582,7 @@ class TetrominoT extends tetris.Tetromino {
 			return { x: -1, y: 1 };
 		}
 	}
-	initCoordinates(fieldSize){
+	initCoordinates(fieldSize) {
 		let arrayForTetromino = tetris.getCoordinates(`
 			-X-
 			XXX
@@ -597,7 +606,7 @@ class TetrominoS extends tetris.Tetromino {
 			return { x: 0, y: 1 };
 		}
 	}
-	initCoordinates(fieldSize){
+	initCoordinates(fieldSize) {
 		let arrayForTetromino = tetris.getCoordinates(`
 			-XX
 			XX-
@@ -621,7 +630,7 @@ class TetrominoZ extends tetris.Tetromino {
 			return { x: 0, y: 1 };
 		}
 	}
-	initCoordinates(fieldSize){
+	initCoordinates(fieldSize) {
 		let arrayForTetromino = tetris.getCoordinates(`
 			XX-
 			-XX
@@ -646,11 +655,11 @@ class TetrominoI extends tetris.Tetromino {
 			return { x: -1, y: 1 };
 		}
 	}
-	initCoordinates(fieldSize){
+	initCoordinates(fieldSize) {
 		let arrayForTetromino = tetris.getCoordinates(`
 			XXXX
 		`);
-		let shift = { x: (Math.floor((fieldSize.x / 2) - 1)-1), y: 0 }
+		let shift = { x: (Math.floor((fieldSize.x / 2) - 1) - 1), y: 0 }
 		return tetris.shiftCoordinates(arrayForTetromino, shift);
 	}
 }
@@ -667,7 +676,7 @@ class TetrominoO extends tetris.Tetromino {
 			return { x: 0, y: 1 };
 		}
 	}
-	initCoordinates(fieldSize){
+	initCoordinates(fieldSize) {
 		let arrayForTetromino = tetris.getCoordinates(`
 			XX
 			XX
@@ -677,12 +686,12 @@ class TetrominoO extends tetris.Tetromino {
 	}
 }
 
-let tetrominoL = new TetrominoL
-let tetrominoJ = new TetrominoJ
-let tetrominoT = new TetrominoT
-let tetrominoS = new TetrominoS
-let tetrominoZ = new TetrominoZ
-let tetrominoI = new TetrominoI
-let tetrominoO = new TetrominoO
+let tetrominoL = new TetrominoL(fieldSize)
+let tetrominoJ = new TetrominoJ(fieldSize)
+let tetrominoT = new TetrominoT(fieldSize)
+let tetrominoS = new TetrominoS(fieldSize)
+let tetrominoZ = new TetrominoZ(fieldSize)
+let tetrominoI = new TetrominoI(fieldSize)
+let tetrominoO = new TetrominoO(fieldSize)
 
 module.exports = tetris
