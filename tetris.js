@@ -123,16 +123,16 @@ let tetris = {
 	Tetromino: class {
 		constructor(typeOfTetromino, rotationPhase, coordinates) {
 			this._typeOfTetromino = typeOfTetromino
-			this._rotationPhase   = rotationPhase;
-			this._coordinates     = coordinates;
+			this._rotationPhase = rotationPhase;
+			this._coordinates = coordinates;
 		}
-		get rotationPhase(){
+		get rotationPhase() {
 			return this._rotationPhase
 		}
-		get coordinates(){
+		get coordinates() {
 			return this._coordinates
 		}
-		get typeOfTetromino(){
+		get typeOfTetromino() {
 			return this._typeOfTetromino
 		}
 		rotateTetromino(field) {
@@ -147,15 +147,15 @@ let tetris = {
 		}
 		moveTetromino(field, shift) {
 			let shiftTetrominoResult = tetris.shiftCoordinates(this._coordinates, shift)
-			if(tetris.checkThatTheFieldIsFree(shiftTetrominoResult, field)){
+			if (tetris.checkThatTheFieldIsFree(shiftTetrominoResult, field)) {
 				this._coordinates = shiftTetrominoResult
 				return shiftTetrominoResult
-			}else{
+			} else {
 				return this._coordinates
 			}
 		}
 		canMoveDown(field) {
-			let shift = { x:0, y:1 }
+			let shift = { x: 0, y: 1 }
 			let shiftTetrominoResult = tetris.shiftCoordinates(this._coordinates, shift)
 			return tetris.checkThatTheFieldIsFree(shiftTetrominoResult, field)
 		}
@@ -219,13 +219,13 @@ let tetris = {
 		let typeOfTetromino = this.getRandomTypeOfTetromino(fieldSize)
 		let phase = typeOfTetromino.startingPhaseOfTetromino
 		let coodinates = typeOfTetromino.initCoordinates(fieldSize)
-		return  new this.Tetromino(typeOfTetromino, phase, coodinates)
+		return new this.Tetromino(typeOfTetromino, phase, coodinates)
 	},
 	Tetris: class {
 		constructor(fieldSize, gameOverCallback) {
 			this.fieldSize = fieldSize;
 			this.createOfTetromino = tetris.createTetromino(this.fieldSize)
-			this.tetromino = new tetris.Tetromino(createOfTetromino.typeOfTetromino ,createOfTetromino.rotationPhase,createOfTetromino.coordinates)
+			this.tetromino = new tetris.Tetromino(createOfTetromino.typeOfTetromino, createOfTetromino.rotationPhase, createOfTetromino.coordinates)
 			this.coordinatesOfTetramino = this.tetromino.coordinates
 			this.field = new tetris.Field(this.fieldSize)
 			this.gameOverCallback = gameOverCallback
@@ -237,7 +237,7 @@ let tetris = {
 			} else {
 				this.field.addTetrominoToField(this.coordinatesOfTetramino)
 				this.createOfTetromino = tetris.createTetromino(this.fieldSize)
-				this.tetromino = new tetris.Tetromino(createOfTetromino.typeOfTetromino ,createOfTetromino.rotationPhase,createOfTetromino.coordinates)
+				this.tetromino = new tetris.Tetromino(createOfTetromino.typeOfTetromino, createOfTetromino.rotationPhase, createOfTetromino.coordinates)
 				this.field.cleanFilledRows()
 				if (!tetris.checkThatTheFieldIsFree(this.coordinatesOfTetramino, this.field.field)) {
 					this.gameOverCallback()
