@@ -286,7 +286,7 @@ let tetris = {
 	}
 }
 //1
-class TetrominoL extends tetris.Tetromino {
+tetris.TetrominoL = class extends tetris.Tetromino {
 	constructor() {
 		super();
 		this.arrayPhases = ["up", "left", "down", "right"];
@@ -316,7 +316,7 @@ class TetrominoL extends tetris.Tetromino {
 	}
 }
 //2
-class TetrominoJ extends tetris.Tetromino {
+tetris.TetrominoJ = class extends tetris.Tetromino {
 	constructor() {
 		super();
 		this.arrayPhases = ["up", "left", "down", "right"];
@@ -346,7 +346,7 @@ class TetrominoJ extends tetris.Tetromino {
 	}
 }
 //3
-class TetrominoT extends tetris.Tetromino {
+tetris.TetrominoT = class extends tetris.Tetromino {
 	constructor() {
 		super();
 		this.arrayPhases = ["up", "left", "down", "right"];
@@ -376,7 +376,7 @@ class TetrominoT extends tetris.Tetromino {
 	}
 }
 //4
-class TetrominoS extends tetris.Tetromino {
+tetris.TetrominoS = class extends tetris.Tetromino {
 	constructor() {
 		super();
 		this.arrayPhases = ["vertical", "horizontal"];
@@ -400,7 +400,7 @@ class TetrominoS extends tetris.Tetromino {
 	}
 }
 //5
-class TetrominoZ extends tetris.Tetromino {
+tetris.TetrominoZ = class extends tetris.Tetromino {
 	constructor() {
 		super();
 		this.arrayPhases = ["vertical", "horizontal"];
@@ -425,7 +425,7 @@ class TetrominoZ extends tetris.Tetromino {
 }
 
 //6
-class TetrominoI extends tetris.Tetromino {
+tetris.TetrominoI = class extends tetris.Tetromino {
 	constructor() {
 		super();
 		this.arrayPhases = ["vertical", "horizontal"];
@@ -449,7 +449,7 @@ class TetrominoI extends tetris.Tetromino {
 }
 
 //7
-class TetrominoO extends tetris.Tetromino {
+tetris.TetrominoO = class extends tetris.Tetromino {
 	constructor() {
 		super();
 		this.arrayPhases = ["stable"];
@@ -470,12 +470,5 @@ class TetrominoO extends tetris.Tetromino {
 	}
 }
 
-let tetrominoL = new TetrominoL(fieldSize)
-let tetrominoJ = new TetrominoJ(fieldSize)
-let tetrominoT = new TetrominoT(fieldSize)
-let tetrominoS = new TetrominoS(fieldSize)
-let tetrominoZ = new TetrominoZ(fieldSize)
-let tetrominoI = new TetrominoI(fieldSize)
-let tetrominoO = new TetrominoO(fieldSize)
 
 module.exports = tetris
