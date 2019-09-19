@@ -212,12 +212,13 @@ let tetris = {
 		}
 	},
 	getRandomTypeOfTetromino: function () {
-		let arrayTypeOfTetramino = [new TetrominoL(fieldSize), new TetrominoJ(fieldSize), new TetrominoT(fieldSize), new TetrominoS(fieldSize), new TetrominoZ(fieldSize), new TetrominoI(fieldSize), new TetrominoO(fieldSize)];
+		let arrayTypeOfTetramino = [new this.TetrominoL(fieldSize), new this.TetrominoJ(fieldSize), new this.TetrominoT(fieldSize), new this.TetrominoS(fieldSize), new this.TetrominoZ(fieldSize), new this.TetrominoI(fieldSize), new this.TetrominoO(fieldSize)];
 		return arrayTypeOfTetramino[Math.floor(Math.random() * arrayTypeOfTetramino.length)];
 	},
 	createTetromino: function (fieldSize) {
 		let typeOfTetromino = this.getRandomTypeOfTetromino(fieldSize)
 		let phase = typeOfTetromino.startingPhaseOfTetromino
+		//console.log( this.getRandomTypeOfTetromino(fieldSize))
 		let coodinates = typeOfTetromino.initCoordinates(fieldSize)
 		return new this.Tetromino(typeOfTetromino, phase, coodinates)
 	},
