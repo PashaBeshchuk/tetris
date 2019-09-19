@@ -321,7 +321,7 @@ tetris.TetrominoJ = class extends tetris.Tetromino {
 	constructor() {
 		super();
 		this.arrayPhases = ["up", "left", "down", "right"];
-		this.startingPhaseOfTetromino = "right";
+		this.startingPhaseOfTetromino = "left";
 	}
 	determineShift() {
 		if (rotationPhaseOfTetromino === "up") {
