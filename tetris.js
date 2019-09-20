@@ -1,6 +1,32 @@
 let tetris = {
-	buildField: function (stringField) {
+	checkThatTheFieldIsFree: function (arrayOfCoordinates, localField) {
+		if (!this.allItemsOnTheField(arrayOfCoordinates, localField)) {
+			return false
+		}
+		for (let coordinate of arrayOfCoordinates) {
+			if (localField[coordinate.y][coordinate.x]) {
+				return false
+			}
+		}
+		return true;
+	},
+	
+	allItemsOnTheField: function (arrayOfCoordinates, localField) {
+		let lengthField_X = localField[0].length;
+		let lengthField_Y = localField.length;
 
+		for (let coordinate of arrayOfCoordinates) {
+			if (
+				(coordinate.x < 0 || coordinate.y < 0) ||
+				(coordinate.x >= lengthField_X) ||
+				(coordinate.y >= lengthField_Y)
+			) {
+				return false;
+			}
+		}
+		return true
+	},
+	buildField: function (stringField) {
 		let arr = stringField.split("\n")
 		for (let k = 0; k < arr.length; k++) {
 			for (let z = 0; z < arr[k].length; z++) {
