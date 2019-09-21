@@ -244,7 +244,6 @@ let tetris = {
 	createTetromino: function (fieldSize) {
 		let typeOfTetromino = this.getRandomTypeOfTetromino(fieldSize)
 		let phase = typeOfTetromino.startingPhaseOfTetromino
-		console.log(typeOfTetromino.initCoordinates)
 		let coodinates = typeOfTetromino.initCoordinates(fieldSize)
 		return new this.Tetromino(typeOfTetromino, phase, coodinates)
 	},
