@@ -5,8 +5,8 @@ describe("All moves tetromino", function () {
     let stubForGetRandomTypeOfTetromino = sinon.stub(tetris, "getRandomTypeOfTetromino");
     let callback = sinon.spy()
     it("Mini Game", function () {
-        stubForGetRandomTypeOfTetromino.returns("O")
         let fieldSize = { x: 8, y: 6 }
+        stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoO(fieldSize))
         let gameTetris = new tetris.Tetris(fieldSize, callback)
         gameTetris.moveLeft()
         let expectedMoveLeftOTetromino = tetris.getCoordinates(`
@@ -31,7 +31,7 @@ describe("All moves tetromino", function () {
             --XX----
         `)
         assert.deepEqual(gameTetris.tetromino.coordinates, expectedWhenCantMoveOTetromino)
-        stubForGetRandomTypeOfTetromino.returns("J")
+        stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoJ(fieldSize))
         gameTetris.tick()
         let expectedField = tetris.buildField(`
             --------
@@ -41,7 +41,7 @@ describe("All moves tetromino", function () {
             --XX----
             --XX----
         `)
-        assert.deepEqual(gameTetris.field.field, expectedField)
+       assert.deepEqual(gameTetris.field.field, expectedField)
         let expectedNewTetrominoJ = tetris.getCoordinates(`
             ---X----
             ---XXX--
@@ -67,7 +67,7 @@ describe("All moves tetromino", function () {
             ------XX
         `)
         assert.deepEqual(gameTetris.tetromino.coordinates, expectedRotateMovesRightAndMovesDownJ)
-        stubForGetRandomTypeOfTetromino.returns("S")
+        stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoS(fieldSize))
         gameTetris.tick()
         let expectedFieldAddJ = tetris.buildField(`
             --------
@@ -101,7 +101,7 @@ describe("All moves tetromino", function () {
             ----XX--
         `)
         assert.deepEqual(gameTetris.tetromino.coordinates, expectedMoveRightAndTicksS)
-        stubForGetRandomTypeOfTetromino.returns("L")
+        stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoL(fieldSize))
         gameTetris.tick()
         let expectedFieldAddS = tetris.buildField(`
             --------
@@ -140,7 +140,7 @@ describe("All moves tetromino", function () {
             XX------
         `)
         assert.deepEqual(gameTetris.tetromino.coordinates, expectedRotatesMovesLeftAndTickL)
-        stubForGetRandomTypeOfTetromino.returns("Z")
+        stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoZ(fieldSize))
         gameTetris.tick()
         let expectedFieldAddL = tetris.buildField(`
             --------
@@ -175,7 +175,7 @@ describe("All moves tetromino", function () {
             -X------
         `)
         assert.deepEqual(gameTetris.tetromino.coordinates, expectedRotateMovesLeftAndTicksZ)
-        stubForGetRandomTypeOfTetromino.returns("I")
+        stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoI(fieldSize))
         gameTetris.tick()
         let expectedFieldAddZ = tetris.buildField(`
             --------
@@ -209,7 +209,7 @@ describe("All moves tetromino", function () {
             --------
         `)
         assert.deepEqual(gameTetris.tetromino.coordinates, expectedMoveRightAndTicksI)
-        stubForGetRandomTypeOfTetromino.returns("I")
+        stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoI(fieldSize))
         gameTetris.tick()
         let expectedFieldAddI = tetris.buildField(`
             --------
@@ -243,7 +243,7 @@ describe("All moves tetromino", function () {
             --------
         `)
         assert.deepEqual(gameTetris.tetromino.coordinates, expectedTickRotateAndMovesRightI)
-        stubForGetRandomTypeOfTetromino.returns("O")
+        stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoO(fieldSize))
         gameTetris.tick()
         let expectedFieldAddISecond = tetris.buildField(`
             --------
@@ -277,7 +277,7 @@ describe("All moves tetromino", function () {
             --------
         `)
         assert.deepEqual(gameTetris.tetromino.coordinates, expectedMovesRightAndTicksO)
-        stubForGetRandomTypeOfTetromino.returns("I")
+        stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoI(fieldSize))
         gameTetris.tick()
         let expectedFieldAddIThird = tetris.buildField(`
             --------

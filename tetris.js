@@ -259,11 +259,12 @@ let tetris = {
 		tick() {
 			let shift = { x: 0, y: 1 }
 			if (this.tetromino.canMoveDown(this.field.field)) {
-				this.tetromino.moveTetromino(this.field.field, shift)
+				this.coordinatesOfTetramino = this.tetromino.moveTetromino(this.field.field, shift)
 			} else {
 				this.field.addTetrominoToField(this.coordinatesOfTetramino)
 				this.createOfTetromino = tetris.createTetromino(this.fieldSize)
 				this.tetromino = new tetris.Tetromino(this.createOfTetromino.typeOfTetromino, this.createOfTetromino.rotationPhase, this.createOfTetromino.coordinates)
+				this.coordinatesOfTetramino = this.tetromino.coordinates
 				this.field.cleanFilledRows()
 				if (!tetris.checkThatTheFieldIsFree(this.coordinatesOfTetramino, this.field.field)) {
 					this.gameOverCallback()
@@ -272,18 +273,18 @@ let tetris = {
 		}
 		moveLeft() {
 			let shift = { x: -1, y: 0 }
-			this.tetromino.moveTetromino(this.field.field, shift)
+			this.coordinatesOfTetramino = this.tetromino.moveTetromino(this.field.field, shift)
 		}
 		moveRight() {
 			let shift = { x: 1, y: 0 }
-			this.tetromino.moveTetromino(this.field.field, shift)
+			this.coordinatesOfTetramino = this.tetromino.moveTetromino(this.field.field, shift)
 		}
 		moveDown() {
 			let shift = { x: 0, y: 1 }
-			this.tetromino.moveTetromino(this.field.field, shift)
+			this.coordinatesOfTetramino = this.tetromino.moveTetromino(this.field.field, shift)
 		}
 		rotate() {
-			this.tetromino.rotateTetromino(this.field.field)
+			this.coordinatesOfTetramino = this.tetromino.rotateTetromino(this.field.field)
 		}
 	},
 	displayField: function (fieldSize, tetromino, field) {
@@ -408,7 +409,7 @@ tetris.TetrominoS = class extends tetris.Tetromino {
 		this.arrayPhases = ["vertical", "horizontal"];
 		this.startingPhaseOfTetromino = "horizontal";
 	}
-	determineShift() {
+	determineShift(rotationPhaseOfTetromino) {
 		if (rotationPhaseOfTetromino === "horizontal") {
 			return { x: 0, y: 2 };
 		}
