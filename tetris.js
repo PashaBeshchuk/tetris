@@ -185,7 +185,7 @@ let tetris = {
 			let shiftTetrominoResult = tetris.shiftCoordinates(this._coordinates, shift)
 			return tetris.checkThatTheFieldIsFree(shiftTetrominoResult, field)
 		}
-		incrementPhase(currentRotationPhaseOfTetromino) {
+		incrementPhase(typeOfTetromino, currentRotationPhaseOfTetromino) {
 			let numberPhase = typeOfTetromino.arrayPhases.indexOf(currentRotationPhaseOfTetromino)
 			if (numberPhase !== typeOfTetromino.arrayPhases.length - 1) {
 				return typeOfTetromino.arrayPhases[numberPhase + 1]
@@ -237,14 +237,13 @@ let tetris = {
 			return this.field
 		}
 	},
-	getRandomTypeOfTetromino: function () {
+	getRandomTypeOfTetromino: function (fieldSize) {
 		let arrayTypeOfTetramino = [new this.TetrominoL(fieldSize), new this.TetrominoJ(fieldSize), new this.TetrominoT(fieldSize), new this.TetrominoS(fieldSize), new this.TetrominoZ(fieldSize), new this.TetrominoI(fieldSize), new this.TetrominoO(fieldSize)];
 		return arrayTypeOfTetramino[Math.floor(Math.random() * arrayTypeOfTetramino.length)];
 	},
 	createTetromino: function (fieldSize) {
 		let typeOfTetromino = this.getRandomTypeOfTetromino(fieldSize)
 		let phase = typeOfTetromino.startingPhaseOfTetromino
-		//console.log( this.getRandomTypeOfTetromino(fieldSize))
 		let coodinates = typeOfTetromino.initCoordinates(fieldSize)
 		return new this.Tetromino(typeOfTetromino, phase, coodinates)
 	},
@@ -252,7 +251,7 @@ let tetris = {
 		constructor(fieldSize, gameOverCallback) {
 			this.fieldSize = fieldSize;
 			this.createOfTetromino = tetris.createTetromino(this.fieldSize)
-			this.tetromino = new tetris.Tetromino(createOfTetromino.typeOfTetromino, createOfTetromino.rotationPhase, createOfTetromino.coordinates)
+			this.tetromino = new tetris.Tetromino(this.createOfTetromino.typeOfTetromino, this.createOfTetromino.rotationPhase, this.createOfTetromino.coordinates)
 			this.coordinatesOfTetramino = this.tetromino.coordinates
 			this.field = new tetris.Field(this.fieldSize)
 			this.gameOverCallback = gameOverCallback
@@ -264,7 +263,7 @@ let tetris = {
 			} else {
 				this.field.addTetrominoToField(this.coordinatesOfTetramino)
 				this.createOfTetromino = tetris.createTetromino(this.fieldSize)
-				this.tetromino = new tetris.Tetromino(createOfTetromino.typeOfTetromino, createOfTetromino.rotationPhase, createOfTetromino.coordinates)
+				this.tetromino = new tetris.Tetromino(this.createOfTetromino.typeOfTetromino, this.createOfTetromino.rotationPhase, this.createOfTetromino.coordinates)
 				this.field.cleanFilledRows()
 				if (!tetris.checkThatTheFieldIsFree(this.coordinatesOfTetramino, this.field.field)) {
 					this.gameOverCallback()
@@ -319,7 +318,7 @@ tetris.TetrominoL = class extends tetris.Tetromino {
 		this.arrayPhases = ["up", "left", "down", "right"];
 		this.startingPhaseOfTetromino = "right";
 	}
-	determineShift() {
+	determineShift(rotationPhaseOfTetromino) {
 		if (rotationPhaseOfTetromino === "up") {
 			return { x: 0, y: 1 };
 		}
@@ -349,7 +348,7 @@ tetris.TetrominoJ = class extends tetris.Tetromino {
 		this.arrayPhases = ["up", "left", "down", "right"];
 		this.startingPhaseOfTetromino = "left";
 	}
-	determineShift() {
+	determineShift(rotationPhaseOfTetromino) {
 		if (rotationPhaseOfTetromino === "up") {
 			return { x: 0, y: 1 };
 		}
@@ -379,7 +378,7 @@ tetris.TetrominoT = class extends tetris.Tetromino {
 		this.arrayPhases = ["up", "left", "down", "right"];
 		this.startingPhaseOfTetromino = "up";
 	}
-	determineShift() {
+	determineShift(rotationPhaseOfTetromino) {
 		if (rotationPhaseOfTetromino === "up") {
 			return { x: 0, y: 2 };
 		}
@@ -433,7 +432,7 @@ tetris.TetrominoZ = class extends tetris.Tetromino {
 		this.arrayPhases = ["vertical", "horizontal"];
 		this.startingPhaseOfTetromino = "horizontal";
 	}
-	determineShift() {
+	determineShift(rotationPhaseOfTetromino) {
 		if (rotationPhaseOfTetromino === "horizontal") {
 			return { x: 0, y: 2 };
 		}
@@ -458,7 +457,7 @@ tetris.TetrominoI = class extends tetris.Tetromino {
 		this.arrayPhases = ["vertical", "horizontal"];
 		this.startingPhaseOfTetromino = "horizontal";
 	}
-	determineShift() {
+	determineShift(rotationPhaseOfTetromino) {
 		if (rotationPhaseOfTetromino === "horizontal") {
 			return { x: 1, y: 2 };
 		}
@@ -482,7 +481,7 @@ tetris.TetrominoO = class extends tetris.Tetromino {
 		this.arrayPhases = ["stable"];
 		this.startingPhaseOfTetromino = "stable";
 	}
-	determineShift() {
+	determineShift(rotationPhaseOfTetromino) {
 		if (rotationPhaseOfTetromino === "stable") {
 			return { x: 0, y: 1 };
 		}
