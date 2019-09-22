@@ -1,6 +1,5 @@
 let tetris = {
 	checkThatTheFieldIsFree: function (arrayOfCoordinates, localField) {
-		//console.log(localField)
 		if (!this.allItemsOnTheField(arrayOfCoordinates, localField)) {
 			return false
 		}
@@ -164,6 +163,9 @@ let tetris = {
 		}
 		set coordinates(newCoordinatesOfTetramino){
 			return this._coordinates = newCoordinatesOfTetramino
+		}
+		set rotationPhase(newRotationPhase){
+			return this._rotationPhase = newRotationPhase
 		}
 		rotateTetromino(field) {
 			let tetrominoRotateResult = tetris.rotateTetromino(this._typeOfTetromino, this._rotationPhase, this._coordinates)
