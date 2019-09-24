@@ -1,6 +1,7 @@
 # Build
-build
+build.js
 *.js
+!build.js
 # Logs
 logs
 *.log
