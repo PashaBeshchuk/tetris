@@ -1,4 +1,4 @@
-# Ignore any file named build.js.
+# Build
 build
 *.js
 # Logs
