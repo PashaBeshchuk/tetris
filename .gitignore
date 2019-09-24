@@ -1,5 +1,6 @@
 # Ignore any file named build.js.
-build.js
+build
+*.js
 # Logs
 logs
 *.log
