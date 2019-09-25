@@ -318,9 +318,9 @@ let tetris = {
 		return false
 	}
 }
-//1
+//1 Попрвить конструктор и добавить поле
 tetris.TetrominoL = class extends tetris.Tetromino {
-	constructor() {
+	constructor(fieldSize) {
 		super();
 		this.arrayPhases = ["up", "left", "down", "right"];
 		this.startingPhaseOfTetromino = "right";
@@ -350,7 +350,7 @@ tetris.TetrominoL = class extends tetris.Tetromino {
 }
 //2
 tetris.TetrominoJ = class extends tetris.Tetromino {
-	constructor() {
+	constructor(fieldSize) {
 		super();
 		this.arrayPhases = ["up", "left", "down", "right"];
 		this.startingPhaseOfTetromino = "left";
@@ -380,7 +380,7 @@ tetris.TetrominoJ = class extends tetris.Tetromino {
 }
 //3
 tetris.TetrominoT = class extends tetris.Tetromino {
-	constructor() {
+	constructor(fieldSize) {
 		super();
 		this.arrayPhases = ["up", "left", "down", "right"];
 		this.startingPhaseOfTetromino = "up";
@@ -410,7 +410,7 @@ tetris.TetrominoT = class extends tetris.Tetromino {
 }
 //4
 tetris.TetrominoS = class extends tetris.Tetromino {
-	constructor() {
+	constructor(fieldSize) {
 		super();
 		this.arrayPhases = ["vertical", "horizontal"];
 		this.startingPhaseOfTetromino = "horizontal";
@@ -434,7 +434,7 @@ tetris.TetrominoS = class extends tetris.Tetromino {
 }
 //5
 tetris.TetrominoZ = class extends tetris.Tetromino {
-	constructor() {
+	constructor(fieldSize) {
 		super();
 		this.arrayPhases = ["vertical", "horizontal"];
 		this.startingPhaseOfTetromino = "horizontal";
@@ -459,7 +459,7 @@ tetris.TetrominoZ = class extends tetris.Tetromino {
 
 //6
 tetris.TetrominoI = class extends tetris.Tetromino {
-	constructor() {
+	constructor(fieldSize) {
 		super();
 		this.arrayPhases = ["vertical", "horizontal"];
 		this.startingPhaseOfTetromino = "horizontal";
@@ -483,7 +483,7 @@ tetris.TetrominoI = class extends tetris.Tetromino {
 
 //7
 tetris.TetrominoO = class extends tetris.Tetromino {
-	constructor() {
+	constructor(fieldSize) {
 		super();
 		this.arrayPhases = ["stable"];
 		this.startingPhaseOfTetromino = "stable";
