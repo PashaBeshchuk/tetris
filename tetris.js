@@ -322,6 +322,7 @@ let tetris = {
 tetris.TetrominoL = class extends tetris.Tetromino {
 	constructor(fieldSize) {
 		super();
+		this.fieldSize = fieldSize;
 		this.arrayPhases = ["up", "left", "down", "right"];
 		this.startingPhaseOfTetromino = "right";
 	}
@@ -339,12 +340,12 @@ tetris.TetrominoL = class extends tetris.Tetromino {
 			return { x: 0, y: 2 };
 		}
 	}
-	initCoordinates(fieldSize) {
+	initCoordinates() {
 		let arrayForTetromino = tetris.getCoordinates(`
 			--X
 			XXX
 		`);
-		let shift = { x: Math.floor((fieldSize.x / 2) - 1), y: 0 }
+		let shift = { x: Math.floor((this.fieldSize.x / 2) - 1), y: 0 }
 		return tetris.shiftCoordinates(arrayForTetromino, shift);
 	}
 }
@@ -352,6 +353,7 @@ tetris.TetrominoL = class extends tetris.Tetromino {
 tetris.TetrominoJ = class extends tetris.Tetromino {
 	constructor(fieldSize) {
 		super();
+		this.fieldSize = fieldSize;
 		this.arrayPhases = ["up", "left", "down", "right"];
 		this.startingPhaseOfTetromino = "left";
 	}
@@ -369,12 +371,12 @@ tetris.TetrominoJ = class extends tetris.Tetromino {
 			return { x: 0, y: 2 };
 		}
 	}
-	initCoordinates(fieldSize) {
+	initCoordinates() {
 		let arrayForTetromino = tetris.getCoordinates(`
 			X--
 			XXX
 		`);
-		let shift = { x: Math.floor((fieldSize.x / 2) - 1), y: 0 }
+		let shift = { x: Math.floor((this.fieldSize.x / 2) - 1), y: 0 }
 		return tetris.shiftCoordinates(arrayForTetromino, shift);
 	}
 }
@@ -382,6 +384,7 @@ tetris.TetrominoJ = class extends tetris.Tetromino {
 tetris.TetrominoT = class extends tetris.Tetromino {
 	constructor(fieldSize) {
 		super();
+		this.fieldSize = fieldSize;
 		this.arrayPhases = ["up", "left", "down", "right"];
 		this.startingPhaseOfTetromino = "up";
 	}
@@ -399,12 +402,12 @@ tetris.TetrominoT = class extends tetris.Tetromino {
 			return { x: -1, y: 1 };
 		}
 	}
-	initCoordinates(fieldSize) {
+	initCoordinates() {
 		let arrayForTetromino = tetris.getCoordinates(`
 			-X-
 			XXX
 		`);
-		let shift = { x: Math.floor((fieldSize.x / 2) - 1), y: 0 }
+		let shift = { x: Math.floor((this.fieldSize.x / 2) - 1), y: 0 }
 		return tetris.shiftCoordinates(arrayForTetromino, shift);
 	}
 }
@@ -412,6 +415,7 @@ tetris.TetrominoT = class extends tetris.Tetromino {
 tetris.TetrominoS = class extends tetris.Tetromino {
 	constructor(fieldSize) {
 		super();
+		this.fieldSize = fieldSize;
 		this.arrayPhases = ["vertical", "horizontal"];
 		this.startingPhaseOfTetromino = "horizontal";
 	}
@@ -423,12 +427,12 @@ tetris.TetrominoS = class extends tetris.Tetromino {
 			return { x: 0, y: 1 };
 		}
 	}
-	initCoordinates(fieldSize) {
+	initCoordinates() {
 		let arrayForTetromino = tetris.getCoordinates(`
 			-XX
 			XX-
 		`);
-		let shift = { x: Math.floor((fieldSize.x / 2) - 1), y: 0 }
+		let shift = { x: Math.floor((this.fieldSize.x / 2) - 1), y: 0 }
 		return tetris.shiftCoordinates(arrayForTetromino, shift);
 	}
 }
@@ -436,6 +440,7 @@ tetris.TetrominoS = class extends tetris.Tetromino {
 tetris.TetrominoZ = class extends tetris.Tetromino {
 	constructor(fieldSize) {
 		super();
+		this.fieldSize = fieldSize;
 		this.arrayPhases = ["vertical", "horizontal"];
 		this.startingPhaseOfTetromino = "horizontal";
 	}
@@ -447,12 +452,12 @@ tetris.TetrominoZ = class extends tetris.Tetromino {
 			return { x: 0, y: 1 };
 		}
 	}
-	initCoordinates(fieldSize) {
+	initCoordinates() {
 		let arrayForTetromino = tetris.getCoordinates(`
 			XX-
 			-XX
 		`);
-		let shift = { x: Math.floor((fieldSize.x / 2) - 1), y: 0 }
+		let shift = { x: Math.floor((this.fieldSize.x / 2) - 1), y: 0 }
 		return tetris.shiftCoordinates(arrayForTetromino, shift);
 	}
 }
@@ -461,6 +466,7 @@ tetris.TetrominoZ = class extends tetris.Tetromino {
 tetris.TetrominoI = class extends tetris.Tetromino {
 	constructor(fieldSize) {
 		super();
+		this.fieldSize = fieldSize;
 		this.arrayPhases = ["vertical", "horizontal"];
 		this.startingPhaseOfTetromino = "horizontal";
 	}
@@ -472,11 +478,11 @@ tetris.TetrominoI = class extends tetris.Tetromino {
 			return { x: -1, y: 1 };
 		}
 	}
-	initCoordinates(fieldSize) {
+	initCoordinates() {
 		let arrayForTetromino = tetris.getCoordinates(`
 			XXXX
 		`);
-		let shift = { x: (Math.floor((fieldSize.x / 2) - 1) - 1), y: 0 }
+		let shift = { x: (Math.floor((this.fieldSize.x / 2) - 1) - 1), y: 0 }
 		return tetris.shiftCoordinates(arrayForTetromino, shift);
 	}
 }
@@ -485,6 +491,7 @@ tetris.TetrominoI = class extends tetris.Tetromino {
 tetris.TetrominoO = class extends tetris.Tetromino {
 	constructor(fieldSize) {
 		super();
+		this.fieldSize = fieldSize;
 		this.arrayPhases = ["stable"];
 		this.startingPhaseOfTetromino = "stable";
 	}
@@ -493,12 +500,12 @@ tetris.TetrominoO = class extends tetris.Tetromino {
 			return { x: 0, y: 1 };
 		}
 	}
-	initCoordinates(fieldSize) {
+	initCoordinates() {
 		let arrayForTetromino = tetris.getCoordinates(`
 			XX
 			XX
 		`);
-		let shift = { x: Math.floor((fieldSize.x / 2) - 1), y: 0 }
+		let shift = { x: Math.floor((this.fieldSize.x / 2) - 1), y: 0 }
 		return tetris.shiftCoordinates(arrayForTetromino, shift);
 	}
 }
