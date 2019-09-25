@@ -7,7 +7,7 @@ describe("Initial coordinates tetromino field 10 x 2", function () {
         let fieldSize = { x: 10, y: 2 };
         stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoL(fieldSize))
         let typeOfTetromino = tetris.createTetromino(fieldSize)  
-        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates(fieldSize)
+        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates()
         let expected = tetris.getCoordinates(`
             ------X---
             ----XXX---
@@ -18,7 +18,7 @@ describe("Initial coordinates tetromino field 10 x 2", function () {
         let fieldSize = { x: 10, y: 2 };
         stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoJ(fieldSize))
         let typeOfTetromino = tetris.createTetromino(fieldSize)  
-        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates(fieldSize)
+        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates()
         let expected = tetris.getCoordinates(`
             ----X-----
             ----XXX---
@@ -29,7 +29,7 @@ describe("Initial coordinates tetromino field 10 x 2", function () {
         let fieldSize = { x: 10, y: 2 };
         stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoT(fieldSize))
         let typeOfTetromino = tetris.createTetromino(fieldSize)  
-        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates(fieldSize)
+        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates()
         let expected = tetris.getCoordinates(`
             -----X----
             ----XXX---
@@ -40,7 +40,7 @@ describe("Initial coordinates tetromino field 10 x 2", function () {
         let fieldSize = { x: 10, y: 2 };
         stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoZ(fieldSize))
         let typeOfTetromino = tetris.createTetromino(fieldSize)  
-        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates(fieldSize)
+        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates()
         let expected = tetris.getCoordinates(`
             ----XX----
             -----XX---
@@ -51,7 +51,7 @@ describe("Initial coordinates tetromino field 10 x 2", function () {
         let fieldSize = { x: 10, y: 2 };
         stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoS(fieldSize))
         let typeOfTetromino = tetris.createTetromino(fieldSize)  
-        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates(fieldSize)
+        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates()
         let expected = tetris.getCoordinates(`
             -----XX---
             ----XX----
@@ -62,7 +62,7 @@ describe("Initial coordinates tetromino field 10 x 2", function () {
         let fieldSize = { x: 10, y: 2 };
         stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoI(fieldSize))
         let typeOfTetromino = tetris.createTetromino(fieldSize)  
-        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates(fieldSize)
+        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates()
         let expected = tetris.getCoordinates(`
             ---XXXX---
             ----------
@@ -73,7 +73,7 @@ describe("Initial coordinates tetromino field 10 x 2", function () {
         let fieldSize = { x: 10, y: 2 };
         stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoO(fieldSize))
         let typeOfTetromino = tetris.createTetromino(fieldSize)  
-        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates(fieldSize)
+        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates()
         let expected = tetris.getCoordinates(`
             ----XX----
             ----XX----
@@ -87,7 +87,7 @@ describe("Initial coordinates tetromino field 10 x 2", function () {
         let fieldSize = { x: 6, y: 2 };
         stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoL(fieldSize))
         let typeOfTetromino = tetris.createTetromino(fieldSize)  
-        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates(fieldSize)
+        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates()
         let expected = tetris.getCoordinates(`
            ----X-
            --XXX-
@@ -98,7 +98,7 @@ describe("Initial coordinates tetromino field 10 x 2", function () {
         let fieldSize = { x: 6, y: 2 };
         stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoJ(fieldSize))
         let typeOfTetromino = tetris.createTetromino(fieldSize)  
-        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates(fieldSize)
+        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates()
         let expected = tetris.getCoordinates(`
             --X---
             --XXX-
@@ -109,7 +109,7 @@ describe("Initial coordinates tetromino field 10 x 2", function () {
         let fieldSize = { x: 6, y: 2 };
         stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoT(fieldSize))
         let typeOfTetromino = tetris.createTetromino(fieldSize)  
-        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates(fieldSize)
+        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates()
         let expected = tetris.getCoordinates(`
             ---X--
             --XXX-
@@ -120,7 +120,7 @@ describe("Initial coordinates tetromino field 10 x 2", function () {
         let fieldSize = { x: 6, y: 2 };
         stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoZ(fieldSize))
         let typeOfTetromino = tetris.createTetromino(fieldSize)  
-        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates(fieldSize)
+        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates()
         let expected = tetris.getCoordinates(`
             --XX--
             ---XX-
@@ -131,7 +131,7 @@ describe("Initial coordinates tetromino field 10 x 2", function () {
         let fieldSize = { x: 6, y: 2 };
         stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoS(fieldSize))
         let typeOfTetromino = tetris.createTetromino(fieldSize)  
-        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates(fieldSize)
+        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates()
         let expected = tetris.getCoordinates(`
             ---XX-
             --XX--
@@ -142,7 +142,7 @@ describe("Initial coordinates tetromino field 10 x 2", function () {
         let fieldSize = { x: 6, y: 2 };
         stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoI(fieldSize))
         let typeOfTetromino = tetris.createTetromino(fieldSize)  
-        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates(fieldSize)
+        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates()
         let expected = tetris.getCoordinates(`
             -XXXX-
             ------
@@ -153,7 +153,7 @@ describe("Initial coordinates tetromino field 10 x 2", function () {
         let fieldSize = { x: 6, y: 2 };
         stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoO(fieldSize))
         let typeOfTetromino = tetris.createTetromino(fieldSize)  
-        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates(fieldSize)
+        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates()
         let expected = tetris.getCoordinates(`
             --XX--
             --XX--
@@ -166,7 +166,7 @@ describe("Initial coordinates tetromino field 8 x 2", function () {
         let fieldSize = { x: 8, y: 2 };
         stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoL(fieldSize))
         let typeOfTetromino = tetris.createTetromino(fieldSize)  
-        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates(fieldSize)
+        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates()
         let expected = tetris.getCoordinates(`
             -----X--
             ---XXX--
@@ -177,7 +177,7 @@ describe("Initial coordinates tetromino field 8 x 2", function () {
         let fieldSize = { x: 8, y: 2 };
         stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoJ(fieldSize))
         let typeOfTetromino = tetris.createTetromino(fieldSize)  
-        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates(fieldSize)
+        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates()
         let expected = tetris.getCoordinates(`
             ---X----
             ---XXX--
@@ -188,7 +188,7 @@ describe("Initial coordinates tetromino field 8 x 2", function () {
         let fieldSize = { x: 8, y: 2 };
         stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoT(fieldSize))
         let typeOfTetromino = tetris.createTetromino(fieldSize)  
-        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates(fieldSize)
+        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates()
         let expected = tetris.getCoordinates(`
             ----X---
             ---XXX--
@@ -199,7 +199,7 @@ describe("Initial coordinates tetromino field 8 x 2", function () {
         let fieldSize = { x: 8, y: 2 };
         stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoZ(fieldSize))
         let typeOfTetromino = tetris.createTetromino(fieldSize)  
-        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates(fieldSize)
+        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates()
         let expected = tetris.getCoordinates(`
             ---XX---
             ----XX--
@@ -210,7 +210,7 @@ describe("Initial coordinates tetromino field 8 x 2", function () {
         let fieldSize = { x: 8, y: 2 };
         stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoS(fieldSize))
         let typeOfTetromino = tetris.createTetromino(fieldSize)  
-        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates(fieldSize)
+        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates()
         let expected = tetris.getCoordinates(`
             ----XX--
             ---XX---
@@ -221,7 +221,7 @@ describe("Initial coordinates tetromino field 8 x 2", function () {
         let fieldSize = { x: 8, y: 2 };
         stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoI(fieldSize))
         let typeOfTetromino = tetris.createTetromino(fieldSize)  
-        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates(fieldSize)
+        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates()
         let expected = tetris.getCoordinates(`
             --XXXX--
             --------
@@ -232,7 +232,7 @@ describe("Initial coordinates tetromino field 8 x 2", function () {
         let fieldSize = { x: 8, y: 2 };
         stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoO(fieldSize))
         let typeOfTetromino = tetris.createTetromino(fieldSize)  
-        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates(fieldSize)
+        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates()
         let expected = tetris.getCoordinates(`
             ---XX---
             ---XX---
@@ -245,7 +245,7 @@ describe("Initial coordinates tetromino field 5 x 2", function () {
         let fieldSize = { x: 5, y: 2 };
         stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoL(fieldSize))
         let typeOfTetromino = tetris.createTetromino(fieldSize)  
-        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates(fieldSize)
+        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates()
         let expected = tetris.getCoordinates(`
            ---X-
            -XXX-
@@ -256,7 +256,7 @@ describe("Initial coordinates tetromino field 5 x 2", function () {
         let fieldSize = { x: 5, y: 2 };
         stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoJ(fieldSize))
         let typeOfTetromino = tetris.createTetromino(fieldSize)  
-        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates(fieldSize)
+        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates()
         let expected = tetris.getCoordinates(`
             -X---
             -XXX-
@@ -267,7 +267,7 @@ describe("Initial coordinates tetromino field 5 x 2", function () {
         let fieldSize = { x: 5, y: 2 };
         stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoT(fieldSize))
         let typeOfTetromino = tetris.createTetromino(fieldSize)  
-        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates(fieldSize)
+        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates()
         let expected = tetris.getCoordinates(`
             --X--
             -XXX-
@@ -278,7 +278,7 @@ describe("Initial coordinates tetromino field 5 x 2", function () {
         let fieldSize = { x: 5, y: 2 };
         stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoZ(fieldSize))
         let typeOfTetromino = tetris.createTetromino(fieldSize)  
-        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates(fieldSize)
+        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates()
         let expected = tetris.getCoordinates(`
             -XX--
             --XX-
@@ -289,7 +289,7 @@ describe("Initial coordinates tetromino field 5 x 2", function () {
         let fieldSize = { x: 5, y: 2 };
         stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoS(fieldSize))
         let typeOfTetromino = tetris.createTetromino(fieldSize)  
-        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates(fieldSize)
+        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates()
         let expected = tetris.getCoordinates(`
             --XX-
             -XX--
@@ -300,7 +300,7 @@ describe("Initial coordinates tetromino field 5 x 2", function () {
         let fieldSize = { x: 5, y: 2 };
         stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoI(fieldSize))
         let typeOfTetromino = tetris.createTetromino(fieldSize)  
-        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates(fieldSize)
+        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates()
         let expected = tetris.getCoordinates(`
             XXXX-
             -----
@@ -311,7 +311,7 @@ describe("Initial coordinates tetromino field 5 x 2", function () {
         let fieldSize = { x: 5, y: 2 };
         stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoO(fieldSize))
         let typeOfTetromino = tetris.createTetromino(fieldSize)  
-        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates(fieldSize)
+        let coordinatesTetromino = typeOfTetromino.typeOfTetromino.initCoordinates()
         let expected = tetris.getCoordinates(`
             -XX--
             -XX--
