@@ -1,5 +1,5 @@
 # Build
-build.js
+/dist/build.js
 # Logs
 logs
 *.log
