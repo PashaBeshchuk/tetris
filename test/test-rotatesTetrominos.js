@@ -157,7 +157,7 @@ describe("Rotate all tetromino", function () {
         assert.deepEqual(rotateTetrominoFourth, expected)
     }); 
 })
-describe("Tetramino can not rotate", function () {
+ describe("Tetramino can not rotate", function () {
     it("L tetromino can not rotate, there is an element on the way", function () {
         let fieldSize = { x:5, y:4 }
         stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoL(fieldSize));
@@ -182,7 +182,6 @@ describe("Tetramino can not rotate", function () {
         let fieldSize = { x:5, y:4 }
         stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoL(fieldSize));
         let typeOfTetromino = tetris.createTetromino(fieldSize)
-        typeOfTetromino.rotationPhase = "up"
         typeOfTetromino.coordinates = tetris.getCoordinates(`
             -----
             ---XX
@@ -209,7 +208,7 @@ describe("Tetramino can not rotate", function () {
         let fieldSize = { x:5, y:4 }
         stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoJ(fieldSize));
         let typeOfTetromino = tetris.createTetromino(fieldSize)
-        typeOfTetromino.rotationPhase = "up"
+        typeOfTetromino.typeOfTetromino.startingPhaseOfTetromino = "up"
         typeOfTetromino.coordinates = tetris.getCoordinates(`
             -XX--
             -X---
@@ -236,7 +235,7 @@ describe("Tetramino can not rotate", function () {
         let fieldSize = { x:5, y:4 }
         stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoJ(fieldSize));
         let typeOfTetromino = tetris.createTetromino(fieldSize)
-        typeOfTetromino.rotationPhase = "right"
+        typeOfTetromino.typeOfTetromino.startingPhaseOfTetromino = "right"
         typeOfTetromino.coordinates = tetris.getCoordinates(`
             -----
             -----
@@ -288,7 +287,7 @@ describe("Tetramino can not rotate", function () {
         let fieldSize = { x:5, y:4 }
         stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoT(fieldSize));
         let typeOfTetromino = tetris.createTetromino(fieldSize)
-        typeOfTetromino.rotationPhase = "right"
+        typeOfTetromino.typeOfTetromino.startingPhaseOfTetromino = "right"
         typeOfTetromino.coordinates = tetris.getCoordinates(`
             X----
             XX---
@@ -314,7 +313,7 @@ describe("Tetramino can not rotate", function () {
         let fieldSize = { x:5, y:4 }
         stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoZ(fieldSize));
         let typeOfTetromino = tetris.createTetromino(fieldSize)
-        typeOfTetromino.rotationPhase = "vertical"
+        typeOfTetromino.typeOfTetromino.startingPhaseOfTetromino = "vertical"
         typeOfTetromino.coordinates = tetris.getCoordinates(`
             -----
             --X--
@@ -365,7 +364,7 @@ describe("Tetramino can not rotate", function () {
         let fieldSize = { x:5, y:4 }
         stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoS(fieldSize));
         let typeOfTetromino = tetris.createTetromino(fieldSize)
-        typeOfTetromino.rotationPhase = "vertical"
+        typeOfTetromino.typeOfTetromino.startingPhaseOfTetromino = "vertical"
         typeOfTetromino.coordinates = tetris.getCoordinates(`
             -----
             -X---
@@ -391,7 +390,7 @@ describe("Tetramino can not rotate", function () {
         let fieldSize = { x:5, y:4 }
         stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoS(fieldSize));
         let typeOfTetromino = tetris.createTetromino(fieldSize)
-        typeOfTetromino.rotationPhase = "vertical"
+        typeOfTetromino.typeOfTetromino.startingPhaseOfTetromino = "vertical"
         typeOfTetromino.coordinates = tetris.getCoordinates(`
             -----
             ---X-
