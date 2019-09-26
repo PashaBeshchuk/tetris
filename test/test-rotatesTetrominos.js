@@ -177,7 +177,6 @@ describe("Rotate all tetromino", function () {
         `);
         assert.deepEqual(rotateTetromino, expected);
     })
-    //тут можно переприсвоить typeOfTetromino.coordinates и попробовать сделать тест
     it("L tetromino can not rotate, too right to the edge", function () {
         let fieldSize = { x:5, y:4 }
         stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoL(fieldSize));
