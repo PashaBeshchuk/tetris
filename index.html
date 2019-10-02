@@ -18,7 +18,8 @@
 			let newTetris = new tetris.tetris.Tetris(fieldSize, stopTick);
 			function onTick() {
 				console.log(tetris.tetris.displayField(fieldSize, newTetris.tetromino.coordinates, newTetris.field.field))
-				newTetris.tick()
+				newTetris.tick(newTetris.tetromino.coordinates)
+				
 			}
 			let tick = setInterval(onTick, 1000);
 			window.addEventListener("keydown", keyboardHandler)

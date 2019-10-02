@@ -4,94 +4,111 @@ var tetris = require('../tetris');
 describe("Create tetromino", function () {
     let stubForGetRandomTypeOfTetromino = sinon.stub(tetris, "getRandomTypeOfTetromino")
     it("Create L tetromino", function () {
-        stubForGetRandomTypeOfTetromino.returns("L");
         let fieldSize = { x: 5, y: 2 };
+        stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoL(fieldSize));
         let resultFunction = tetris.createTetromino(fieldSize);
-        let expected = {
-            typeOfTetromino: "L",
+        let expectedResult = {
             rotationPhase: "right",
             coordinates: tetris.getCoordinates(`
                 ---X-
                 -XXX-
             `)
         };
-        assert.deepEqual(resultFunction, expected);
+        let presentResult = {
+            rotationPhase: resultFunction.rotationPhase,
+            coordinates: resultFunction.coordinates
+        }
+       assert.deepEqual(presentResult, expectedResult);
     })
     it("Create J tetromino", function () {
-        stubForGetRandomTypeOfTetromino.returns("J");
         let fieldSize = { x: 5, y: 2 };
+        stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoJ(fieldSize));
         let resultFunction = tetris.createTetromino(fieldSize);
-        let expected = {
-            typeOfTetromino: "J",
+        let expectedResult = {
             rotationPhase: "left",
             coordinates: tetris.getCoordinates(`
                 -X--
                 -XXX-
             `)
         };
-        assert.deepEqual(resultFunction, expected);
+        let presentResult = {
+            rotationPhase: resultFunction.rotationPhase,
+            coordinates: resultFunction.coordinates
+        }
+        assert.deepEqual(presentResult, expectedResult);
     })
     it("Create T tetromino", function () {
-        stubForGetRandomTypeOfTetromino.returns("T");
         let fieldSize = { x: 5, y: 2 };
+        stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoT(fieldSize));
         let resultFunction = tetris.createTetromino(fieldSize);
-        let expected = {
-            typeOfTetromino: "T",
+        let expectedResult = {
             rotationPhase: "up",
             coordinates: tetris.getCoordinates(`
                 --X--
                 -XXX-
             `)
         };
-        assert.deepEqual(resultFunction, expected);
+        let presentResult = {
+            rotationPhase: resultFunction.rotationPhase,
+            coordinates: resultFunction.coordinates
+        }
+        assert.deepEqual(presentResult, expectedResult);
     })
     it("Create S tetromino", function () {
-        stubForGetRandomTypeOfTetromino.returns("S");
         let fieldSize = { x: 5, y: 2 };
+        stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoS(fieldSize));
         let resultFunction = tetris.createTetromino(fieldSize);
-        let expected = {
-            typeOfTetromino: "S",
+        let expectedResult = {
             rotationPhase: "horizontal",
             coordinates: tetris.getCoordinates(`
                 --XX-
                 -XX--
             `)
         };
-        assert.deepEqual(resultFunction, expected);
+        let presentResult = {
+            rotationPhase: resultFunction.rotationPhase,
+            coordinates: resultFunction.coordinates
+        }
+        assert.deepEqual(presentResult, expectedResult);
     })
     it("Create Z tetromino", function () {
-        stubForGetRandomTypeOfTetromino.returns("Z");
         let fieldSize = { x: 5, y: 2 };
+        stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoZ(fieldSize));
         let resultFunction = tetris.createTetromino(fieldSize);
-        let expected = {
-            typeOfTetromino: "Z",
+        let expectedResult = {
             rotationPhase: "horizontal",
             coordinates: tetris.getCoordinates(`
                 -XX--
                 --XX-
             `)
         };
-        assert.deepEqual(resultFunction, expected);
+        let presentResult = {
+            rotationPhase: resultFunction.rotationPhase,
+            coordinates: resultFunction.coordinates
+        }
+        assert.deepEqual(presentResult, expectedResult);
     })
     it("Create I tetromino", function () {
-        stubForGetRandomTypeOfTetromino.returns("I");
-        let fieldSize = { x: 5, y: 4 };
+        let fieldSize = { x: 5, y: 2 };
+        stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoI(fieldSize));
         let resultFunction = tetris.createTetromino(fieldSize);
-        let expected = {
-            typeOfTetromino: "I",
+        let expectedResult = {
             rotationPhase: "horizontal",
             coordinates: tetris.getCoordinates(`
                 XXXX-
             `)
         };
-        assert.deepEqual(resultFunction, expected);
+        let presentResult = {
+            rotationPhase: resultFunction.rotationPhase,
+            coordinates: resultFunction.coordinates
+        }
+        assert.deepEqual(presentResult, expectedResult);
     })
     it("Create O tetromino", function () {
-        stubForGetRandomTypeOfTetromino.returns("O");
-        let fieldSize = { x: 5, y: 4 };
+        let fieldSize = { x: 5, y: 2 };
+        stubForGetRandomTypeOfTetromino.returns(new tetris.TetrominoO(fieldSize));
         let resultFunction = tetris.createTetromino(fieldSize);
-        let expected = {
-            typeOfTetromino: "O",
+        let expectedResult = {
             rotationPhase: "stable",
             coordinates: tetris.getCoordinates(`
                 -XX--
@@ -99,6 +116,10 @@ describe("Create tetromino", function () {
                 -----
             `)
         };
-        assert.deepEqual(resultFunction, expected);
+        let presentResult = {
+            rotationPhase: resultFunction.rotationPhase,
+            coordinates: resultFunction.coordinates
+        }
+        assert.deepEqual(presentResult, expectedResult);
     })
 })
